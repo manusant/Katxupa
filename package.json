@@ -1,6 +1,6 @@
 {
-  "name": "cachupa",
-  "version": "1.0.0",
+  "name": "kachupa",
+  "version": "1.0.2",
   "description": "Delicious Dish for Typescript and JavaScript projects",
   "author": "Manuel Santos <ney.br.santos@gmail.com>",
   "license": "MIT",
