@@ -551,3 +551,145 @@ export class Optional<T> {
         throw new Error("Else operation is only supported on empty optional");
     }
 }
+
+declare global {
+
+    /**
+     * Wraps a value that might be undefined or null in an Optional container.
+     *
+     * @template T - The type of the wrapped value.
+     * @param {T | undefined | null} value - The value to be wrapped.
+     * @returns {Optional<T>} - An Optional container holding the wrapped value.
+     *
+     * @example
+     *  const result1 = optional("Hello");
+     *  if (result1.isPresent()) {
+     *    console.log(result1.get()); // Prints: Hello
+     *  }
+     *
+     *  const result2 = optional(null);
+     *  if (result2.isEmpty()) {
+     *    console.log("Value is not present"); // Prints: Value is not present
+     *  }
+     *
+     *  const result3 = optional(undefined);
+     *  console.log(result3.orElse("Default")); // Prints: Default
+     *
+     *  const result4 = await optionalOf(user)
+     *     .orElseThrow(() => new HttpError(409, "User doesn't exist"))
+     *     .map(user => {
+     *        return {
+     *          ...user,
+     *          userData,
+     *        };
+     *      })
+     *     .runAsync(user => this.userRepository.save(user));
+     *  console.log(result4); // Prints: saved user content
+     */
+    function optionalOf<T>(value: T | undefined | null): Optional<T>;
+
+    /**
+     * The allPresent method checks if all the elements in an array of Optional objects are present.
+     *
+     * ### Example Usage
+     * ```ts
+     * onst optional1 = Optional.of(5);
+     * const optional2 = Optional.of(10);
+     * const optional3 = Optional.empty();
+     *
+     * const optionals = [optional1, optional2, optional3];
+     *
+     * const result = Optional.allPresent(optionals);
+     * console.log(result); // Output: false
+     * ```
+     *
+     * @param optionals - An array of Optional objects.
+     * @return true if all the Optional objects in the array have a non-empty value. false if any of the Optional objects in the array have an empty value.
+     * */
+    function allPresent<T>(optionals: Optional<T>[]): boolean ;
+
+    /**
+     * Checks if at least one Optional object in an array is present.
+     *
+     * @param {Optional<T>[]} optionals - An array of Optional objects.
+     * @return {boolean} Returns true if at least one Optional object in the array is present, false otherwise.
+     *
+     * @example
+     * // Example Usage:
+     * const optional1 = Optional.of(5);
+     * const optional2 = Optional.empty();
+     * const optional3 = Optional.of(10);
+     *
+     * const optionals = [optional1, optional2, optional3];
+     *
+     * const result = Optional.anyPresent(optionals);
+     * console.log(result); // true
+     */
+    function anyPresent<T>(optionals: Optional<T>[]): boolean;
+
+    /**
+     * The nonePresent method checks if none of the Optional objects in the array are present.
+     *
+     * @param optionals An array of Optional objects.
+     * @return Returns true if none of the Optional objects in the array are present, otherwise returns false.
+     *
+     * @example
+     * // Example 1: All Optionals have values
+     * const optionalsWithValues = [Optional.of("Hello"), Optional.of("World")];
+     * const areNonePresent1 = Optional.nonePresent(optionalsWithValues);
+     * console.log(areNonePresent1); // false (both Optionals have values)
+     *
+     * @example
+     * // Example 2: All Optionals are empty
+     * const optionalsWithEmptyValues = [Optional.empty(), Optional.empty()];
+     * const areNonePresent2 = Optional.nonePresent(optionalsWithEmptyValues);
+     * console.log(areNonePresent2); // true (both Optionals are empty)
+     *
+     * @example
+     * // Example 3: At least one Optional has a value
+     * const mixedOptionals = [Optional.of("Hello"), Optional.empty()];
+     * const areNonePresent3 = Optional.nonePresent(mixedOptionals);
+     * console.log(areNonePresent3); // false (at least one Optional has a value)
+     */
+    function nonePresent<T>(optionals: Optional<T>[]): boolean ;
+
+    /**
+     * The coalesce method returns the first non-empty optional from a list of optionals, or an empty optional if all optionals are empty.
+     *
+     * ### Example Usage
+     * ```ts
+     *     const optional1 = Optional.of(5);
+     * const optional2 = Optional.empty();
+     * const optional3 = Optional.of(10);
+     *
+     * const result = Optional.coalesce(optional1, optional2, optional3);
+     * console.log(result.get()); // Output: 5
+     * ```
+     *
+     * @param optionals - A spread parameter that accepts a variable number of Optional objects
+     * @return Returns the first non-empty optional from the list of optionals, or an empty optional if all optionals are empty.
+     * */
+    function coalesce<T>(...optionals: Optional<T | undefined | null>[]): Optional<T | undefined | null> ;
+}
+
+const _global = (window /* browser */ || globalThis /* node */);
+
+_global.optionalOf = function <T>(value: T | undefined | null): Optional<T> {
+    return Optional.of(value);
+}
+
+_global.allPresent = function <T>(optionals: Optional<T>[]): boolean {
+    return Optional.allPresent(optionals);
+}
+
+_global.anyPresent = function <T>(optionals: Optional<T>[]): boolean {
+    return Optional.anyPresent(optionals);
+}
+
+_global.nonePresent = function <T>(optionals: Optional<T>[]): boolean {
+    return Optional.nonePresent(optionals);
+}
+
+_global.coalesce = function <T>(...optionals: Optional<T | undefined | null>[]): Optional<T | undefined | null> {
+    return Optional.coalesce(...optionals);
+}
