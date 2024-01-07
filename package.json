@@ -1,0 +1,41 @@
+{
+  "name": "kachupa",
+  "version": "1.0.0",
+  "description": "Delicious Dish for Typescript and JavaScript projects",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "keywords": [
+    "utility",
+    "typescript",
+    "kotlin",
+    "scope",
+    "functions",
+    "extensions",
+    "scoping",
+    "range",
+    "optional",
+    "collection",
+    "sequence"
+  ],
+  "author": "Manuel Santos",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.3.3"
+  },
+  "pnpm": {
+    "strict-peer-dependencies": false
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "preset": "ts-jest"
+  },
+  "files": [
+    "/dist"
+  ]
+}
