@@ -77,45 +77,35 @@ export class Sequence<T> {
     }
 
     /**
-     * Converts a string into a lazy sequence of its characters.
-     * @param {string} input - The string to convert.
-     * @returns {Sequence<string>} A lazy sequence representing the characters of the string.
+     * Creates a lazy sequence of either characters or words from the provided string.
+     *
+     * @param {string} input - The input string to create a sequence from.
+     * @param {"char" | "word"} [output="word"] - The output type, either "char" for characters or "word" for words.
+     * @returns {Sequence<string>} A lazy sequence representing characters or words from the input string.
      *
      * @example
-     * const text = "Hello, world!";
-     * const charSequence = Sequence.fromString(text);
-     * const result = charSequence.toArray(); // ['H', 'e', 'l', 'l', 'o', ',', ' ', 'w', 'o', 'r', 'l', 'd', '!']
-     */
-    static fromString(input: string): Sequence<string> {
-        return Sequence.fromIterable(input[Symbol.iterator]());
-    }
-
-    /**
-     * Converts a string into a lazy sequence of its words using Intl.Segmenter.
-     * @param {string} input - The string to convert.
-     * @returns {Sequence<string>} A lazy sequence representing the words of the string.
+     * // Example 1: Sequence of Words (default)
+     * const wordsSequence = Sequence.fromString("Hello world! This is a test.");
+     * const wordArray = wordsSequence.toArray();
+     * console.log(wordArray); // Output: ["Hello", "world", "This", "is", "a", "test"]
      *
      * @example
-     * // Example 1: as words and convert to an array
-     * const phrase = "This is a sample phrase.";
-     * const wordSequence = Sequence.fromPhrase(phrase);
-     * const result = wordSequence.toArray(); // ['This', 'is', 'a', 'sample', 'phrase.']
-     *
-     * // Example 2: Chaining
-     * const wordSequence = Sequence.fromPhrase(phrase);
-     * const transformedSequence = wordSequence
-     *     .map(word => word.toUpperCase()) // Convert words to uppercase
-     *     .filter(word => word.length > 2) // Filter out short words
-     *     .take(3); // Take the first 3 words
-     *
-     * const result = transformedSequence.toArray();
-     * console.log(result); // Output: ['THIS', 'SAMPLE', 'PHRASE.']
+     * // Example 2: Sequence of Characters
+     * const charSequence = Sequence.fromString("Hello world!", "char");
+     * const charArray = charSequence.toArray();
+     * console.log(charArray); // Output: ["H", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d", "!"]
      */
-    static fromPhrase(input: string): Sequence<string> {
-        const segmenter = new Intl.Segmenter('en', { granularity: 'word' });
-        const iterator = segmenter.segment(input)[Symbol.iterator]();
-        const words = Array.from(iterator, segment => segment.segment);
-        return Sequence.fromIterable<string>(words);
+    static fromString(input: string, output?: "char"|"word"): Sequence<string> {
+        if (!output || output === "word"){
+            // Sequence of Words
+            const segmenter = new Intl.Segmenter('en', { granularity: 'word' });
+            const iterator = segmenter.segment(input)[Symbol.iterator]();
+            const words = Array.from(iterator, segment => segment.segment);
+            return Sequence.fromIterable<string>(words);
+        }else {
+            // Sequence of Chars
+            return Sequence.fromIterable(input[Symbol.iterator]());
+        }
     }
 
     /**
