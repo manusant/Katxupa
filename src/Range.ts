@@ -1,7 +1,7 @@
 /**
  * The `Ranges` class provides utility methods for working with numeric ranges.
  *
- * @since version 1.0.3
+ * @since version 1.0.4
  * @author Manuel Santos <ney.br.santos@gmail.com>
  */
 export class Range {
