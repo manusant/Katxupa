@@ -1,3 +1,5 @@
+export {};
+
 /**
  * The Optional class is a utility class that provides a way to handle potentially null or undefined values in a more
  * concise and expressive manner. It allows wrapping a value in an Optional object, which can then be used to perform

@@ -1,3 +1,5 @@
+export {};
+
 /**
  * Represents a lazy sequence using a generator function.
  * @template T - The type of elements in the sequence.
