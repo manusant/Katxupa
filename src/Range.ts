@@ -1,5 +1,3 @@
-export {};
-
 /**
  * The `Ranges` class provides utility methods for working with numeric ranges.
  *

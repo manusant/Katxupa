@@ -1,7 +1,5 @@
 import {Sequence} from "./Sequence";
 
-export {};
-
 /**
  * Kachupa scope functions plus TypeScript type extensions
  *
