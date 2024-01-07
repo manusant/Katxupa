@@ -1,7 +1,14 @@
 import {Optional} from "./Optional";
+import {Sequence} from "./Sequence";
 
 export {};
 
+/**
+ * Kachupa scope functions plus TypeScript type extensions
+ *
+ * @since version 1.0.0
+ * @author Manuel Santos <ney.br.santos@gmail.com>
+ * */
 declare global {
 
     /**
@@ -301,6 +308,39 @@ declare global {
          * @returns `this` or `undefined`
          */
         takeUnless<T>(this: T, predicate: (it: T) => boolean): T | undefined;
+
+        /**
+         * Converts a string into a lazy sequence of its characters.
+         * @returns {Sequence<string>} A lazy sequence representing the characters of the string.
+         *
+         * @example
+         * const text = "Hello, world!";
+         * const charSequence = text.asCharSequence();
+         * const result = charSequence.toArray(); // ['H', 'e', 'l', 'l', 'o', ',', ' ', 'w', 'o', 'r', 'l', 'd', '!']
+         */
+        asCharSequence<T>(this: T): Sequence<T>;
+
+        /**
+         * Converts a string into a lazy sequence of its words using Intl.Segmenter.
+         * @returns {Sequence<string>} A lazy sequence representing the words of the string.
+         *
+         * @example
+         * // Example 1: as words and convert to an array
+         * const phrase = "This is a sample phrase.";
+         * const wordSequence = phrase.asWordSequence();
+         * const result = wordSequence.toArray(); // ['This', 'is', 'a', 'sample', 'phrase.']
+         *
+         * // Example 2: Chaining
+         * const wordSequence = phrase.asWordSequence();
+         * const transformedSequence = wordSequence
+         *     .map(word => word.toUpperCase()) // Convert words to uppercase
+         *     .filter(word => word.length > 2) // Filter out short words
+         *     .take(3); // Take the first 3 words
+         *
+         * const result = transformedSequence.toArray();
+         * console.log(result); // Output: ['THIS', 'SAMPLE', 'PHRASE.']
+         */
+        asWordSequence<T>(this: T): Sequence<T>;
     }
 
     interface Boolean {
@@ -449,6 +489,14 @@ String.prototype.takeIf = function <T>(this: T, predicate: (it: T) => boolean): 
 
 String.prototype.takeUnless = function <T>(this: T, predicate: (it: T) => boolean): T | undefined {
     return predicate(this) ? undefined : this;
+}
+
+String.prototype.asCharSequence = function <T>(this: T): Sequence<T> {
+    return Sequence.fromString(this as string) as Sequence<T>;
+}
+
+String.prototype.asWordSequence = function <T>(this: T): Sequence<T> {
+    return Sequence.fromPhrase(this as string) as Sequence<T>;
 }
 
 // Number extensions
