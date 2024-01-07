@@ -4,6 +4,7 @@
  * various operations on the value, such as checking if it is present, retrieving it, applying transformations,
  * and handling empty values.
  *
+ * @since version 1.0.2
  * @author Manuel Santos <ney.br.santos@gmail.com>
  * */
 export class Optional<T> {
