@@ -297,13 +297,34 @@ export class Duration {
      * @returns The result of the action.
      * @example
      * const duration = Duration.fromSeconds(3600);
-     * const result = duration.toComponents((days, hours, minutes, seconds, nanoseconds) => {
+     * const result = duration.runIt((days, hours, minutes, seconds, nanoseconds) => {
      *     return `${days}d ${hours}h ${minutes}m ${seconds}s ${nanoseconds}ns`;
      * });
      * console.log(result);
      * // Output: 0d 1h 0m 0s 0ns
      */
-    toComponents<T>(action: (days: number, hours: number, minutes: number, seconds: number, nanoseconds: number) => T): T {
+    runIt<T = any>(action: (days: number, hours: number, minutes: number, seconds: number, nanoseconds: number) => T): T {
+        const {
+            days,
+            hours,
+            minutes,
+            seconds,
+            nanoseconds
+        } = this.toComponents();
+        return action(days, hours, minutes, seconds, nanoseconds);
+    }
+
+    /**
+     * Splits this duration into days, hours, minutes, seconds, and nanoseconds.
+     *
+     * @returns {Object} An object with properties for days, hours, minutes, seconds, and nanoseconds.
+     * @example
+     * const duration = Duration.fromDays(2).add(Duration.fromHours(12));
+     * const components = duration.toComponents();
+     * console.log(components);
+     * // Output: { days: 2, hours: 12, minutes: 0, seconds: 0, nanoseconds: 0 }
+     */
+    toComponents(): { days: number, hours: number, minutes: number, seconds: number, nanoseconds: number } {
         const totalMilliseconds = this.milliseconds;
         const millisecondsPerSecond = 1000;
         const secondsPerMinute = 60;
@@ -318,7 +339,7 @@ export class Duration {
         const seconds = Math.floor(remainingMilliseconds / millisecondsPerSecond) % secondsPerMinute;
         const nanoseconds = Math.floor((remainingMilliseconds % millisecondsPerSecond) * 1e6);
 
-        return action(days, hours, minutes, seconds, nanoseconds);
+        return {days, hours, minutes, seconds, nanoseconds};
     }
 
     /**
@@ -331,7 +352,7 @@ export class Duration {
      * // Output: 1d 6h 0m 0s 0ns
      */
     toString(): string {
-        return this.toComponents((days, hours, minutes, seconds, nanoseconds) => {
+        return this.runIt((days, hours, minutes, seconds, nanoseconds) => {
             return `${days}d ${hours}h ${minutes}m ${seconds}s ${nanoseconds}ns`;
         });
     }
