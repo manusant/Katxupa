@@ -185,6 +185,34 @@ export class Duration {
     }
 
     /**
+     * Splits this duration into days, hours, minutes, seconds, and nanoseconds.
+     *
+     * @returns {Object} An object with properties for days, hours, minutes, seconds, and nanoseconds.
+     * @example
+     * const duration = Duration.fromDays(2).add(Duration.fromHours(12));
+     * const components = duration.toComponents();
+     * console.log(components);
+     * // Output: { days: 2, hours: 12, minutes: 0, seconds: 0, nanoseconds: 0 }
+     */
+    toComponents(): { days: number, hours: number, minutes: number, seconds: number, nanoseconds: number } {
+        const totalMilliseconds = this.milliseconds;
+        const millisecondsPerSecond = 1000;
+        const secondsPerMinute = 60;
+        const minutesPerHour = 60;
+        const hoursPerDay = 24;
+        const millisecondsPerDay = millisecondsPerSecond * secondsPerMinute * minutesPerHour * hoursPerDay;
+
+        const days = Math.floor(totalMilliseconds / millisecondsPerDay);
+        const remainingMilliseconds = totalMilliseconds % millisecondsPerDay;
+        const hours = Math.floor(remainingMilliseconds / (millisecondsPerSecond * secondsPerMinute * minutesPerHour));
+        const minutes = Math.floor(remainingMilliseconds / (millisecondsPerSecond * secondsPerMinute)) % minutesPerHour;
+        const seconds = Math.floor(remainingMilliseconds / millisecondsPerSecond) % secondsPerMinute;
+        const nanoseconds = Math.floor((remainingMilliseconds % millisecondsPerSecond) * 1e6);
+
+        return {days, hours, minutes, seconds, nanoseconds};
+    }
+
+    /**
      * Adds another duration to this duration.
      * @param {Duration} other - The other duration to add.
      * @returns {Duration} A new Duration object representing the sum.
@@ -312,34 +340,6 @@ export class Duration {
             nanoseconds
         } = this.toComponents();
         return action(days, hours, minutes, seconds, nanoseconds);
-    }
-
-    /**
-     * Splits this duration into days, hours, minutes, seconds, and nanoseconds.
-     *
-     * @returns {Object} An object with properties for days, hours, minutes, seconds, and nanoseconds.
-     * @example
-     * const duration = Duration.fromDays(2).add(Duration.fromHours(12));
-     * const components = duration.toComponents();
-     * console.log(components);
-     * // Output: { days: 2, hours: 12, minutes: 0, seconds: 0, nanoseconds: 0 }
-     */
-    toComponents(): { days: number, hours: number, minutes: number, seconds: number, nanoseconds: number } {
-        const totalMilliseconds = this.milliseconds;
-        const millisecondsPerSecond = 1000;
-        const secondsPerMinute = 60;
-        const minutesPerHour = 60;
-        const hoursPerDay = 24;
-        const millisecondsPerDay = millisecondsPerSecond * secondsPerMinute * minutesPerHour * hoursPerDay;
-
-        const days = Math.floor(totalMilliseconds / millisecondsPerDay);
-        const remainingMilliseconds = totalMilliseconds % millisecondsPerDay;
-        const hours = Math.floor(remainingMilliseconds / (millisecondsPerSecond * secondsPerMinute * minutesPerHour));
-        const minutes = Math.floor(remainingMilliseconds / (millisecondsPerSecond * secondsPerMinute)) % minutesPerHour;
-        const seconds = Math.floor(remainingMilliseconds / millisecondsPerSecond) % secondsPerMinute;
-        const nanoseconds = Math.floor((remainingMilliseconds % millisecondsPerSecond) * 1e6);
-
-        return {days, hours, minutes, seconds, nanoseconds};
     }
 
     /**
