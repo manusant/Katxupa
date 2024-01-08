@@ -11,7 +11,7 @@ productivity and developer happiness. So, consume (use) it!
 
 > **Katxupa**, Cape Verde’s national dish, is a flavorful stew consisting of hominy, beans, seasoned meats, and vegetables. 
 > Each family has its unique version, leading to delightful variations. 
-> One undeniable fact: there is no Cape Verdean who doesn't appreciate Cachupa — whether for breakfast, lunch, dinner, or any time, anywhere.
+> One undeniable fact: there is no Cape Verdean who doesn't appreciate Katxupa ("Cachupa") — whether for breakfast, lunch, dinner, or any time, anywhere.
 
 ## Why Katxupa
 For starters, the "_K_" in **Katxupa** stands for [Kotlin](https://kotlinlang.org/), which was the primary inspiration for this library. Drawing from the 
@@ -40,7 +40,7 @@ to Typescript and JavaScript developers.
 
 * **Result and Either**: Functional constructs to handle success, errors, and alternate paths in a more expressive manner.
 
-* **Inspired by Cape Verde**: Infused with the spirit of [Cape Verde](https://en.wikipedia.org/wiki/Cape_Verde)  and its cherished dish **Cachupa**, this library aims to add flavor to your coding experience.
+* **Inspired by Cape Verde**: Infused with the spirit of [Cape Verde](https://en.wikipedia.org/wiki/Cape_Verde)  and its cherished dish **Katxupa**, this library aims to add flavor to your coding experience.
 
 ### Get a Taste of Katxupa
 Explore the documentation and see how Katxupa can bring a delightful touch to your TypeScript and JavaScript projects. 
