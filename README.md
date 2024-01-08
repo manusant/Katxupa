@@ -1,7 +1,7 @@
 # Kachupa
 **Delicious Dish for Typescript and JavaScript projects.**
 
-In [Cape Verde](https://en.wikipedia.org/wiki/Cape_Verde) we have a saying that says:
+In [Cape Verde](https://en.wikipedia.org/wiki/Cape_Verde) we have a saying:
 
 "_Put a person to work in the field and serve them anything other than [Cachupa](https://www.crumbsnatched.com/cachupa-traditional-dish-of-cape-verde/) 
 for breakfast, and you'll notice a decline in productivity and motivation. Therefore, give them Cachupa and spice it up on the side._"
