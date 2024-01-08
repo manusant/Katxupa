@@ -5,3 +5,6 @@ export * from './Ranges';
 export * from './Duration';
 export * from './Result';
 export * from './Either';
+export * from './compare';
+export * from './reducer';
+export * from './errors';
