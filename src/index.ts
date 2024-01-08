@@ -4,3 +4,4 @@ export * from './Sequence';
 export * from './Ranges';
 export * from './Duration';
 export * from './Result';
+export * from './Either';
