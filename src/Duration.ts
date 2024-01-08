@@ -32,9 +32,9 @@ export class Duration {
      * @param {number} nanoseconds - The duration in nanoseconds.
      * @returns {Duration} A Duration object.
      * @example
-     * const duration = Duration.fromNanoseconds(1e9);
+     * const duration = Duration.nanoseconds(1e9);
      */
-    static fromNanoseconds(nanoseconds: number): Duration {
+    static nanoseconds(nanoseconds: number): Duration {
         return new Duration(nanoseconds / 1e6); // Convert nanoseconds to milliseconds
     }
 
@@ -43,9 +43,9 @@ export class Duration {
      * @param {number} microseconds - The duration in microseconds.
      * @returns {Duration} A Duration object.
      * @example
-     * const duration = Duration.fromMicroseconds(5000000);
+     * const duration = Duration.microseconds(5000000);
      */
-    static fromMicroseconds(microseconds: number): Duration {
+    static microseconds(microseconds: number): Duration {
         return new Duration(microseconds * 1e3); // Convert microseconds to milliseconds
     }
 
@@ -54,9 +54,9 @@ export class Duration {
      * @param {number} milliseconds - The duration in milliseconds.
      * @returns {Duration} A Duration object.
      * @example
-     * const duration = Duration.fromMilliseconds(5000);
+     * const duration = Duration.milliseconds(5000);
      */
-    static fromMilliseconds(milliseconds: number): Duration {
+    static milliseconds(milliseconds: number): Duration {
         return new Duration(milliseconds);
     }
 
@@ -65,9 +65,9 @@ export class Duration {
      * @param {number} seconds - The duration in seconds.
      * @returns {Duration} A Duration object.
      * @example
-     * const duration = Duration.fromSeconds(60);
+     * const duration = Duration.seconds(60);
      */
-    static fromSeconds(seconds: number): Duration {
+    static seconds(seconds: number): Duration {
         return new Duration(seconds * 1e3); // Convert seconds to milliseconds
     }
 
@@ -76,9 +76,9 @@ export class Duration {
      * @param {number} minutes - The duration in minutes.
      * @returns {Duration} A Duration object.
      * @example
-     * const duration = Duration.fromMinutes(60);
+     * const duration = Duration.minutes(60);
      */
-    static fromMinutes(minutes: number): Duration {
+    static minutes(minutes: number): Duration {
         return new Duration(minutes * 6e4); // Convert minutes to milliseconds
     }
 
@@ -87,9 +87,9 @@ export class Duration {
      * @param {number} hours - The duration in hours.
      * @returns {Duration} A Duration object.
      * @example
-     * const duration = Duration.fromHours(24);
+     * const duration = Duration.hours(24);
      */
-    static fromHours(hours: number): Duration {
+    static hours(hours: number): Duration {
         return new Duration(hours * 3.6e6); // Convert hours to milliseconds
     }
 
@@ -98,9 +98,9 @@ export class Duration {
      * @param {number} days - The duration in days.
      * @returns {Duration} A Duration object.
      * @example
-     * const duration = Duration.fromDays(7);
+     * const duration = Duration.days(7);
      */
-    static fromDays(days: number): Duration {
+    static days(days: number): Duration {
         return new Duration(days * 8.64e7); // Convert days to milliseconds
     }
 
@@ -397,39 +397,39 @@ declare global {
 const _global = (window /* browser */ || globalThis /* node */);
 
 _global.durationOf = function (milliseconds: number): Duration {
-    return Duration.fromMilliseconds(milliseconds);
+    return Duration.microseconds(milliseconds);
 }
 
 Number.prototype.seconds = function () {
-    return Duration.fromSeconds(this.valueOf());
+    return Duration.seconds(this.valueOf());
 };
 
 Number.prototype.minutes = function () {
-    return Duration.fromMinutes(this.valueOf());
+    return Duration.minutes(this.valueOf());
 };
 
 Number.prototype.hours = function () {
-    return Duration.fromHours(this.valueOf());
+    return Duration.hours(this.valueOf());
 };
 
 Number.prototype.milliseconds = function () {
-    return Duration.fromMilliseconds(this.valueOf());
+    return Duration.milliseconds(this.valueOf());
 };
 
 Number.prototype.days = function () {
-    return Duration.fromDays(this.valueOf());
+    return Duration.days(this.valueOf());
 };
 
 Number.prototype.months = function () {
     // Assuming each month has 30 days
     const daysInMonth = 30;
     const totalDays = this.valueOf() * daysInMonth;
-    return Duration.fromDays(totalDays);
+    return Duration.days(totalDays);
 };
 
 Number.prototype.years = function () {
     // Assuming each year has 365 days
     const daysInYear = 365;
     const totalDays = this.valueOf() * daysInYear;
-    return Duration.fromDays(totalDays);
+    return Duration.days(totalDays);
 };
