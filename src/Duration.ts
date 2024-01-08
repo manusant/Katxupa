@@ -109,11 +109,11 @@ export class Duration {
      * @returns {number} The duration in seconds.
      * @example
      * const duration = Duration.fromMinutes(2);
-     * const seconds = duration.toSeconds();
+     * const seconds = duration.inWholeSeconds();
      * console.log(seconds);
      * // Output: 120
      */
-    toSeconds(): number {
+    inWholeSeconds(): number {
         return this.milliseconds / 1000;
     }
 
@@ -122,11 +122,11 @@ export class Duration {
      * @returns {number} The duration in minutes.
      * @example
      * const duration = Duration.fromHours(2);
-     * const minutes = duration.toMinutes();
+     * const minutes = duration.inWholeMinutes();
      * console.log(minutes);
      * // Output: 120
      */
-    toMinutes(): number {
+    inWholeMinutes(): number {
         return this.milliseconds / (1000 * 60);
     }
 
@@ -135,11 +135,11 @@ export class Duration {
      * @returns {number} The duration in hours.
      * @example
      * const duration = Duration.fromDays(1);
-     * const hours = duration.toHours();
+     * const hours = duration.inWholeHours();
      * console.log(hours);
      * // Output: 24
      */
-    toHours(): number {
+    inWholeHours(): number {
         return this.milliseconds / (1000 * 60 * 60);
     }
 
@@ -148,11 +148,11 @@ export class Duration {
      * @returns {number} The duration in days.
      * @example
      * const duration = Duration.fromHours(48);
-     * const days = duration.toDays();
+     * const days = duration.inWholeDays();
      * console.log(days);
      * // Output: 2
      */
-    toDays(): number {
+    inWholeDays(): number {
         return this.milliseconds / (1000 * 60 * 60 * 24);
     }
 
@@ -176,10 +176,10 @@ export class Duration {
     } {
         const nanoseconds = this.milliseconds * 1e6;
         const microseconds = this.milliseconds * 1e3;
-        const seconds = this.toSeconds();
-        const minutes = this.toMinutes();
-        const hours = this.toHours();
-        const days = this.toDays();
+        const seconds = this.inWholeSeconds();
+        const minutes = this.inWholeMinutes();
+        const hours = this.inWholeHours();
+        const days = this.inWholeDays();
 
         return {nanoseconds, microseconds, milliseconds: this.milliseconds, seconds, minutes, hours, days};
     }
