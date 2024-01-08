@@ -28,7 +28,7 @@ to Typescript and JavaScript developers.
 * **Developer Happiness**: Inspired by the joy of coding in Kotlin, Kachupa seeks to bring happiness to your TypeScript and JavaScript projects.
 
 ### Key Features
-* **Scope Functions**: _Kotlin-like_ scope functions, provides a set of functions to execute a block of code in the context of a given object: letIt, runIt, withIt, apply, and also.
+* **Scope Functions**: _Kotlin-like_ scope functions, provides a set of functions to execute a block of code in the context of a given object: _letIt_, _runIt_, _withIt_, _apply_, and _also_.
 
 * **Collections Functions**: _Kotlin-like_ functions for Arrays, Maps, and Sets: Apply concise and expressive operations on collections.
 
