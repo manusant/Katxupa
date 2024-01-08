@@ -260,6 +260,24 @@ export class Duration {
     }
 
     /**
+     * Checks if this duration is less than another duration.
+     * @param {Duration} other - The other duration to compare.
+     * @returns {boolean} True if this duration is less than the other, false otherwise.
+     */
+    lessThan(other: Duration): boolean {
+        return this.milliseconds < other.milliseconds;
+    }
+
+    /**
+     * Checks if this duration is greater than another duration.
+     * @param {Duration} other - The other duration to compare.
+     * @returns {boolean} True if this duration is greater than the other, false otherwise.
+     */
+    greaterThan(other: Duration): boolean {
+        return this.milliseconds > other.milliseconds;
+    }
+
+    /**
      * Compares this duration with another duration.
      * @param {Duration} other - The other duration to compare.
      * @returns {number} -1 if this duration is less than the other, 0 if they are equal, 1 if this duration is greater.
