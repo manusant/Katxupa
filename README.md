@@ -4,7 +4,7 @@
 In [Cape Verde](https://en.wikipedia.org/wiki/Cape_Verde) we have a saying:
 
 "_Put a person to work in the field and serve them anything other than [Katxupa](https://www.crumbsnatched.com/cachupa-traditional-dish-of-cape-verde/) 
-for breakfast, and you'll notice a decline in productivity and motivation. Therefore, give them Cachupa and spice it up on the side._"
+for breakfast, and you'll notice a decline in productivity and motivation. Therefore, give them Katxupa and spice it up on the side._"
 
 Just as "_Katxupa_" is an essential part of Cape Verdean culture, this library brings _functional_ elements to enhance your 
 productivity and developer happiness. So, consume (use) it!
