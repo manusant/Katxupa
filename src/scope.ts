@@ -31,7 +31,7 @@ declare global {
      * @returns The result of the function block.
      *
      * @example
-     * const result = withIt({ x: 5, y: 10 }, function (this: { x: number, y: number }) {
+     * const result = withIt({ x: 5, y: 10 }, function (this) {
      *     console.log(this.x + this.y);
      *     return this.x * this.y;
      * });
@@ -47,9 +47,9 @@ declare global {
          * @returns The result of the function block.
          *
          * @example
-         * const result = "Hello".letIt( value => {
-         *     console.log(value.toUpperCase());
-         *     return value.length;
+         * const result = "Hello".letIt( it => {
+         *     console.log(it.toUpperCase());
+         *     return it.length;
          * });
          * console.log(result); // Output: 5 (Example output; actual output will vary)
          */
@@ -77,7 +77,7 @@ declare global {
          * @returns The result of the function block.
          *
          * @example
-         * const result = "Hello".runIt(function (this: string) {
+         * const result = "Hello".runIt(function (this) {
          *     console.log(this.toUpperCase());
          *     return this.length;
          * });
@@ -93,7 +93,7 @@ declare global {
          *
          * @example
          * const obj = { prop1: 'value1', prop2: 'value2' };
-         * const result = obj.apply(function(this: typeof obj) {
+         * const result = obj.apply(function(this) {
          *     // Access and modify the receiver using 'this'
          *     console.log(this.prop1);
          *     this.prop2 = 'modifiedValue';
@@ -125,9 +125,9 @@ declare global {
          * @returns The result of the function block.
          *
          * @example
-         * const result = "Hello".letIt( value => {
-         *     console.log(value.toUpperCase());
-         *     return value.length;
+         * const result = "Hello".letIt( it => {
+         *     console.log(it.toUpperCase());
+         *     return it.length;
          * });
          * console.log(result); // Output: 5 (Example output; actual output will vary)
          */
@@ -155,7 +155,7 @@ declare global {
          * @returns The result of the function block.
          *
          * @example
-         * const result = "Hello".runIt(function (this: string) {
+         * const result = "Hello".runIt(function (this) {
          *     console.log(this.toUpperCase());
          *     return this.length;
          * });
@@ -171,7 +171,7 @@ declare global {
          *
          * @example
          * const obj = { prop1: 'value1', prop2: 'value2' };
-         * const result = obj.apply(function(this: typeof obj) {
+         * const result = obj.apply(function(this) {
          *     // Access and modify the receiver using 'this'
          *     console.log(this.prop1);
          *     this.prop2 = 'modifiedValue';
