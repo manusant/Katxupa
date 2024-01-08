@@ -25,20 +25,26 @@
  */
 export type Either<L, R> = Left<L> | Right<R>;
 
+abstract class Value<V> {
+    protected constructor(readonly value: V) {
+    }
+
+    /**
+     * Retrieves the value.
+     * @returns {V} - The value.
+     */
+    get(): V {
+        return this.value;
+    }
+}
+
 /**
  * Represents the left side of an Either (result type).
  * @template L - The type of the left value.
  */
-export class Left<L> {
-    constructor(public readonly value: L) {
-    }
-
-    /**
-     * Retrieves the left value.
-     * @returns {L} - The left value.
-     */
-    get(): L {
-        return this.value;
+export class Left<L> extends Value<L> {
+    constructor(readonly value: L) {
+        super(value);
     }
 
     /**
@@ -56,16 +62,9 @@ export class Left<L> {
  * Represents the right side of an Either (result type).
  * @template R - The type of the right value.
  */
-export class Right<R> {
-    constructor(public readonly value: R) {
-    }
-
-    /**
-     * Retrieves the right value.
-     * @returns {R} - The right value.
-     */
-    get(): R {
-        return this.value;
+export class Right<R> extends Value<R> {
+    constructor(readonly value: R) {
+        super(value);
     }
 
     /**
