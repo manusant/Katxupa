@@ -16,6 +16,11 @@ export interface Comparable<T> {
      * zero if they are equal, or a positive number if this object is greater than the other.
      *
      * @example
+     * (1).compareTo(2);
+     * "a".compareTo("b");
+     * true.compareTo(false);
+     *
+     * @example
      * const string1 = "apple";
      * const string2 = "banana";
      * const stringComparison = string1.compareTo(string2);
@@ -138,7 +143,7 @@ declare global {
          *
          * @method
          * @memberof Boolean.prototype
-         * @param {Comparable} other - The other boolean to compare.
+         * @param  other - The other boolean to compare.
          * @returns {number} 0 if the booleans are equal, 1 if the current boolean is true and 'other' is false,
          *                  and -1 if the current boolean is false and 'other' is true.
          *
@@ -147,7 +152,7 @@ declare global {
          * const bool2 = false;
          * console.log(bool1.compareTo(bool2)); // Output: 1
          */
-        compareTo(other: Comparable<boolean>): number
+        compareTo(other: boolean): number
     }
 
     interface Number {
@@ -157,7 +162,7 @@ declare global {
          *
          * @method
          * @memberof Number.prototype
-         * @param {Comparable} other - The other number to compare.
+         * @param  other - The other number to compare.
          * @returns {number} A negative value if the current number is less than 'other',
          *                   zero if they are equal, and a positive value if the current number is greater than 'other'.
          *
@@ -166,7 +171,7 @@ declare global {
          * const num2 = 24;
          * console.log(num1.compareTo(num2)); // Output: 18
          */
-        compareTo(other: Comparable<number>): number
+        compareTo(other: number): number
     }
 
     interface String {
@@ -176,7 +181,7 @@ declare global {
          *
          * @method
          * @memberof String.prototype
-         * @param {Comparable} other - The other string to compare.
+         * @param  other - The other string to compare.
          * @returns {number} A negative value if the current string is less than 'other',
          *                   zero if they are equal, and a positive value if the current string is greater than 'other'.
          *
@@ -185,12 +190,12 @@ declare global {
          * const str2 = 'banana';
          * console.log(str1.compareTo(str2)); // Output: -1
          */
-        compareTo(other: Comparable<string>): number
+        compareTo(other: string): number
     }
 }
 
 // Extend the Number prototype
-Number.prototype.compareTo = function <T>(this: number, other: Comparable<T>): number {
+Number.prototype.compareTo = function <T>(this: number, other: T): number {
     if (typeof other !== 'number') {
         throw new Error('Comparison with non-number is not supported');
     }
@@ -198,7 +203,7 @@ Number.prototype.compareTo = function <T>(this: number, other: Comparable<T>): n
 };
 
 // Extend the String prototype
-String.prototype.compareTo = function <T>(this: string, other: Comparable<T>): number {
+String.prototype.compareTo = function <T>(this: string, other: T): number {
     if (typeof other !== 'string') {
         throw new Error('Comparison with non-string is not supported');
     }
@@ -206,7 +211,7 @@ String.prototype.compareTo = function <T>(this: string, other: Comparable<T>): n
 };
 
 // Extend the Boolean prototype
-Boolean.prototype.compareTo = function <T>(this: boolean, other: Comparable<T>): number {
+Boolean.prototype.compareTo = function <T>(this: boolean, other: T): number {
     if (typeof other !== 'boolean') {
         throw new Error('Comparison with non-boolean is not supported');
     }
