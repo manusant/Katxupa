@@ -2,10 +2,14 @@
  * Represents a duration of time with support for various units (nanoseconds, microseconds, milliseconds, seconds, minutes, hours, and days).
  *
  * @example
- * // Example usage
+ * // Example 1
  * const oneYearInMinutes = (1).years().toHours().toMinutes();
  *
  * console.log(`1 year is approximately ${oneYearInMinutes} minutes.`);
+ *
+ * // Example 2
+ * const duration = (1).years().add((6).months()).toString();
+ * console.log(duration); // Output: 548d 0h 0m 0s 0ns
  *
  * @since version 1.1.0
  * @author Manuel Santos <ney.br.santos@gmail.com>
