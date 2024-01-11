@@ -39,8 +39,8 @@ declare global {
          * @param {Set<T>} other - The Set to intersect with.
          * @returns {Set<T>} - A new Set with common elements.
          * @example
-         * const set1 = new Set([1, 2, 3]);
-         * const set2 = new Set([2, 3, 4]);
+         * const set1 = setOf([1, 2, 3]);
+         * const set2 = setOf([2, 3, 4]);
          * const intersectionSet = set1.intersection(set2);
          * // Result: Set([2, 3])
          */
@@ -51,8 +51,8 @@ declare global {
          * @param {Set<T>} other - The Set to union with.
          * @returns {Set<T>} - A new Set with elements from both Sets.
          * @example
-         * const set1 = new Set([1, 2, 3]);
-         * const set2 = new Set([3, 4, 5]);
+         * const set1 = setOf([1, 2, 3]);
+         * const set2 = setOf([3, 4, 5]);
          * const unionSet = set1.union(set2);
          * // Result: Set([1, 2, 3, 4, 5])
          */
@@ -63,8 +63,8 @@ declare global {
          * @param {Set<T>} other - The Set to subtract from the current Set.
          * @returns {Set<T>} - A new Set with elements not present in the other Set.
          * @example
-         * const set1 = new Set([1, 2, 3]);
-         * const set2 = new Set([2, 3, 4]);
+         * const set1 = setOf([1, 2, 3]);
+         * const set2 = setOf([2, 3, 4]);
          * const differenceSet = set1.difference(set2);
          * // Result: Set([1])
          */
@@ -75,8 +75,8 @@ declare global {
          * @param {Set<T>} other - The Set to check against.
          * @returns {boolean} - true if the current Set is a subset, otherwise false.
          * @example
-         * const set1 = new Set([1, 2]);
-         * const set2 = new Set([1, 2, 3, 4]);
+         * const set1 = setOf([1, 2]);
+         * const set2 = setOf([1, 2, 3, 4]);
          * const isSubset = set1.isSubsetOf(set2);
          * // Result: true
          */
@@ -87,8 +87,8 @@ declare global {
          * @param {Set<T>} other - The Set to check against.
          * @returns {boolean} - true if the current Set is a superset, otherwise false.
          * @example
-         * const set1 = new Set([1, 2, 3, 4]);
-         * const set2 = new Set([1, 2]);
+         * const set1 = setOf([1, 2, 3, 4]);
+         * const set2 = setOf([1, 2]);
          * const isSuperset = set1.isSupersetOf(set2);
          * // Result: true
          */
@@ -100,7 +100,7 @@ declare global {
          * @param {function(T): U} transform - The function to transform each element.
          * @returns {Set<U>} - A new Set containing the transformed elements.
          * @example
-         * const set = new Set([1, 2, 3]);
+         * const set = setOf([1, 2, 3]);
          * const squaredSet = set.map((num) => num * num);
          * // Result: Set([1, 4, 9])
          */
@@ -111,7 +111,7 @@ declare global {
          * @param {function(T): boolean} predicate - The predicate function.
          * @returns {Set<T>} - A new Set with elements that satisfy the predicate.
          * @example
-         * const set = new Set([1, 2, 3, 4, 5]);
+         * const set = setOf([1, 2, 3, 4, 5]);
          * const filteredSet = set.filter((num) => num % 2 === 0);
          * // Result: Set([2, 4])
          */
