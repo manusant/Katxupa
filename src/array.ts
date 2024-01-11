@@ -1,4 +1,4 @@
-import {Optional} from "./Optional";
+import {Optional} from "./optional";
 import {NoSuchElementError} from "./errors";
 
 /**
