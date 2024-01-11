@@ -32,6 +32,91 @@ declare global {
      * @returns An empty set.
      */
     function emptySet<T>(): ReadonlySet<T>;
+
+    interface Set<T> {
+        /**
+         * Returns a new Set containing elements that are common between the current Set and another Set.
+         * @param {Set<T>} other - The Set to intersect with.
+         * @returns {Set<T>} - A new Set with common elements.
+         * @example
+         * const set1 = new Set([1, 2, 3]);
+         * const set2 = new Set([2, 3, 4]);
+         * const intersectionSet = set1.intersection(set2);
+         * // Result: Set([2, 3])
+         */
+        intersection(other: Set<T>): Set<T>;
+
+        /**
+         * Returns a new Set containing all unique elements from both the current Set and another Set.
+         * @param {Set<T>} other - The Set to union with.
+         * @returns {Set<T>} - A new Set with elements from both Sets.
+         * @example
+         * const set1 = new Set([1, 2, 3]);
+         * const set2 = new Set([3, 4, 5]);
+         * const unionSet = set1.union(set2);
+         * // Result: Set([1, 2, 3, 4, 5])
+         */
+        union(other: Set<T>): Set<T>;
+
+        /**
+         * Returns a new Set containing elements that are in the current Set but not in another Set.
+         * @param {Set<T>} other - The Set to subtract from the current Set.
+         * @returns {Set<T>} - A new Set with elements not present in the other Set.
+         * @example
+         * const set1 = new Set([1, 2, 3]);
+         * const set2 = new Set([2, 3, 4]);
+         * const differenceSet = set1.difference(set2);
+         * // Result: Set([1])
+         */
+        difference(other: Set<T>): Set<T>;
+
+        /**
+         * Checks if the current Set is a subset of another Set.
+         * @param {Set<T>} other - The Set to check against.
+         * @returns {boolean} - true if the current Set is a subset, otherwise false.
+         * @example
+         * const set1 = new Set([1, 2]);
+         * const set2 = new Set([1, 2, 3, 4]);
+         * const isSubset = set1.isSubsetOf(set2);
+         * // Result: true
+         */
+        isSubsetOf(other: Set<T>): boolean;
+
+        /**
+         * Checks if the current Set is a superset of another Set.
+         * @param {Set<T>} other - The Set to check against.
+         * @returns {boolean} - true if the current Set is a superset, otherwise false.
+         * @example
+         * const set1 = new Set([1, 2, 3, 4]);
+         * const set2 = new Set([1, 2]);
+         * const isSuperset = set1.isSupersetOf(set2);
+         * // Result: true
+         */
+        isSupersetOf(other: Set<T>): boolean;
+
+        /**
+         * Maps each element to a new value using the provided transformation function.
+         * @template U - The type of the resulting elements.
+         * @param {function(T): U} transform - The function to transform each element.
+         * @returns {Set<U>} - A new Set containing the transformed elements.
+         * @example
+         * const set = new Set([1, 2, 3]);
+         * const squaredSet = set.map((num) => num * num);
+         * // Result: Set([1, 4, 9])
+         */
+        map<U>(transform: (element: T) => U): Set<U>;
+
+        /**
+         * Returns a new Set containing elements that satisfy the provided predicate.
+         * @param {function(T): boolean} predicate - The predicate function.
+         * @returns {Set<T>} - A new Set with elements that satisfy the predicate.
+         * @example
+         * const set = new Set([1, 2, 3, 4, 5]);
+         * const filteredSet = set.filter((num) => num % 2 === 0);
+         * // Result: Set([2, 4])
+         */
+        filter(predicate: (element: T) => boolean): Set<T>;
+    }
 }
 
 // Global extensions
@@ -49,3 +134,31 @@ _global.emptySet = function <T>(): ReadonlySet<T> {
     return new Set();
 }
 
+// Set Extension
+Set.prototype.intersection = function <T>(other: Set<T>): Set<T> {
+    return new Set([...this].filter((element) => other.has(element)));
+}
+
+Set.prototype.union = function <T>(other: Set<T>): Set<T> {
+    return new Set([...this, ...other]);
+}
+
+Set.prototype.difference = function <T>(other: Set<T>): Set<T> {
+    return new Set([...this].filter((element) => !other.has(element)));
+}
+
+Set.prototype.isSubsetOf = function <T>(other: Set<T>): boolean {
+    return [...this].every((element) => other.has(element));
+}
+
+Set.prototype.isSupersetOf = function <T>(other: Set<T>): boolean {
+    return [...other].every((element) => this.has(element));
+}
+
+Set.prototype.map = function <T, U>(transform: (element: T) => U): Set<U> {
+    return new Set([...this].map(transform));
+}
+
+Set.prototype.filter = function <T>(predicate: (element: T) => boolean): Set<T> {
+    return new Set([...this].filter(predicate));
+}
