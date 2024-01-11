@@ -1,4 +1,4 @@
-import {Optional} from "./Optional";
+import {Optional} from "./optional";
 
 /**
  * Represents the result of an operation that can either succeed with a value or fail with an error.

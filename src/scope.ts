@@ -1,4 +1,4 @@
-import {Sequence} from "./Sequence";
+import {Sequence} from "./sequence";
 
 /**
  * Kachupa scope functions plus TypeScript type extensions

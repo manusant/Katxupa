@@ -4,7 +4,7 @@
  * @since version 1.0.4
  * @author Manuel Santos <ney.br.santos@gmail.com>
  */
-export class Ranges {
+export class Range {
     /**
      * Creates an array representing a range of numbers from `start` to `end` (inclusive) with an optional step.
      * @param {number} start - The start of the range.
@@ -32,7 +32,7 @@ export class Ranges {
      * console.log(numericRange); // Output: [1, 3, 5]
      */
     static rangeTo(start: number, end: number, step: number = 1): ReadonlyArray<number> {
-        return Ranges.range(start, end, step);
+        return Range.range(start, end, step);
     }
 
     /**
@@ -46,7 +46,7 @@ export class Ranges {
      * console.log(numericRange); // Output: [1, 3]
      */
     static rangeUntil(start: number, end: number, step: number = 1): ReadonlyArray<number> {
-        return Ranges.range(start, end - 1, step);
+        return Range.range(start, end - 1, step);
     }
 
     /**
@@ -155,13 +155,13 @@ declare global {
 const _global = (window /* browser */ || globalThis /* node */);
 
 _global.rangeTo = function (start: number, end: number, step?: number): ReadonlyArray<number> {
-    return Ranges.rangeTo(start, end, step);
+    return Range.rangeTo(start, end, step);
 }
 
 _global.rangeUntil = function (start: number, end: number, step?: number): ReadonlyArray<number> {
-    return Ranges.rangeUntil(start, end, step);
+    return Range.rangeUntil(start, end, step);
 }
 
 _global.inRange = function (value: number, start: number, end: number): boolean {
-    return Ranges.inRange(value, start, end);
+    return Range.inRange(value, start, end);
 }
