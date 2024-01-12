@@ -212,28 +212,6 @@ declare global {
         getOrEmpty(index: number): Optional<T>;
 
         /**
-         * Finds the index of the first element satisfying the provided predicate.
-         * @param {(item: T) => boolean} predicate - The predicate function.
-         * @returns {number} - The index of the first element satisfying the predicate, or -1 if no such element is found.
-         * @example
-         * const collection = new Collection(1, 2, 3, 4, 5);
-         * const index = collection.indexOfFirst(item => item > 2);
-         * // index is 2
-         */
-        indexOfFirst(predicate: (item: T) => boolean): number;
-
-        /**
-         * Finds the index of the last element satisfying the provided predicate.
-         * @param {(item: T) => boolean} predicate - The predicate function.
-         * @returns {number} - The index of the last element satisfying the predicate, or -1 if no such element is found.
-         * @example
-         * const collection = new Collection(1, 2, 3, 4, 5);
-         * const index = collection.indexOfLast(item => item > 2);
-         * // index is 4
-         */
-        indexOfLast(predicate: (item: T) => boolean): number;
-
-        /**
          * Shuffles the elements in the collection randomly.
          *
          * @return this - reference to affected array
@@ -346,24 +324,6 @@ Array.prototype.getOrElse = function <T>(index: number, defaultValueProvider: ()
 
 Array.prototype.getOrEmpty = function <T>(index: number): Optional<T> {
     return index >= 0 && index < this.length ? Optional.of(this[index]) : Optional.empty();
-}
-
-Array.prototype.indexOfFirst = function <T>(predicate: (item: T) => boolean): number {
-    for (let i = 0; i < this.length; i++) {
-        if (predicate(this[i]!)) {
-            return i;
-        }
-    }
-    return -1;
-}
-
-Array.prototype.indexOfLast = function <T>(predicate: (item: T) => boolean): number {
-    for (let i = this.length - 1; i >= 0; i--) {
-        if (predicate(this[i]!)) {
-            return i;
-        }
-    }
-    return -1;
 }
 
 Array.prototype.shuffle = function <T>(): T[] {

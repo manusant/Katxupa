@@ -1,0 +1,10 @@
+site_name: "Katxupa"
+site_description: "Delicious Dish for Typescript and JavaScript projects"
+edit_uri: "edit/main/docs/"
+repo_url: "https://github.com/manusant/Katxupa"
+
+nav:
+  - Overview: index.md
+
+theme:
+  name: material
