@@ -1,0 +1,2543 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Delicious Dish for Typescript and JavaScript projects">
+      
+      
+        <meta name="author" content="Manuel Santos <ney.br.santos@gmail.com>">
+      
+      
+        <link rel="canonical" href="https://manusant.github.io/Katxupa/array/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="..">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.1.21">
+    
+    
+      
+        <title>Array - Katxupa</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.eebd395e.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="light-blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#usage" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+              </button>
+            
+            
+<style>
+  .md-banner__inner {
+    margin: 0.3rem auto
+  }
+  .general-announcement {
+    border-radius: 4px;
+    padding: 0 10px;
+    border: 2px solid #00adef;
+  }
+  .general-announcement p {
+    color:#FFF;
+    font-weight: bold;
+
+    margin: 0.5rem 0;
+  }
+  .general-announcement p:first-of-type::before {
+    content: '❕';
+  }
+  .general-announcement a {
+    background-image: linear-gradient(
+      to right,
+      #FFF,
+      #FFF 50%,
+      #00adef 50%
+    );
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 1px 0;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+  }
+  .general-announcement a:before{
+    content: '';
+    background: #00adef;
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
+  }
+  .general-announcement a:hover {
+    background-position: 0;
+  }
+  .general-announcement a:hover::before{
+    width: 100%;
+  }
+</style>
+
+          </div>
+          
+            <script>var content,el=document.querySelector("[data-md-component=announce]");el&&(content=el.querySelector(".md-typeset"),__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0))</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Katxupa" class="md-header__button md-logo" aria-label="Katxupa" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Katxupa
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Array
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+              </label>
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/manusant/Katxupa" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../scope/" class="md-tabs__link">
+        Scope
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link md-tabs__link--active">
+        Type Extensions
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Katxupa" class="md-nav__button md-logo" aria-label="Katxupa" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Katxupa
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/manusant/Katxupa" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Contributors
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Scope
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Scope
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scope/" class="md-nav__link">
+        Scope Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index2/" class="md-nav__link">
+        Initializer Functions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Type Extensions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Type Extensions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        String
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Number
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Boolean
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Array
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Array
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#listof" class="md-nav__link">
+    listOf
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mutablelistof" class="md-nav__link">
+    mutableListOf
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emptylist" class="md-nav__link">
+    emptyList
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#associatewith" class="md-nav__link">
+    associateWith
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapindexed" class="md-nav__link">
+    mapIndexed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sortdescending" class="md-nav__link">
+    sortDescending
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sortby" class="md-nav__link">
+    sortBy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plus" class="md-nav__link">
+    plus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minus" class="md-nav__link">
+    minus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minusassign" class="md-nav__link">
+    minusAssign
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plusassign" class="md-nav__link">
+    plusAssign
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count" class="md-nav__link">
+    count
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removeall" class="md-nav__link">
+    removeAll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retainall" class="md-nav__link">
+    retainAll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#last" class="md-nav__link">
+    last
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getorelse" class="md-nav__link">
+    getOrElse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getorempty" class="md-nav__link">
+    getOrEmpty
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shuffle" class="md-nav__link">
+    shuffle
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api_reference" class="md-nav__link">
+    API Reference
+  </a>
+  
+    <nav class="md-nav" aria-label="API Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    Methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#associatewith_1" class="md-nav__link">
+    associateWith
+  </a>
+  
+    <nav class="md-nav" aria-label="associateWith">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapindexed_1" class="md-nav__link">
+    mapIndexed
+  </a>
+  
+    <nav class="md-nav" aria-label="mapIndexed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_1" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_1" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_1" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sortdescending_1" class="md-nav__link">
+    sortDescending
+  </a>
+  
+    <nav class="md-nav" aria-label="sortDescending">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#returns_2" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_2" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sortby_1" class="md-nav__link">
+    sortBy
+  </a>
+  
+    <nav class="md-nav" aria-label="sortBy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_2" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_3" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_3" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plus_1" class="md-nav__link">
+    plus
+  </a>
+  
+    <nav class="md-nav" aria-label="plus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_3" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_4" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_4" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minus_1" class="md-nav__link">
+    minus
+  </a>
+  
+    <nav class="md-nav" aria-label="minus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_4" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_5" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_5" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minusassign_1" class="md-nav__link">
+    minusAssign
+  </a>
+  
+    <nav class="md-nav" aria-label="minusAssign">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_5" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_6" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_6" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plusassign_1" class="md-nav__link">
+    plusAssign
+  </a>
+  
+    <nav class="md-nav" aria-label="plusAssign">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_6" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_7" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_7" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count_1" class="md-nav__link">
+    count
+  </a>
+  
+    <nav class="md-nav" aria-label="count">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#returns_8" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_8" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removeall_1" class="md-nav__link">
+    removeAll
+  </a>
+  
+    <nav class="md-nav" aria-label="removeAll">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_7" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_9" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_9" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retainall_1" class="md-nav__link">
+    retainAll
+  </a>
+  
+    <nav class="md-nav" aria-label="retainAll">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_8" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_10" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_10" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#last_1" class="md-nav__link">
+    last
+  </a>
+  
+    <nav class="md-nav" aria-label="last">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#returns_11" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#throws" class="md-nav__link">
+    Throws
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_11" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getorelse_1" class="md-nav__link">
+    getOrElse
+  </a>
+  
+    <nav class="md-nav" aria-label="getOrElse">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_9" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_12" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_12" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getorempty_1" class="md-nav__link">
+    getOrEmpty
+  </a>
+  
+    <nav class="md-nav" aria-label="getOrEmpty">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_10" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_13" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_13" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shuffle_1" class="md-nav__link">
+    shuffle
+  </a>
+  
+    <nav class="md-nav" aria-label="shuffle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#returns_14" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_14" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Map
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Set
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#listof" class="md-nav__link">
+    listOf
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mutablelistof" class="md-nav__link">
+    mutableListOf
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emptylist" class="md-nav__link">
+    emptyList
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#associatewith" class="md-nav__link">
+    associateWith
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapindexed" class="md-nav__link">
+    mapIndexed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sortdescending" class="md-nav__link">
+    sortDescending
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sortby" class="md-nav__link">
+    sortBy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plus" class="md-nav__link">
+    plus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minus" class="md-nav__link">
+    minus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minusassign" class="md-nav__link">
+    minusAssign
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plusassign" class="md-nav__link">
+    plusAssign
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count" class="md-nav__link">
+    count
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removeall" class="md-nav__link">
+    removeAll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retainall" class="md-nav__link">
+    retainAll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#last" class="md-nav__link">
+    last
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getorelse" class="md-nav__link">
+    getOrElse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getorempty" class="md-nav__link">
+    getOrEmpty
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shuffle" class="md-nav__link">
+    shuffle
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api_reference" class="md-nav__link">
+    API Reference
+  </a>
+  
+    <nav class="md-nav" aria-label="API Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    Methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#associatewith_1" class="md-nav__link">
+    associateWith
+  </a>
+  
+    <nav class="md-nav" aria-label="associateWith">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapindexed_1" class="md-nav__link">
+    mapIndexed
+  </a>
+  
+    <nav class="md-nav" aria-label="mapIndexed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_1" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_1" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_1" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sortdescending_1" class="md-nav__link">
+    sortDescending
+  </a>
+  
+    <nav class="md-nav" aria-label="sortDescending">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#returns_2" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_2" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sortby_1" class="md-nav__link">
+    sortBy
+  </a>
+  
+    <nav class="md-nav" aria-label="sortBy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_2" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_3" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_3" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plus_1" class="md-nav__link">
+    plus
+  </a>
+  
+    <nav class="md-nav" aria-label="plus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_3" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_4" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_4" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minus_1" class="md-nav__link">
+    minus
+  </a>
+  
+    <nav class="md-nav" aria-label="minus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_4" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_5" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_5" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minusassign_1" class="md-nav__link">
+    minusAssign
+  </a>
+  
+    <nav class="md-nav" aria-label="minusAssign">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_5" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_6" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_6" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plusassign_1" class="md-nav__link">
+    plusAssign
+  </a>
+  
+    <nav class="md-nav" aria-label="plusAssign">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_6" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_7" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_7" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count_1" class="md-nav__link">
+    count
+  </a>
+  
+    <nav class="md-nav" aria-label="count">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#returns_8" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_8" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removeall_1" class="md-nav__link">
+    removeAll
+  </a>
+  
+    <nav class="md-nav" aria-label="removeAll">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_7" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_9" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_9" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retainall_1" class="md-nav__link">
+    retainAll
+  </a>
+  
+    <nav class="md-nav" aria-label="retainAll">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_8" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_10" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_10" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#last_1" class="md-nav__link">
+    last
+  </a>
+  
+    <nav class="md-nav" aria-label="last">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#returns_11" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#throws" class="md-nav__link">
+    Throws
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_11" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getorelse_1" class="md-nav__link">
+    getOrElse
+  </a>
+  
+    <nav class="md-nav" aria-label="getOrElse">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_9" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_12" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_12" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getorempty_1" class="md-nav__link">
+    getOrEmpty
+  </a>
+  
+    <nav class="md-nav" aria-label="getOrEmpty">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_10" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returns_13" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_13" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shuffle_1" class="md-nav__link">
+    shuffle
+  </a>
+  
+    <nav class="md-nav" aria-label="shuffle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#returns_14" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_14" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>Array</h1>
+
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Markdown</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>---
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>id: array
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>title: Array Component
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="gu">sidebar_label: Array</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="gu">---</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="gu">## Introduction</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>The Array component in the Katxupa library provides additional utility functions for working with arrays.
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="gu">### Installation</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>To use the Array component, you can include it in your project:
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>```bash
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>npm install katxupa
+</code></pre></div></td></tr></table></div>
+<h3 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">#</a></h3>
+<h4 id="listof">listOf<a class="headerlink" href="#listof" title="Permanent link">#</a></h4>
+<p>Creates an immutable list from the provided elements.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">listOf</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="c1">// list is [1, 2, 3]</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="mutablelistof">mutableListOf<a class="headerlink" href="#mutablelistof" title="Permanent link">#</a></h4>
+<p>Creates a mutable list from the provided elements.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">mutableList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">mutableListOf</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="c1">// mutableList is [1, 2, 3]</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="emptylist">emptyList<a class="headerlink" href="#emptylist" title="Permanent link">#</a></h4>
+<p>Creates an empty list.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">empty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">emptyList</span><span class="p">();</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="c1">// empty is []</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="associatewith">associateWith<a class="headerlink" href="#associatewith" title="Permanent link">#</a></h4>
+<p>Associates each element with a key-value pair based on the provided selectors.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span>
+<span class="normal"><a href="#__codelineno-4-6">6</a></span>
+<span class="normal"><a href="#__codelineno-4-7">7</a></span>
+<span class="normal"><a href="#__codelineno-4-8">8</a></span>
+<span class="normal"><a href="#__codelineno-4-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">elements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="p">];</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="kd">const</span><span class="w"> </span><span class="nx">keyValuePairs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">elements</span><span class="p">.</span><span class="nx">associateWith</span><span class="p">(</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">  </span><span class="p">(</span><span class="nx">element</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">element</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="w">  </span><span class="p">(</span><span class="nx">element</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">element</span><span class="p">.</span><span class="nx">value</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="p">);</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="c1">// keyValuePairs is { &#39;1&#39;: &#39;a&#39;, &#39;2&#39;: &#39;b&#39; }</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="mapindexed">mapIndexed<a class="headerlink" href="#mapindexed" title="Permanent link">#</a></h4>
+<p>Maps each element to a new value using the provided transformation function.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">];</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">squaredNumbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">numbers</span><span class="p">.</span><span class="nx">mapIndexed</span><span class="p">((</span><span class="nx">num</span><span class="p">,</span><span class="w"> </span><span class="nx">index</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">num</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">num</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">index</span><span class="p">);</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="c1">// squaredNumbers is [1, 5, 11]</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="sortdescending">sortDescending<a class="headerlink" href="#sortdescending" title="Permanent link">#</a></h4>
+<p>Sorts the collection in descending order.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">];</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">sortedNumbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">numbers</span><span class="p">.</span><span class="nx">sortDescending</span><span class="p">();</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="c1">// sortedNumbers is [9, 5, 4, 3, 2, 1, 1]</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="sortby">sortBy<a class="headerlink" href="#sortby" title="Permanent link">#</a></h4>
+<p>Sorts the collection using the provided comparator function.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span>
+<span class="normal"><a href="#__codelineno-7-5">5</a></span>
+<span class="normal"><a href="#__codelineno-7-6">6</a></span>
+<span class="normal"><a href="#__codelineno-7-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;John&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="mf">30</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="mf">25</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="mf">35</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="p">];</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="kd">const</span><span class="w"> </span><span class="nx">sortedUsers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">users</span><span class="p">.</span><span class="nx">sortBy</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">age</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">b</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="c1">// sortedUsers is [{ name: &#39;Alice&#39;, age: 25 }, { name: &#39;John&#39;, age: 30 }, { name: &#39;Bob&#39;, age: 35 }]</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="plus">plus<a class="headerlink" href="#plus" title="Permanent link">#</a></h4>
+<p>Concatenates the collection with another array.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span>
+<span class="normal"><a href="#__codelineno-8-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">];</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">otherArray</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">];</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">collection</span><span class="p">.</span><span class="nx">plus</span><span class="p">(</span><span class="nx">otherArray</span><span class="p">);</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="c1">// result is [1, 2, 3, 4, 5, 6]</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="minus">minus<a class="headerlink" href="#minus" title="Permanent link">#</a></h4>
+<p>Removes elements from the collection that are present in another array.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span>
+<span class="normal"><a href="#__codelineno-9-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">elementsToRemove</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">collection</span><span class="p">.</span><span class="nx">minus</span><span class="p">(</span><span class="nx">elementsToRemove</span><span class="p">);</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="c1">// result is [1, 2, 4]</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="minusassign">minusAssign<a class="headerlink" href="#minusassign" title="Permanent link">#</a></h4>
+<p>Removes elements from the collection that are present in another array (mutates the collection).</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">elementsToRemove</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="nx">collection</span><span class="p">.</span><span class="nx">minusAssign</span><span class="p">(</span><span class="nx">elementsToRemove</span><span class="p">);</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="c1">// collection is now [1, 2, 4]</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="plusassign">plusAssign<a class="headerlink" href="#plusassign" title="Permanent link">#</a></h4>
+<p>Appends elements from another array to the collection (mutates the collection).</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span>
+<span class="normal"><a href="#__codelineno-11-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">];</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">additionalElements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">];</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="nx">collection</span><span class="p">.</span><span class="nx">plusAssign</span><span class="p">(</span><span class="nx">additionalElements</span><span class="p">);</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="c1">// collection is now [1, 2, 3, 4, 5, 6]</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="count">count<a class="headerlink" href="#count" title="Permanent link">#</a></h4>
+<p>Returns the number of elements in the collection.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span>
+<span class="normal"><a href="#__codelineno-12-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">collection</span><span class="p">.</span><span class="nx">count</span><span class="p">();</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="c1">// count is 5</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="removeall">removeAll<a class="headerlink" href="#removeall" title="Permanent link">#</a></h4>
+<p>Removes elements from the collection based on a predicate or a collection of elements.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">3</a></span>
+<span class="normal"><a href="#__codelineno-13-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">elementsToRemove</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">collection</span><span class="p">.</span><span class="nx">removeAll</span><span class="p">(</span><span class="nx">elementsToRemove</span><span class="p">);</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="c1">// result is [1, 2, 4]</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="retainall">retainAll<a class="headerlink" href="#retainall" title="Permanent link">#</a></h4>
+<p>Retains only the elements in the collection that are present in another array.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span>
+<span class="normal"><a href="#__codelineno-14-3">3</a></span>
+<span class="normal"><a href="#__codelineno-14-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">elementsToRetain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">collection</span><span class="p">.</span><span class="nx">retainAll</span><span class="p">(</span><span class="nx">elementsToRetain</span><span class="p">);</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="c1">// result is [3, 5]</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="last">last<a class="headerlink" href="#last" title="Permanent link">#</a></h4>
+<p>Returns the last element in the collection.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span>
+<span class="normal"><a href="#__codelineno-15-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">];</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">lastElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">collection</span><span class="p">.</span><span class="nx">last</span><span class="p">();</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="c1">// lastElement is 3</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="getorelse">getOrElse<a class="headerlink" href="#getorelse" title="Permanent link">#</a></h4>
+<p>Gets the element at the specified index or provides a default value if the index is out of bounds.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span>
+<span class="normal"><a href="#__codelineno-16-2">2</a></span>
+<span class="normal"><a href="#__codelineno-16-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">element</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">collection</span><span class="p">.</span><span class="nx">getOrElse</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mf">10</span><span class="p">);</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="c1">// element is 3</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="getorempty">getOrEmpty<a class="headerlink" href="#getorempty" title="Permanent link">#</a></h4>
+<p>Gets an optional containing the element at the specified index.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span>
+<span class="normal"><a href="#__codelineno-17-2">2</a></span>
+<span class="normal"><a href="#__codelineno-17-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">optionalElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">collection</span><span class="p">.</span><span class="nx">getOrEmpty</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="c1">// optionalElement contains the value Optional.of(3)</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="shuffle">shuffle<a class="headerlink" href="#shuffle" title="Permanent link">#</a></h4>
+<p>Shuffles the elements in the collection randomly.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span>
+<span class="normal"><a href="#__codelineno-18-2">2</a></span>
+<span class="normal"><a href="#__codelineno-18-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="nx">collection</span><span class="p">.</span><span class="nx">shuffle</span><span class="p">();</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="c1">// collection is now shuffled randomly, e.g., [3, 1, 5, 2, 4]</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="api_reference">API Reference<a class="headerlink" href="#api_reference" title="Permanent link">#</a></h2>
+<h3 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">#</a></h3>
+<ul>
+<li><a href="#associateWith">associateWith</a></li>
+<li><a href="#mapIndexed">mapIndexed</a></li>
+<li><a href="#sortDescending">sortDescending</a></li>
+<li><a href="#sortBy">sortBy</a></li>
+<li><a href="#plus">plus</a></li>
+<li><a href="#minus">minus</a></li>
+<li><a href="#minusAssign">minusAssign</a></li>
+<li><a href="#plusAssign">plusAssign</a></li>
+<li><a href="#count">count</a></li>
+<li><a href="#removeAll">removeAll</a></li>
+<li><a href="#retainAll">retainAll</a></li>
+<li><a href="#last">last</a></li>
+<li><a href="#getOrElse">getOrElse</a></li>
+<li><a href="#getOrEmpty">getOrEmpty</a></li>
+<li><a href="#shuffle">shuffle</a></li>
+</ul>
+<h3 id="associatewith_1">associateWith<a class="headerlink" href="#associatewith_1" title="Permanent link">#</a></h3>
+<p>Associates each element with a key-value pair based on the provided selectors.</p>
+<h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">#</a></h4>
+<ul>
+<li><code>keySelector: (element: T) =&gt; K</code> - The function to extract keys from elements.</li>
+<li><code>valueSelector: (element: T) =&gt; V</code> - The function to extract values from elements.</li>
+</ul>
+<h4 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">#</a></h4>
+<p>A record associating keys with their corresponding values.</p>
+<h4 id="example">Example<a class="headerlink" href="#example" title="Permanent link">#</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span>
+<span class="normal"><a href="#__codelineno-19-2">2</a></span>
+<span class="normal"><a href="#__codelineno-19-3">3</a></span>
+<span class="normal"><a href="#__codelineno-19-4">4</a></span>
+<span class="normal"><a href="#__codelineno-19-5">5</a></span>
+<span class="normal"><a href="#__codelineno-19-6">6</a></span>
+<span class="normal"><a href="#__codelineno-19-7">7</a></span>
+<span class="normal"><a href="#__codelineno-19-8">8</a></span>
+<span class="normal"><a href="#__codelineno-19-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">elements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4"></a><span class="p">];</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5"></a><span class="kd">const</span><span class="w"> </span><span class="nx">keyValuePairs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">elements</span><span class="p">.</span><span class="nx">associateWith</span><span class="p">(</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6"></a><span class="w">  </span><span class="p">(</span><span class="nx">element</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">element</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7"></a><span class="w">  </span><span class="p">(</span><span class="nx">element</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">element</span><span class="p">.</span><span class="nx">value</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8"></a><span class="p">);</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9"></a><span class="c1">// keyValuePairs is { &#39;1&#39;: &#39;a&#39;, &#39;2&#39;: &#39;b&#39; }</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="mapindexed_1">mapIndexed<a class="headerlink" href="#mapindexed_1" title="Permanent link">#</a></h3>
+<p>Maps each element to a new value using the provided transformation function.</p>
+<h4 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">#</a></h4>
+<ul>
+<li><code>transform: (element: T, index: number) =&gt; U</code> - The function to transform each element.</li>
+</ul>
+<h4 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">#</a></h4>
+<p>A readonly array containing the transformed elements.</p>
+<h4 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">#</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span>
+<span class="normal"><a href="#__codelineno-20-2">2</a></span>
+<span class="normal"><a href="#__codelineno-20-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">];</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">squaredNumbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">numbers</span><span class="p">.</span><span class="nx">mapIndexed</span><span class="p">((</span><span class="nx">num</span><span class="p">,</span><span class="w"> </span><span class="nx">index</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">num</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">num</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">index</span><span class="p">);</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3"></a><span class="c1">// squaredNumbers is [1, 5, 11]</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="sortdescending_1">sortDescending<a class="headerlink" href="#sortdescending_1" title="Permanent link">#</a></h3>
+<p>Sorts the collection in descending order.</p>
+<h4 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">#</a></h4>
+<p>A reference to the sorted array.</p>
+<h4 id="example_2">Example<a class="headerlink" href="#example_2" title="Permanent link">#</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span>
+<span class="normal"><a href="#__codelineno-21-2">2</a></span>
+<span class="normal"><a href="#__codelineno-21-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">];</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2"></a><span class="nx">numbers</span><span class="p">.</span><span class="nx">sortDescending</span><span class="p">();</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3"></a><span class="c1">// numbers is now [9, 5, 4, 3, 2, 1, 1]</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="sortby_1">sortBy<a class="headerlink" href="#sortby_1" title="Permanent link">#</a></h3>
+<p>Sorts the collection using the provided comparator function.</p>
+<h4 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">#</a></h4>
+<ul>
+<li><code>comparator: (a: T, b: T) =&gt; number</code> - The function to compare elements.</li>
+</ul>
+<h4 id="returns_3">Returns<a class="headerlink" href="#returns_3" title="Permanent link">#</a></h4>
+<p>A reference to the sorted array.</p>
+<h4 id="example_3">Example<a class="headerlink" href="#example_3" title="Permanent link">#</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1">1</a></span>
+<span class="normal"><a href="#__codelineno-22-2">2</a></span>
+<span class="normal"><a href="#__codelineno-22-3">3</a></span>
+<span class="normal"><a href="#__codelineno-22-4">4</a></span>
+<span class="normal"><a href="#__codelineno-22-5">5</a></span>
+<span class="normal"><a href="#__codelineno-22-6">6</a></span>
+<span class="normal"><a href="#__codelineno-22-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;John&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="mf">30</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="mf">25</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="mf">35</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5"></a><span class="p">];</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6"></a><span class="nx">users</span><span class="p">.</span><span class="nx">sortBy</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">age</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">b</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7"></a><span class="c1">// users is now sorted by age: [{ name: &#39;Alice&#39;, age: 25 }, { name: &#39;John&#39;, age: 30 }, { name: &#39;Bob&#39;, age: 35 }]</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="plus_1">plus<a class="headerlink" href="#plus_1" title="Permanent link">#</a></h3>
+<p>Concatenates the collection with another array.</p>
+<h4 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">#</a></h4>
+<ul>
+<li><code>other: T[]</code> - The array to concatenate with the current collection.</li>
+</ul>
+<h4 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">#</a></h4>
+<p>A new array containing elements from both the current collection and the provided array.</p>
+<h4 id="example_4">Example<a class="headerlink" href="#example_4" title="Permanent link">#</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">1</a></span>
+<span class="normal"><a href="#__codelineno-23-2">2</a></span>
+<span class="normal"><a href="#__codelineno-23-3">3</a></span>
+<span class="normal"><a href="#__codelineno-23-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">];</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">otherArray</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">];</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">collection</span><span class="p">.</span><span class="nx">plus</span><span class="p">(</span><span class="nx">otherArray</span><span class="p">);</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4"></a><span class="c1">// result is [1, 2, 3, 4, 5, 6]</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="minus_1">minus<a class="headerlink" href="#minus_1" title="Permanent link">#</a></h3>
+<p>Removes elements from the collection that are present in another array.</p>
+<h4 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">#</a></h4>
+<ul>
+<li><code>other: T[]</code> - The array containing elements to be removed from the current collection.</li>
+</ul>
+<h4 id="returns_5">Returns<a class="headerlink" href="#returns_5" title="Permanent link">#</a></h4>
+<p>A new array with elements not present in the provided array.</p>
+<h4 id="example_5">Example<a class="headerlink" href="#example_5" title="Permanent link">#</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span>
+<span class="normal"><a href="#__codelineno-24-2">2</a></span>
+<span class="normal"><a href="#__codelineno-24-3">3</a></span>
+<span class="normal"><a href="#__codelineno-24-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">elementsToRemove</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">collection</span><span class="p">.</span><span class="nx">minus</span><span class="p">(</span><span class="nx">elementsToRemove</span><span class="p">);</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4"></a><span class="c1">// result is [1, 2, 4]</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="minusassign_1">minusAssign<a class="headerlink" href="#minusassign_1" title="Permanent link">#</a></h3>
+<p>Removes elements from the collection that are present in another array (mutates the collection).</p>
+<h4 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">#</a></h4>
+<ul>
+<li><code>collection: T[]</code> - The array containing elements to be removed from the current collection.</li>
+</ul>
+<h4 id="returns_6">Returns<a class="headerlink" href="#returns_6" title="Permanent link">#</a></h4>
+<p>A reference to the affected array.</p>
+<h4 id="example_6">Example<a class="headerlink" href="#example_6" title="Permanent link">#</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span>
+<span class="normal"><a href="#__codelineno-25-2">2</a></span>
+<span class="normal"><a href="#__codelineno-25-3">3</a></span>
+<span class="normal"><a href="#__codelineno-25-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">elementsToRemove</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3"></a><span class="nx">collection</span><span class="p">.</span><span class="nx">minusAssign</span><span class="p">(</span><span class="nx">elementsToRemove</span><span class="p">);</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4"></a><span class="c1">// collection is now [1, 2, 4]</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="plusassign_1">plusAssign<a class="headerlink" href="#plusassign_1" title="Permanent link">#</a></h3>
+<p>Appends elements from another array to the collection (mutates the collection).</p>
+<h4 id="parameters_6">Parameters<a class="headerlink" href="#parameters_6" title="Permanent link">#</a></h4>
+<ul>
+<li><code>other: T[]</code> - The array containing elements to be added to the current collection.</li>
+</ul>
+<h4 id="returns_7">Returns<a class="headerlink" href="#returns_7" title="Permanent link">#</a></h4>
+<p>A reference to the affected array.</p>
+<h4 id="example_7">Example<a class="headerlink" href="#example_7" title="Permanent link">#</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span>
+<span class="normal"><a href="#__codelineno-26-2">2</a></span>
+<span class="normal"><a href="#__codelineno-26-3">3</a></span>
+<span class="normal"><a href="#__codelineno-26-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">];</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">additionalElements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">];</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3"></a><span class="nx">collection</span><span class="p">.</span><span class="nx">plusAssign</span><span class="p">(</span><span class="nx">additionalElements</span><span class="p">);</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4"></a><span class="c1">// collection is now [1, 2, 3, 4, 5, 6]</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="count_1">count<a class="headerlink" href="#count_1" title="Permanent link">#</a></h3>
+<p>Returns the number of elements in the collection.</p>
+<h4 id="returns_8">Returns<a class="headerlink" href="#returns_8" title="Permanent link">#</a></h4>
+<p>The number of elements in the collection.</p>
+<h4 id="example_8">Example<a class="headerlink" href="#example_8" title="Permanent link">#</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1">1</a></span>
+<span class="normal"><a href="#__codelineno-27-2">2</a></span>
+<span class="normal"><a href="#__codelineno-27-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">collection</span><span class="p">.</span><span class="nx">count</span><span class="p">();</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3"></a><span class="c1">// count is 5</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="removeall_1">removeAll<a class="headerlink" href="#removeall_1" title="Permanent link">#</a></h3>
+<p>Removes elements from the collection based on a predicate or a collection of elements.</p>
+<h4 id="parameters_7">Parameters<a class="headerlink" href="#parameters_7" title="Permanent link">#</a></h4>
+<ul>
+<li><code>predicate: ((item: T) =&gt; boolean) | T[]</code> - The predicate function or collection of elements to remove.</li>
+</ul>
+<h4 id="returns_9">Returns<a class="headerlink" href="#returns_9" title="Permanent link">#</a></h4>
+<p>A new array with elements removed based on the provided predicate or collection.</p>
+<h4 id="example_9">Example<a class="headerlink" href="#example_9" title="Permanent link">#</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span>
+<span class="normal"><a href="#__codelineno-28-2">2</a></span>
+<span class="normal"><a href="#__codelineno-28-3">3</a></span>
+<span class="normal"><a href="#__codelineno-28-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">elementsToRemove</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">collection</span><span class="p">.</span><span class="nx">removeAll</span><span class="p">(</span><span class="nx">elementsToRemove</span><span class="p">);</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4"></a><span class="c1">// result is [1, 2, 4]</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="retainall_1">retainAll<a class="headerlink" href="#retainall_1" title="Permanent link">#</a></h3>
+<p>Retains only the elements in the collection that are present in another array.</p>
+<h4 id="parameters_8">Parameters<a class="headerlink" href="#parameters_8" title="Permanent link">#</a></h4>
+<ul>
+<li><code>predicate: ((item: T) =&gt; boolean) | T[]</code> - The predicate function or collection of elements to retain.</li>
+</ul>
+<h4 id="returns_10">Returns<a class="headerlink" href="#returns_10" title="Permanent link">#</a></h4>
+<p>A new array containing only the elements that satisfy the provided predicate or are present in the provided collection.</p>
+<h4 id="example_10">Example<a class="headerlink" href="#example_10" title="Permanent link">#</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1">1</a></span>
+<span class="normal"><a href="#__codelineno-29-2">2</a></span>
+<span class="normal"><a href="#__codelineno-29-3">3</a></span>
+<span class="normal"><a href="#__codelineno-29-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">elementsToRetain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">collection</span><span class="p">.</span><span class="nx">retainAll</span><span class="p">(</span><span class="nx">elementsToRetain</span><span class="p">);</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4"></a><span class="c1">// result is [3, 5]</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="last_1">last<a class="headerlink" href="#last_1" title="Permanent link">#</a></h3>
+<p>Returns the last element in the collection.</p>
+<h4 id="returns_11">Returns<a class="headerlink" href="#returns_11" title="Permanent link">#</a></h4>
+<p>The last element in the collection.</p>
+<h4 id="throws">Throws<a class="headerlink" href="#throws" title="Permanent link">#</a></h4>
+<ul>
+<li><code>NoSuchElementError</code> - If the collection is empty.</li>
+</ul>
+<h4 id="example_11">Example<a class="headerlink" href="#example_11" title="Permanent link">#</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1">1</a></span>
+<span class="normal"><a href="#__codelineno-30-2">2</a></span>
+<span class="normal"><a href="#__codelineno-30-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">];</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">lastElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">collection</span><span class="p">.</span><span class="nx">last</span><span class="p">();</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3"></a><span class="c1">// lastElement is 3</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="getorelse_1">getOrElse<a class="headerlink" href="#getorelse_1" title="Permanent link">#</a></h3>
+<p>Gets the element at the specified index or provides a default value if the index is out of bounds.</p>
+<h4 id="parameters_9">Parameters<a class="headerlink" href="#parameters_9" title="Permanent link">#</a></h4>
+<ul>
+<li><code>index: number</code> - The index of the element to retrieve.</li>
+<li><code>defaultValueProvider: () =&gt; T</code> - A function providing the default value.</li>
+</ul>
+<h4 id="returns_12">Returns<a class="headerlink" href="#returns_12" title="Permanent link">#</a></h4>
+<p>The element at the specified index or the default value if the index is out of bounds.</p>
+<h4 id="example_12">Example<a class="headerlink" href="#example_12" title="Permanent link">#</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-31-1">1</a></span>
+<span class="normal"><a href="#__codelineno-31-2">2</a></span>
+<span class="normal"><a href="#__codelineno-31-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">element</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">collection</span><span class="p">.</span><span class="nx">getOrElse</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mf">10</span><span class="p">);</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3"></a><span class="c1">// element is 3</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="getorempty_1">getOrEmpty<a class="headerlink" href="#getorempty_1" title="Permanent link">#</a></h3>
+<p>Gets an optional containing the element at the specified index.</p>
+<h4 id="parameters_10">Parameters<a class="headerlink" href="#parameters_10" title="Permanent link">#</a></h4>
+<ul>
+<li><code>index: number</code> - The index of the element.</li>
+</ul>
+<h4 id="returns_13">Returns<a class="headerlink" href="#returns_13" title="Permanent link">#</a></h4>
+<p>An optional containing the element if it exists, otherwise an empty optional.</p>
+<h4 id="example_13">Example<a class="headerlink" href="#example_13" title="Permanent link">#</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JavaScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-32-1">1</a></span>
+<span class="normal"><a href="#__codelineno-32-2">2</a></span>
+<span class="normal"><a href="#__codelineno-32-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">optionalElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">collection</span><span class="p">.</span><span class="nx">getOrEmpty</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3"></a><span class="c1">// optionalElement contains the value Optional.of(3)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="shuffle_1">shuffle<a class="headerlink" href="#shuffle_1" title="Permanent link">#</a></h3>
+<p>Shuffles the elements in the collection randomly.</p>
+<h4 id="returns_14">Returns<a class="headerlink" href="#returns_14" title="Permanent link">#</a></h4>
+<p>A reference to the affected array.</p>
+<h4 id="example_14">Example<a class="headerlink" href="#example_14" title="Permanent link">#</a></h4>
+<p>```javascript
+const collection = [1, 2, 3, 4, 5];
+collection.shuffle();
+// collection is now shuffled randomly, e.g., [3, 1, 5, 2, 4]</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Boolean" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Boolean
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href=".." class="md-footer__link md-footer__link--next" aria-label="Next: Map" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Map
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "content.code.annotate", "navigation.instant", "navigation.tabs.sticky", "navigation.tabs", "header.autohide", "announce.dismiss", "search.suggest", "search.share", "navigation.footer"], "search": "../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+    
+  </body>
+</html>
