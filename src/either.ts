@@ -110,7 +110,7 @@ declare global {
 }
 
 // Global extensions
-const _global = (window /* browser */ || globalThis /* node */);
+const _global = typeof window !== 'undefined' ? window : globalThis;
 
 _global.left = function <L>(value: L): Either<L, never> {
     return Left.left(value);

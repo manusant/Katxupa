@@ -298,7 +298,7 @@ export class Optional<T> {
      * @return Returns a new Optional object containing the filtered value if the original Optional object is present.
      * Returns an empty Optional object if the original Optional object is not present.
      * */
-    filter<V>(predicate: (value: V) => boolean): Optional<T | undefined> {
+    filter(predicate: (value: T) => boolean): Optional<T | undefined> {
         if (this.isEmpty()) {
             return this; // Return itself if it's empty
         }
@@ -316,7 +316,7 @@ export class Optional<T> {
             }
         } else {
             // Filter single value
-            return predicate(this.value as V) ? this : Optional.empty();
+            return predicate(this.value as T) ? this : Optional.empty();
         }
     }
 
@@ -401,7 +401,7 @@ export class Optional<T> {
      * @param searchValue (generic type) - The value to search for in the Optional object.
      * @return boolean: Returns true if the value inside the Optional object contains the search value, otherwise returns false.
      * */
-    contains<S>(searchValue: S): boolean {
+    contains(searchValue: T): boolean {
         if (this.isEmpty()) {
             return false;
         }
@@ -672,7 +672,7 @@ declare global {
     function coalesce<T>(...optionals: Optional<T | undefined | null>[]): Optional<T | undefined | null> ;
 }
 
-const _global = (window /* browser */ || globalThis /* node */);
+const _global = typeof window !== 'undefined' ? window : globalThis;
 
 _global.optionalOf = function <T>(value: T | undefined | null): Optional<T> {
     return Optional.of(value);

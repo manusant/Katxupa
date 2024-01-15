@@ -197,7 +197,7 @@ declare global {
 }
 
 // Global extensions
-const _global = (window /* browser */ || globalThis /* node */);
+const _global = typeof window !== 'undefined' ? window : globalThis;
 
 _global.ok = function <T>(value: T): Ok<T> {
     return Ok.ok(value);

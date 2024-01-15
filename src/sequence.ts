@@ -124,7 +124,7 @@ export class Sequence<T> {
         const result: T[] = [];
         let next = this.next();
         while (!next.done) {
-            result.push(next.value);
+            result.push(next.value as T);
             next = this.next();
         }
         return result;
@@ -138,7 +138,7 @@ export class Sequence<T> {
         const result: T[] = [];
         let next = this.next();
         while (!next.done) {
-            result.push(next.value);
+            result.push(next.value as T);
             next = this.next();
         }
         return result;
@@ -250,7 +250,7 @@ export class Sequence<T> {
         let result = initialValue;
         let next = this.next();
         while (!next.done) {
-            result = reducer(result, next.value);
+            result = reducer(result, next.value as T);
             next = this.next();
         }
         return result;
@@ -265,7 +265,7 @@ export class Sequence<T> {
     forEach(action: (value: T) => void): void {
         let next = this.next();
         while (!next.done) {
-            action(next.value);
+            action(next.value as T);
             next = this.next();
         }
     }
@@ -301,7 +301,7 @@ declare global {
 }
 
 // Global extensions
-const _global = (window /* browser */ || globalThis /* node */);
+const _global = typeof window !== 'undefined' ? window : globalThis;
 
 _global.sequenceOf = function <T>(source: (() => Generator<T, void, unknown>) | Iterable<T>): Sequence<T> {
     if (typeof source === 'function') {

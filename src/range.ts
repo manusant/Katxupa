@@ -1,5 +1,5 @@
 /**
- * The `Ranges` class provides utility methods for working with numeric ranges.
+ * The `Range` class provides utility methods for working with numeric ranges.
  *
  * @since version 1.0.4
  * @author Manuel Santos <ney.br.santos@gmail.com>
@@ -152,7 +152,7 @@ declare global {
 }
 
 // Global extensions
-const _global = (window /* browser */ || globalThis /* node */);
+const _global = typeof window !== 'undefined' ? window : globalThis;
 
 _global.rangeTo = function (start: number, end: number, step?: number): ReadonlyArray<number> {
     return Range.rangeTo(start, end, step);

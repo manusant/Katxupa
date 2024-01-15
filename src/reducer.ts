@@ -620,7 +620,7 @@ declare global {
 }
 
 // Global extensions
-const _global = (window /* browser */ || globalThis /* node */);
+const _global = typeof window !== 'undefined' ? window : globalThis;
 
 _global.reducerOf = function <T>(items: T[], comparator: Comparator<T>): Reducer<T> {
     return Reducer.of(items, comparator);

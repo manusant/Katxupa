@@ -9,7 +9,13 @@
         <meta name="description" content="Delicious Dish for Typescript and JavaScript projects">
       
       
+        <meta name="author" content="Manuel Santos <ney.br.santos@gmail.com>">
       
+      
+        <link rel="canonical" href="https://manusant.github.io/Katxupa/">
+      
+      
+        <link rel="prev" href=".">
       
       
       <link rel="icon" href="assets/images/favicon.png">
@@ -17,11 +23,14 @@
     
     
       
-        <title>Katxupa</title>
+        <title>Set - Katxupa</title>
       
     
     
       <link rel="stylesheet" href="assets/stylesheets/main.eebd395e.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ecc896b0.min.css">
       
       
 
@@ -47,7 +56,14 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="light-blue">
   
     
     
@@ -66,6 +82,73 @@
     </div>
     <div data-md-component="announce">
       
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+              </button>
+            
+            
+<style>
+  .md-banner__inner {
+    margin: 0.3rem auto
+  }
+  .general-announcement {
+    border-radius: 4px;
+    padding: 0 10px;
+    border: 2px solid #00adef;
+  }
+  .general-announcement p {
+    color:#FFF;
+    font-weight: bold;
+
+    margin: 0.5rem 0;
+  }
+  .general-announcement p:first-of-type::before {
+    content: '❕';
+  }
+  .general-announcement a {
+    background-image: linear-gradient(
+      to right,
+      #FFF,
+      #FFF 50%,
+      #00adef 50%
+    );
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 1px 0;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+  }
+  .general-announcement a:before{
+    content: '';
+    background: #00adef;
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
+  }
+  .general-announcement a:hover {
+    background-position: 0;
+  }
+  .general-announcement a:hover::before{
+    width: 100%;
+  }
+</style>
+
+          </div>
+          
+            <script>var content,el=document.querySelector("[data-md-component=announce]");el&&(content=el.querySelector(".md-typeset"),__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0))</script>
+          
+        </aside>
+      
     </div>
     
     
@@ -73,7 +156,7 @@
 
   
 
-<header class="md-header md-header--shadow" data-md-component="header">
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="." title="Katxupa" class="md-header__button md-logo" aria-label="Katxupa" data-md-component="logo">
       
@@ -94,12 +177,38 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              Set
             
           </span>
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+              </label>
+            
+          
+        </form>
+      
     
     
     
@@ -117,10 +226,16 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
       
     </form>
     <div class="md-search__output">
@@ -151,13 +266,72 @@
     
   </nav>
   
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="scope/" class="md-tabs__link">
+        Scope
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="." class="md-tabs__link md-tabs__link--active">
+        Type Extensions
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
-        
-          
         
       
       <main class="md-main" data-md-component="main">
@@ -170,8 +344,10 @@
                   <div class="md-sidebar__inner">
                     
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="." title="Katxupa" class="md-nav__button md-logo" aria-label="Katxupa" data-md-component="logo">
       
@@ -202,6 +378,231 @@
 
   
   
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="." class="md-nav__link">
+        Contributors
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Scope
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Scope
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="scope/" class="md-nav__link">
+        Scope Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index2/" class="md-nav__link">
+        Initializer Functions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Type Extensions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Type Extensions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="." class="md-nav__link">
+        String
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="." class="md-nav__link">
+        Number
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="." class="md-nav__link">
+        Boolean
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="array/" class="md-nav__link">
+        Array
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="." class="md-nav__link">
+        Map
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -214,12 +615,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Overview
+          Set
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="." class="md-nav__link md-nav__link--active">
-        Overview
+        Set
       </a>
       
         
@@ -238,7 +639,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#why-katxupa" class="md-nav__link">
+  <a href="#why_katxupa" class="md-nav__link">
     Why Katxupa
   </a>
   
@@ -246,22 +647,131 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#what-makes-katxupa-special" class="md-nav__link">
+  <a href="#what_makes_katxupa_special" class="md-nav__link">
     What Makes Katxupa Special?
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#key-features" class="md-nav__link">
+  <a href="#key_features" class="md-nav__link">
     Key Features
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#get-a-taste-of-katxupa" class="md-nav__link">
+  <a href="#get_a_taste_of_katxupa" class="md-nav__link">
     Get a Taste of Katxupa
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#npm" class="md-nav__link">
+    NPM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pnpm" class="md-nav__link">
+    PNPM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yarn" class="md-nav__link">
+    YARN
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scope_functions" class="md-nav__link">
+    Scope Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#null_safety" class="md-nav__link">
+    Null Safety
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#duration" class="md-nav__link">
+    Duration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sequence" class="md-nav__link">
+    Sequence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#range" class="md-nav__link">
+    Range
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global_utility_functions" class="md-nav__link">
+    Global Utility Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Global Utility Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#meet_some_ingredients" class="md-nav__link">
+    Meet some Ingredients
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type_extension_functions" class="md-nav__link">
+    Type Extension Functions
   </a>
   
 </li>
@@ -275,6 +785,13 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -306,7 +823,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#why-katxupa" class="md-nav__link">
+  <a href="#why_katxupa" class="md-nav__link">
     Why Katxupa
   </a>
   
@@ -314,22 +831,131 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#what-makes-katxupa-special" class="md-nav__link">
+  <a href="#what_makes_katxupa_special" class="md-nav__link">
     What Makes Katxupa Special?
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#key-features" class="md-nav__link">
+  <a href="#key_features" class="md-nav__link">
     Key Features
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#get-a-taste-of-katxupa" class="md-nav__link">
+  <a href="#get_a_taste_of_katxupa" class="md-nav__link">
     Get a Taste of Katxupa
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#npm" class="md-nav__link">
+    NPM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pnpm" class="md-nav__link">
+    PNPM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yarn" class="md-nav__link">
+    YARN
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scope_functions" class="md-nav__link">
+    Scope Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#null_safety" class="md-nav__link">
+    Null Safety
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#duration" class="md-nav__link">
+    Duration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sequence" class="md-nav__link">
+    Sequence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#range" class="md-nav__link">
+    Range
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global_utility_functions" class="md-nav__link">
+    Global Utility Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Global Utility Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#meet_some_ingredients" class="md-nav__link">
+    Meet some Ingredients
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type_extension_functions" class="md-nav__link">
+    Type Extension Functions
   </a>
   
 </li>
@@ -357,7 +983,7 @@
   
 
 
-<h1 id="katxupa">Katxupa</h1>
+<h1 id="katxupa">Katxupa<a class="headerlink" href="#katxupa" title="Permanent link">#</a></h1>
 <p><strong>Delicious Dish for Typescript and JavaScript projects.</strong></p>
 <p>In <a href="https://en.wikipedia.org/wiki/Cape_Verde">Cape Verde</a> we have a saying:</p>
 <p>"<em>Put a person to work in the field and serve them anything other than <a href="https://www.crumbsnatched.com/cachupa-traditional-dish-of-cape-verde/">Katxupa</a>
@@ -369,11 +995,11 @@ productivity and developer happiness. So, consume (use) it!</p>
 Each family has its unique version, leading to delightful variations.
 One undeniable fact: there is no Cape Verdean who doesn't appreciate Katxupa ("Cachupa") — whether for breakfast, lunch, dinner, or any time, anywhere.</p>
 </blockquote>
-<h2 id="why-katxupa">Why Katxupa</h2>
+<h2 id="why_katxupa">Why Katxupa<a class="headerlink" href="#why_katxupa" title="Permanent link">#</a></h2>
 <p>For starters, the "<em>K</em>" in <strong>Katxupa</strong> stands for <a href="https://kotlinlang.org/">Kotlin</a>, which was the primary inspiration for this library. Drawing from the
 functional programming paradigm of Kotlin and its concise yet expressive syntax, Katxupa aims to bring similar benefits
 to Typescript and JavaScript developers.</p>
-<h3 id="what-makes-katxupa-special">What Makes Katxupa Special?</h3>
+<h3 id="what_makes_katxupa_special">What Makes Katxupa Special?<a class="headerlink" href="#what_makes_katxupa_special" title="Permanent link">#</a></h3>
 <ul>
 <li>
 <p><strong>Functional Delight</strong>: <em>Katxupa</em> introduces functional programming concepts to enhance your code's expressiveness and clarity.</p>
@@ -388,7 +1014,7 @@ to Typescript and JavaScript developers.</p>
 <p><strong>Developer Happiness</strong>: Inspired by the joy of coding in Kotlin, Katxupa seeks to bring happiness to your TypeScript and JavaScript projects.</p>
 </li>
 </ul>
-<h3 id="key-features">Key Features</h3>
+<h3 id="key_features">Key Features<a class="headerlink" href="#key_features" title="Permanent link">#</a></h3>
 <ul>
 <li>
 <p><strong>Scope Functions</strong>: <em>Kotlin-like</em> scope functions, provides a set of functions to execute a block of code in the context of a given object: <em>letIt</em>, <em>runIt</em>, <em>withIt</em>, <em>apply</em>, and <em>also</em>.</p>
@@ -412,9 +1038,393 @@ to Typescript and JavaScript developers.</p>
 <p><strong>Inspired by Cape Verde</strong>: Infused with the spirit of <a href="https://en.wikipedia.org/wiki/Cape_Verde">Cape Verde</a>  and its cherished dish <strong>Katxupa</strong>, this library aims to add flavor to your coding experience.</p>
 </li>
 </ul>
-<h3 id="get-a-taste-of-katxupa">Get a Taste of Katxupa</h3>
+<h3 id="get_a_taste_of_katxupa">Get a Taste of Katxupa<a class="headerlink" href="#get_a_taste_of_katxupa" title="Permanent link">#</a></h3>
 <p>Explore the documentation and see how Katxupa can bring a delightful touch to your TypeScript and JavaScript projects.
 From functional programming utilities to time handling and result handling, <strong>Katxupa</strong> is here to make your coding journey <em>more enjoyable</em>.</p>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h2>
+<p>This package is build up with simplicity in mind, brings no additional dependencies, and it's published in NPM <a href="https://www.npmjs.com/package/katxupa">https://www.npmjs.com/package/katxupa</a>.</p>
+<p>It can be installed using your preferred package manager.</p>
+<h3 id="npm">NPM<a class="headerlink" href="#npm" title="Permanent link">#</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>npm<span class="w"> </span>install<span class="w"> </span>katxupa
+</code></pre></div></td></tr></table></div>
+<h3 id="pnpm">PNPM<a class="headerlink" href="#pnpm" title="Permanent link">#</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>pnpm<span class="w"> </span>install<span class="w"> </span>katxupa
+</code></pre></div></td></tr></table></div>
+<h3 id="yarn">YARN<a class="headerlink" href="#yarn" title="Permanent link">#</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>yarn<span class="w"> </span>add<span class="w"> </span>katxupa
+</code></pre></div></td></tr></table></div>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">#</a></h2>
+<h3 id="scope_functions">Scope Functions<a class="headerlink" href="#scope_functions" title="Permanent link">#</a></h3>
+<p>Simply call any value with <strong><em>letIt</em></strong>, <strong><em>runIt</em></strong>, <strong><em>also</em></strong> or <strong><em>apply</em></strong>, and it'll be passed as the argument or the context of a scope function.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">TypeScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Manuel&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ney.br.santos@gmail.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">35</span><span class="p">};</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="nx">person</span><span class="p">.</span><span class="nx">letIt</span><span class="p">(</span><span class="nx">it</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">it</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">,`</span><span class="p">);</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">    </span><span class="nx">it</span><span class="p">.</span><span class="nx">age</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">30</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;A Young Man&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;An Old Man&quot;</span><span class="p">);</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">it</span><span class="p">.</span><span class="nx">age</span><span class="p">;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="p">}).</span><span class="nx">also</span><span class="p">(</span><span class="nx">it</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Actual Age is </span><span class="si">${</span><span class="nx">it</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="p">});</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="c1">// Output:</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="c1">//      Manuel,</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="c1">//      An Old Man</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="c1">//      Actual Age is 35</span>
+</code></pre></div></td></tr></table></div>
+<p>It also supports the use of the new <a href="https://github.com/tc39/proposal-optional-chaining">Optional Chaining Operator</a>,
+bringing the logic of <a href="https://kotlinlang.org/docs/reference/null-safety.html">Kotlin's Null Safe Calls</a> to the JavaScript world.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">TypeScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span>
+<span class="normal"><a href="#__codelineno-4-6">6</a></span>
+<span class="normal"><a href="#__codelineno-4-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">findOneBy</span><span class="p">({</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">userId</span><span class="p">,</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="p">});</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="nx">user</span><span class="o">?</span><span class="p">.</span><span class="nx">runIt</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">emailService</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb"> welcome to the Katxupa library`</span><span class="p">);</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="p">});</span>
+</code></pre></div></td></tr></table></div>
+<p>You can execute a block of code only if a value is neither null nor undefined:
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">TypeScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">getData</span><span class="p">();</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="nx">data</span><span class="o">?</span><span class="p">.</span><span class="nx">also</span><span class="p">(</span><span class="nx">it</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Already initialized: </span><span class="si">${</span><span class="nx">it</span><span class="si">}</span><span class="sb">`</span><span class="p">))</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Still not initialized&quot;</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+The above code is equivalent to:
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">TypeScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">undefined</span><span class="p">)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Already initialized: </span><span class="si">${</span><span class="nx">str</span><span class="o">!</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="k">else</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Still not initialized&quot;</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div></p>
+<p>The usage of <strong><em>takeIf</em></strong> &amp; <strong><em>takeUnless</em></strong> is a bit different. You can call any value with <strong><em>takeIf</em></strong> and it will
+return the caller instance if the predicate is true, or undefined if it's false (and vice versa when using <strong><em>takeUnless</em></strong>).
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">TypeScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span>
+<span class="normal"><a href="#__codelineno-7-5">5</a></span>
+<span class="normal"><a href="#__codelineno-7-6">6</a></span>
+<span class="normal"><a href="#__codelineno-7-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">account</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">getAccount</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="nx">account</span><span class="p">.</span><span class="nx">takeIf</span><span class="p">(</span><span class="nx">it</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">addressBook</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">it</span><span class="p">.</span><span class="nx">email</span><span class="p">);</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="p">})</span><span class="o">?</span><span class="p">.</span><span class="nx">also</span><span class="p">(</span><span class="nx">it</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="w">    </span><span class="nx">emailService</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">it</span><span class="p">.</span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;You are entitled for crypto airdrop&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="p">})</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Account with </span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb"> not found in the system`</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div></p>
+<h3 id="null_safety">Null Safety<a class="headerlink" href="#null_safety" title="Permanent link">#</a></h3>
+<ul>
+<li>Null-safety through <a href="https://github.com/tc39/proposal-optional-chaining">Optional Chaining Operator</a> for scope functions:
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">TypeScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span>
+<span class="normal"><a href="#__codelineno-8-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="c1">// Only run the code block if &quot;numberOrUndefined&quot; is defined </span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">numberOrUndefinedOrNull</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">bitcoinService</span><span class="p">.</span><span class="nx">getPrice</span><span class="p">();</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="nx">numberOrUndefinedOrNull</span><span class="o">?</span><span class="p">.</span><span class="nx">letIt</span><span class="p">((</span><span class="nx">it</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">    </span><span class="nx">it</span><span class="o">++</span><span class="p">;</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="w">    </span><span class="nx">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">it</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">it</span><span class="p">;</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="p">});</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="c1">// Actually, there is no need to declare a variable</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">bitcoinService</span><span class="p">.</span><span class="nx">getPrice</span><span class="p">())</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a><span class="w">    </span><span class="o">?</span><span class="p">.</span><span class="nx">letIt</span><span class="p">((</span><span class="nx">it</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a><span class="w">        </span><span class="nx">it</span><span class="o">++</span><span class="p">;</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a><span class="w">        </span><span class="nx">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">it</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">it</span><span class="p">;</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15"></a><span class="w">    </span><span class="p">});</span>
+</code></pre></div></td></tr></table></div></li>
+<li><strong><em>Optional</em></strong> wrapper for general purpose:
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">TypeScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-9-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-9-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-9-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-9-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-9-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-9-10">10</a></span>
+<span class="normal"><a href="#__codelineno-9-11">11</a></span>
+<span class="normal"><a href="#__codelineno-9-12">12</a></span>
+<span class="normal"><a href="#__codelineno-9-13">13</a></span>
+<span class="normal"><a href="#__codelineno-9-14">14</a></span>
+<span class="normal"><a href="#__codelineno-9-15">15</a></span>
+<span class="normal"><a href="#__codelineno-9-16">16</a></span>
+<span class="normal"><a href="#__codelineno-9-17">17</a></span>
+<span class="normal"><a href="#__codelineno-9-18">18</a></span>
+<span class="normal"><a href="#__codelineno-9-19">19</a></span>
+<span class="normal"><a href="#__codelineno-9-20">20</a></span>
+<span class="normal"><a href="#__codelineno-9-21">21</a></span>
+<span class="normal"><a href="#__codelineno-9-22">22</a></span>
+<span class="normal"><a href="#__codelineno-9-23">23</a></span>
+<span class="normal"><a href="#__codelineno-9-24">24</a></span>
+<span class="normal"><a href="#__codelineno-9-25">25</a></span>
+<span class="normal"><a href="#__codelineno-9-26">26</a></span>
+<span class="normal"><a href="#__codelineno-9-27">27</a></span>
+<span class="normal"><a href="#__codelineno-9-28">28</a></span>
+<span class="normal"><a href="#__codelineno-9-29">29</a></span>
+<span class="normal"><a href="#__codelineno-9-30">30</a></span>
+<span class="normal"><a href="#__codelineno-9-31">31</a></span>
+<span class="normal"><a href="#__codelineno-9-32">32</a></span>
+<span class="normal"><a href="#__codelineno-9-33">33</a></span>
+<span class="normal"><a href="#__codelineno-9-34">34</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="c1">// Example 1</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="c1">// Get Usecase:</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="c1">//    1- Validate if user exists</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="c1">//    2- Through an HttpError if not </span>
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="c1">//    3- Return the user object</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="k">return</span><span class="w"> </span><span class="nx">optionalOf</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="w">    </span><span class="p">.</span><span class="nx">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">NotFoundError</span><span class="p">(</span><span class="s2">&quot;User doesn&#39;t exist&quot;</span><span class="p">))</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="w">    </span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9"></a>
+<a id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="c1">// Example 2</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="c1">// Delete Usecase:</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="c1">//    1- Validate if user exists</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13"></a><span class="c1">//    2- Through an HttpError if not </span>
+<a id="__codelineno-9-14" name="__codelineno-9-14"></a><span class="c1">//    3-  Delete the user from the database asynchronously and await for the result</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15"></a><span class="k">await</span><span class="w"> </span><span class="nx">Optional</span><span class="p">.</span><span class="k">of</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16"></a><span class="w">  </span><span class="p">.</span><span class="nx">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpError</span><span class="p">(</span><span class="mf">409</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;User doesn&#39;t exist&quot;</span><span class="p">))</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17"></a><span class="w">  </span><span class="p">.</span><span class="nx">runAsync</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">userRepository</span><span class="p">.</span><span class="ow">delete</span><span class="p">({</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">userId</span><span class="p">}));</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18"></a>
+<a id="__codelineno-9-19" name="__codelineno-9-19"></a><span class="c1">// Example 3</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20"></a><span class="c1">// Update usecase:</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21"></a><span class="c1">//    1- Validate if user exists</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22"></a><span class="c1">//    2- Through an HttpError if not</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23"></a><span class="c1">//    3- If exists, merge the existing one with additional userData</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24"></a><span class="c1">//    4- Call the user repository and save the updated user asyncronously, returning a promise</span>
+<a id="__codelineno-9-25" name="__codelineno-9-25"></a><span class="c1">//            </span>
+<a id="__codelineno-9-26" name="__codelineno-9-26"></a><span class="k">return</span><span class="w"> </span><span class="nx">optionalOf</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span>
+<a id="__codelineno-9-27" name="__codelineno-9-27"></a><span class="w">    </span><span class="p">.</span><span class="nx">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpError</span><span class="p">(</span><span class="mf">409</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;User doesn&#39;t exist&quot;</span><span class="p">))</span>
+<a id="__codelineno-9-28" name="__codelineno-9-28"></a><span class="w">    </span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">user</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-29" name="__codelineno-9-29"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-30" name="__codelineno-9-30"></a><span class="w">            </span><span class="p">...</span><span class="nx">user</span><span class="p">,</span>
+<a id="__codelineno-9-31" name="__codelineno-9-31"></a><span class="w">            </span><span class="nx">userData</span><span class="p">,</span>
+<a id="__codelineno-9-32" name="__codelineno-9-32"></a><span class="w">        </span><span class="p">};</span>
+<a id="__codelineno-9-33" name="__codelineno-9-33"></a><span class="w">    </span><span class="p">})</span>
+<a id="__codelineno-9-34" name="__codelineno-9-34"></a><span class="w">    </span><span class="p">.</span><span class="nx">runAsync</span><span class="p">(</span><span class="nx">user</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">user</span><span class="p">));</span>
+</code></pre></div></td></tr></table></div></li>
+</ul>
+<h3 id="duration">Duration<a class="headerlink" href="#duration" title="Permanent link">#</a></h3>
+<p>An easy, expressive and functional way of declaring a duration of time with support for various units (nanoseconds,
+microseconds, milliseconds, seconds, minutes, hours, and days).</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">TypeScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-10-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-10-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-10-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-10-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-10-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-10-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-10-10">10</a></span>
+<span class="normal"><a href="#__codelineno-10-11">11</a></span>
+<span class="normal"><a href="#__codelineno-10-12">12</a></span>
+<span class="normal"><a href="#__codelineno-10-13">13</a></span>
+<span class="normal"><a href="#__codelineno-10-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="c1">// Example 1</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="nx">durationOf</span><span class="p">(</span><span class="mf">1000</span><span class="p">)</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="w">    </span><span class="p">.</span><span class="nx">toSeconds</span><span class="p">()</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="w">    </span><span class="p">.</span><span class="nx">letIt</span><span class="p">(</span><span class="nx">it</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`1000 milliseconds are the same as </span><span class="si">${</span><span class="nx">it</span><span class="si">}</span><span class="sb"> seconds`</span><span class="p">);</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="w">    </span><span class="p">});</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a>
+<a id="__codelineno-10-8" name="__codelineno-10-8"></a><span class="c1">// Example 2</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9"></a><span class="kd">const</span><span class="w"> </span><span class="nx">oneYearInMinutes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">1</span><span class="p">).</span><span class="nx">years</span><span class="p">().</span><span class="nx">toHours</span><span class="p">().</span><span class="nx">toMinutes</span><span class="p">();</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`1 year is approximately </span><span class="si">${</span><span class="nx">oneYearInMinutes</span><span class="si">}</span><span class="sb"> minutes.`</span><span class="p">);</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11"></a>
+<a id="__codelineno-10-12" name="__codelineno-10-12"></a><span class="c1">// Example 3</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13"></a><span class="kd">const</span><span class="w"> </span><span class="nx">duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">1</span><span class="p">).</span><span class="nx">years</span><span class="p">().</span><span class="nx">add</span><span class="p">((</span><span class="mf">6</span><span class="p">).</span><span class="nx">months</span><span class="p">()).</span><span class="nx">toString</span><span class="p">();</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">duration</span><span class="p">);</span><span class="w"> </span><span class="c1">// Output: 548d 0h 0m 0s 0ns</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="sequence">Sequence<a class="headerlink" href="#sequence" title="Permanent link">#</a></h3>
+<p>The <strong>Katxupa</strong> <em><strong>sequenceOf()</strong></em> global function creates a lazy sequence using a generator function or from an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterable_protocol">Iterable</a>.
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">TypeScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span>
+<span class="normal"><a href="#__codelineno-11-11">11</a></span>
+<span class="normal"><a href="#__codelineno-11-12">12</a></span>
+<span class="normal"><a href="#__codelineno-11-13">13</a></span>
+<span class="normal"><a href="#__codelineno-11-14">14</a></span>
+<span class="normal"><a href="#__codelineno-11-15">15</a></span>
+<span class="normal"><a href="#__codelineno-11-16">16</a></span>
+<span class="normal"><a href="#__codelineno-11-17">17</a></span>
+<span class="normal"><a href="#__codelineno-11-18">18</a></span>
+<span class="normal"><a href="#__codelineno-11-19">19</a></span>
+<span class="normal"><a href="#__codelineno-11-20">20</a></span>
+<span class="normal"><a href="#__codelineno-11-21">21</a></span>
+<span class="normal"><a href="#__codelineno-11-22">22</a></span>
+<span class="normal"><a href="#__codelineno-11-23">23</a></span>
+<span class="normal"><a href="#__codelineno-11-24">24</a></span>
+<span class="normal"><a href="#__codelineno-11-25">25</a></span>
+<span class="normal"><a href="#__codelineno-11-26">26</a></span>
+<span class="normal"><a href="#__codelineno-11-27">27</a></span>
+<span class="normal"><a href="#__codelineno-11-28">28</a></span>
+<span class="normal"><a href="#__codelineno-11-29">29</a></span>
+<span class="normal"><a href="#__codelineno-11-30">30</a></span>
+<span class="normal"><a href="#__codelineno-11-31">31</a></span>
+<span class="normal"><a href="#__codelineno-11-32">32</a></span>
+<span class="normal"><a href="#__codelineno-11-33">33</a></span>
+<span class="normal"><a href="#__codelineno-11-34">34</a></span>
+<span class="normal"><a href="#__codelineno-11-35">35</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="c1">// Example 1: Creating a sequence of numbers and performing operations</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">numberSequence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Sequence</span><span class="p">(</span><span class="kd">function</span><span class="o">*</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="nx">i</span><span class="p">;</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="p">});</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numberSequence</span><span class="p">.</span><span class="nx">toList</span><span class="p">());</span><span class="w"> </span><span class="c1">// Output: [1, 2, 3, 4, 5]</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a>
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="c1">// Example 2: Summing a sequence of numbers</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="kd">const</span><span class="w"> </span><span class="nx">sumResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">numberSequence</span><span class="p">.</span><span class="nx">sum</span><span class="p">();</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sumResult</span><span class="p">);</span><span class="w"> </span><span class="c1">// Output: 15</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13"></a>
+<a id="__codelineno-11-14" name="__codelineno-11-14"></a><span class="c1">// Example 3: Mapping elements in a sequence</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15"></a><span class="kd">const</span><span class="w"> </span><span class="nx">squaredNumbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">numberSequence</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">x</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">x</span><span class="p">);</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">squaredNumbers</span><span class="p">.</span><span class="nx">toList</span><span class="p">());</span><span class="w"> </span><span class="c1">// Output: [1, 4, 9, 16, 25]</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17"></a>
+<a id="__codelineno-11-18" name="__codelineno-11-18"></a><span class="c1">// Example 4: Filtering elements in a sequence</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19"></a><span class="kd">const</span><span class="w"> </span><span class="nx">evenNumbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">numberSequence</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">x</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">evenNumbers</span><span class="p">.</span><span class="nx">toList</span><span class="p">());</span><span class="w"> </span><span class="c1">// Output: [2, 4]</span>
+<a id="__codelineno-11-21" name="__codelineno-11-21"></a>
+<a id="__codelineno-11-22" name="__codelineno-11-22"></a><span class="c1">// Example 5: Taking and dropping elements from a sequence</span>
+<a id="__codelineno-11-23" name="__codelineno-11-23"></a><span class="kd">const</span><span class="w"> </span><span class="nx">takenNumbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">numberSequence</span><span class="p">.</span><span class="nx">take</span><span class="p">(</span><span class="mf">3</span><span class="p">);</span>
+<a id="__codelineno-11-24" name="__codelineno-11-24"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">takenNumbers</span><span class="p">.</span><span class="nx">toList</span><span class="p">());</span><span class="w"> </span><span class="c1">// Output: [1, 2, 3]</span>
+<a id="__codelineno-11-25" name="__codelineno-11-25"></a>
+<a id="__codelineno-11-26" name="__codelineno-11-26"></a><span class="kd">const</span><span class="w"> </span><span class="nx">droppedNumbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">numberSequence</span><span class="p">.</span><span class="nx">drop</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span>
+<a id="__codelineno-11-27" name="__codelineno-11-27"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">droppedNumbers</span><span class="p">.</span><span class="nx">toList</span><span class="p">());</span><span class="w"> </span><span class="c1">// Output: [3, 4, 5]</span>
+<a id="__codelineno-11-28" name="__codelineno-11-28"></a>
+<a id="__codelineno-11-29" name="__codelineno-11-29"></a><span class="c1">// Example 6: Chaining operations</span>
+<a id="__codelineno-11-30" name="__codelineno-11-30"></a><span class="kd">const</span><span class="w"> </span><span class="nx">chainedSequence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">numberSequence</span>
+<a id="__codelineno-11-31" name="__codelineno-11-31"></a><span class="w">    </span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">x</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span>
+<a id="__codelineno-11-32" name="__codelineno-11-32"></a><span class="w">    </span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">x</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span>
+<a id="__codelineno-11-33" name="__codelineno-11-33"></a><span class="w">    </span><span class="p">.</span><span class="nx">take</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span>
+<a id="__codelineno-11-34" name="__codelineno-11-34"></a>
+<a id="__codelineno-11-35" name="__codelineno-11-35"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">chainedSequence</span><span class="p">.</span><span class="nx">toList</span><span class="p">());</span><span class="w"> </span><span class="c1">// Output: [6, 8]</span>
+</code></pre></div></td></tr></table></div></p>
+<h3 id="range">Range<a class="headerlink" href="#range" title="Permanent link">#</a></h3>
+<p>The <code>Range</code> class provides utility methods for working with numeric ranges.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">TypeScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-12-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-12-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-12-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-12-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-12-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-12-10">10</a></span>
+<span class="normal"><a href="#__codelineno-12-11">11</a></span>
+<span class="normal"><a href="#__codelineno-12-12">12</a></span>
+<span class="normal"><a href="#__codelineno-12-13">13</a></span>
+<span class="normal"><a href="#__codelineno-12-14">14</a></span>
+<span class="normal"><a href="#__codelineno-12-15">15</a></span>
+<span class="normal"><a href="#__codelineno-12-16">16</a></span>
+<span class="normal"><a href="#__codelineno-12-17">17</a></span>
+<span class="normal"><a href="#__codelineno-12-18">18</a></span>
+<span class="normal"><a href="#__codelineno-12-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="c1">// Example 1: Creating a Numeric Range</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">numericRange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Range</span><span class="p">.</span><span class="nx">rangeTo</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numericRange</span><span class="p">);</span><span class="w"> </span><span class="c1">// Output: [1, 3, 5]</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a>
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="c1">// Example 2: Creating a Numeric Range (Exclusive)</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="kd">const</span><span class="w"> </span><span class="nx">numericRangeAlias</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">rangeUntil</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numericRangeAlias</span><span class="p">);</span><span class="w"> </span><span class="c1">// Output: [1, 3, 5]</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a>
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a><span class="c1">// Example 3: Checking if a Value is in Range</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="kd">const</span><span class="w"> </span><span class="nx">isInRange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Range</span><span class="p">.</span><span class="nx">inRange</span><span class="p">(</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">);</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isInRange</span><span class="p">);</span><span class="w"> </span><span class="c1">// Output: true</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12"></a>
+<a id="__codelineno-12-13" name="__codelineno-12-13"></a><span class="c1">// Example 4: Range with chaining Operations </span>
+<a id="__codelineno-12-14" name="__codelineno-12-14"></a><span class="nx">rangeTo</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15"></a><span class="w">    </span><span class="p">.</span><span class="nx">runIt</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16"></a><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`multiplying the following range of numbers: </span><span class="si">${</span><span class="k">this</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">it</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">it</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18"></a><span class="w">            </span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">it</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">it</span><span class="p">));</span>
+<a id="__codelineno-12-19" name="__codelineno-12-19"></a><span class="w">    </span><span class="p">});</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="global_utility_functions">Global Utility Functions<a class="headerlink" href="#global_utility_functions" title="Permanent link">#</a></h3>
+<p>Global functions are the unsung heroes that transcend the boundaries of specific data types, providing a universal
+toolkit for developers. These functions, residing in the global scope, are the go-to tools when you need versatile
+and expressive solutions that operate seamlessly across various data structures.</p>
+<h4 id="meet_some_ingredients">Meet some Ingredients<a class="headerlink" href="#meet_some_ingredients" title="Permanent link">#</a></h4>
+<ul>
+<li><strong>runIt()</strong>: The maestro orchestrating the symphony of functions, <em>runIt</em> calls a specified function block and presents its harmonious result.</li>
+<li><strong>withIt()</strong>: The chameleon of functions, <em>withIt</em> transforms any object into the star of the show, letting it shine in a function block tailored just for them.</li>
+<li><strong>listOf()</strong>: Assemble an immutable list of elements effortlessly with <em>listOf</em>. It's your go-to for creating collections in a concise and readable manner.</li>
+<li><strong>mutableListOf()</strong>: When you need a dynamic collection that can evolve with your needs, turn to <em>mutableListOf</em> to create mutable lists with ease.</li>
+<li><strong>optionalOf()</strong>: Embrace the power of optionals with <em>optionalOf</em>, a function that lets you gracefully handle scenarios with potentially absent values.</li>
+<li><strong>durationOf()</strong>: Time is of the essence, and <em>durationOf</em> allows you to craft time durations with precision, making time manipulation a breeze.</li>
+<li><strong>sequenceOf()</strong>: Elevate your iteration game with <em>sequenceOf</em>, creating lazy sequences that conserve resources and provide on-the-fly transformation capabilities.</li>
+<li><strong>reducerOf()</strong>: Transform your data with <em>reducerOf</em>, a function designed for building reducers that streamline complex state transformations in a functional paradigm.</li>
+<li><strong>rangeTo()</strong>: Define ranges effortlessly with <em>rangeTo</em>, a function simplifying the creation of numeric ranges for iteration or data selection.</li>
+<li><strong>ok()</strong>: Indicate success with confidence using <em>ok</em>. This function constructs an "ok" result, signaling that a task or operation was completed successfully.</li>
+<li><strong>error()</strong>: Handle errors gracefully with <em>error</em>. This function constructs an error result, encapsulating details about the failure and allowing for structured error handling.</li>
+</ul>
+<p>These are just a smell of the utility this library brings to the table. Please, check the complete list in the <a href="">Global Functions</a> section.</p>
+<h3 id="type_extension_functions">Type Extension Functions<a class="headerlink" href="#type_extension_functions" title="Permanent link">#</a></h3>
+<p>In JavaScript, where each data type carries its own set of behaviors, type extension functions emerge as the virtuosos of customization.
+These functions enrich your interactions with core data types, injecting them with new capabilities, being functional
+or utilities, and streamlining common operations.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Utilities</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="">Object Extensions</a></td>
+<td>Extensions redefine how you interact with objects, enabling fluid and expressive operations tailored to your needs.</td>
+</tr>
+<tr>
+<td><a href="">Number Extensions</a></td>
+<td>Brings a consistent, functional and powerful approach to numeric operations</td>
+</tr>
+<tr>
+<td><a href="">String Extensions</a></td>
+<td>Give your strings a makeover with extensions that redefine the way you manipulate text.</td>
+</tr>
+<tr>
+<td><a href="">Boolean Extensions</a></td>
+<td>Functions like letIt, also, runIt, apply, takeIf, and takeUnless introduce a consistent and expressive way to handle boolean values.</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -430,6 +1440,29 @@ From functional programming utilities to time handling and result handling, <str
       </main>
       
         <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="." class="md-footer__link md-footer__link--prev" aria-label="Previous: Map" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Map
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -452,7 +1485,7 @@ From functional programming utilities to time handling and result handling, <str
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "content.code.annotate", "navigation.instant", "navigation.tabs.sticky", "navigation.tabs", "header.autohide", "announce.dismiss", "search.suggest", "search.share", "navigation.footer"], "search": "assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="assets/javascripts/bundle.220ee61c.min.js"></script>

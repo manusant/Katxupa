@@ -433,7 +433,7 @@ declare global {
 }
 
 // Global extensions
-const _global = (window /* browser */ || globalThis /* node */);
+const _global = typeof window !== 'undefined' ? window : globalThis;
 
 _global.durationOf = function (milliseconds: number): Duration {
     return Duration.microseconds(milliseconds);
