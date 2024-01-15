@@ -33,7 +33,7 @@ describe("also", () => {
     });
     test("works with nullable", () => {
         const obj: object | null = {name: "Manuel", age: 36};
-        const value = obj?.also((it:any) => it.age = 40);
+        const value = obj?.also((it: any) => it.age = 40);
         expect(value).toBe(obj);
         expect((value as any)?.age).toBe(40);
     });
@@ -44,13 +44,13 @@ describe("also", () => {
     });
     test("fails with undefined", () => {
         const obj: object | undefined = undefined;
-        const value = obj?.also((it:any) => it.age = 40);
+        const value = obj?.also((it: any) => it.age = 40);
         expect(value).toBeUndefined();
     });
     test("retains with null", () => {
         const str: string | null = null;
         const obj = {name: "Manuel", age: 36};
-        str?.also(it => obj.name = it);
+        str?.also((it: string) => obj.name = it);
         expect(obj.name).toBe("Manuel");
     });
 });

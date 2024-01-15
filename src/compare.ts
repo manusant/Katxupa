@@ -108,32 +108,6 @@ export interface InlineComparator<T> {
     (a: T, b: T): number;
 }
 
-/**
- * Represents a generic comparator function for comparing two elements of the same type.
- *
- * @template T - The type of elements to compare.
- *
- * @since version 1.4.0
- * @author Manuel Santos <ney.br.santos@gmail.com>
- */
-export class Comparators<T> {
-
-    /**
-     * Creates a comparator function based on the provided comparison function.
-     *
-     * @param {function(T, T): number} comparisonFunction - A function that compares two elements. Should return a negative value if the first element is smaller,
-     *                  a positive value if the first element is larger, or zero if they are equal.
-     * @returns {Comparator<T>} A comparator instance for the given comparison function.
-     *
-     * @example
-     * const compareNumbers = Comparators.comparing((a, b) => a - b);
-     * console.log(compareNumbers(3, 5)); // Output: -2
-     */
-    static comparing<T>(comparisonFunction: (a: T, b: T) => number): Comparators<T> {
-        return (a: T, b: T) => comparisonFunction(a, b);
-    }
-}
-
 declare global {
 
     interface Boolean {

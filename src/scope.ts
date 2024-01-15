@@ -1,4 +1,5 @@
-import {Sequence} from "./sequence";
+
+export {};
 
 /**
  * Kachupa scope functions plus TypeScript type extensions
@@ -271,28 +272,6 @@ declare global {
          * @returns `this` or `undefined`
          */
         takeUnless<T>(this: T, predicate: (it: T) => boolean): T | undefined;
-
-        /**
-         * Creates a lazy sequence of either characters or words from the provided string.
-         *
-         * @param {"char" | "word"} [output="word"] - The output type, either "char" for characters or "word" for words.
-         * @returns {Sequence<string>} A lazy sequence representing characters or words from the input string.
-         *
-         * @example
-         * // Example 1: Sequence of Words (default)
-         * const text = "Hello world! This is a test.";
-         * const wordsSequence = text.asSequence("word");
-         * const wordArray = wordsSequence.toArray();
-         * console.log(wordArray); // Output: ["Hello", "world", "This", "is", "a", "test"]
-         *
-         * @example
-         * // Example 2: Sequence of Characters
-         * const text = "Hello world! This is a test.";
-         * const charSequence = text.asSequence("char");
-         * const charArray = charSequence.toArray();
-         * console.log(charArray); // Output: ["H", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d", "!"]
-         */
-        asSequence<T>(this: T, output?: "char" | "word"): Sequence<T>;
     }
 
     interface Boolean {
@@ -437,10 +416,6 @@ String.prototype.takeIf = function <T>(this: T, predicate: (it: T) => boolean): 
 
 String.prototype.takeUnless = function <T>(this: T, predicate: (it: T) => boolean): T | undefined {
     return predicate(this) ? undefined : this;
-}
-
-String.prototype.asSequence = function <T>(this: T, output?: "char" | "word"): Sequence<T> {
-    return Sequence.fromString(this as string, output) as Sequence<T>;
 }
 
 // Number extensions

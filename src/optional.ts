@@ -205,7 +205,7 @@ export class Optional<T> {
      * @return The value inside the Optional object if it is present.
      * The defaultValue if the Optional object is empty.
      * */
-    orElse(defaultValue: T): T {
+    orElse<R>(defaultValue: R): T | R {
         return this.isPresent() ? this.value! : defaultValue;
     }
 
@@ -217,7 +217,7 @@ export class Optional<T> {
      * @return The value inside the Optional object if it is present.
      * The default value provided by the defaultValueProvider callback function if the Optional object is empty.
      * */
-    orElseGet(defaultValueProvider: () => T): T {
+    orElseGet<R>(defaultValueProvider: () => R): T | R {
         return this.isPresent() ? this.value! : defaultValueProvider();
     }
 
@@ -549,6 +549,29 @@ export class Optional<T> {
             return callback();
         }
         throw new Error("Else operation is only supported on empty optional");
+    }
+
+    /**
+     * Compares the current Optional with another Optional for equality.
+     *
+     * @param {Optional<U>} other - The Optional to compare with.
+     * @returns {boolean} true if the two Optionals are equal, false otherwise.
+     *
+     * @example
+     * const optional1 = Optional.of(42);
+     * const optional2 = Optional.of(42);
+     * const optional3 = Optional.of(99);
+     *
+     * console.log(optional1.equals(optional2)); // true (both contain the same value)
+     * console.log(optional1.equals(optional3)); // false (contain different values)
+     * console.log(optional1.equals(Optional.empty())); // false (one is non-empty, the other is empty)
+     * console.log(Optional.empty().equals(Optional.empty())); // true (both are empty)
+     */
+    equals<U>(other: Optional<U>): boolean {
+        if (typeof this.value === typeof other.value) {
+            return this.value === other.value as unknown as T;
+        }
+        return false;
     }
 }
 

@@ -46,7 +46,7 @@ export class Duration {
      * const duration = Duration.microseconds(5000000);
      */
     static microseconds(microseconds: number): Duration {
-        return new Duration(microseconds * 1e3); // Convert microseconds to milliseconds
+        return new Duration(microseconds / 1e3); // Convert microseconds to milliseconds
     }
 
     /**
@@ -114,7 +114,7 @@ export class Duration {
      * // Output: 120
      */
     inWholeSeconds(): number {
-        return this.milliseconds / 1000;
+        return Math.trunc(this.milliseconds / 1000);
     }
 
     /**
@@ -127,7 +127,7 @@ export class Duration {
      * // Output: 120
      */
     inWholeMinutes(): number {
-        return this.milliseconds / (1000 * 60);
+        return Math.trunc(this.milliseconds / (1000 * 60));
     }
 
     /**
@@ -140,7 +140,7 @@ export class Duration {
      * // Output: 24
      */
     inWholeHours(): number {
-        return this.milliseconds / (1000 * 60 * 60);
+        return Math.trunc(this.milliseconds / (1000 * 60 * 60));
     }
 
     /**
@@ -153,7 +153,7 @@ export class Duration {
      * // Output: 2
      */
     inWholeDays(): number {
-        return this.milliseconds / (1000 * 60 * 60 * 24);
+        return Math.trunc(this.milliseconds / (1000 * 60 * 60 * 24));
     }
 
     /**
@@ -436,7 +436,7 @@ declare global {
 const _global = typeof window !== 'undefined' ? window : globalThis;
 
 _global.durationOf = function (milliseconds: number): Duration {
-    return Duration.microseconds(milliseconds);
+    return Duration.milliseconds(milliseconds);
 }
 
 Number.prototype.seconds = function () {

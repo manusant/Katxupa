@@ -239,7 +239,7 @@ export class Reducer<T> {
      * const minOfAge = Collections.minOfWithOrNull(people, (person) => person.age, (a, b) => a - b);
      * console.log(minOfAge); // Output: { name: 'Bob', age: 25 }
      */
-    minOfWithOrNull<R>(selector: (item: T) => R, comparator: (a: R, b: R) => number): T | undefined {
+    minOfWithOrNull(selector: (item: T) => T, comparator: (a: T, b: T) => number): T | undefined {
         if (this.items.length === 0) {
             return undefined;
         }
@@ -264,7 +264,7 @@ export class Reducer<T> {
      * const maxOfAge = Collections.maxOfWithOrNull(people, (person) => person.age, (a, b) => a - b);
      * console.log(maxOfAge); // Output: { name: 'Charlie', age: 35 }
      */
-    maxOfWithOrNull<R>(selector: (item: T) => R, comparator: (a: R, b: R) => number): T | undefined {
+    maxOfWithOrNull(selector: (item: T) => T, comparator: (a: T, b: T) => number): T | undefined {
         if (this.items.length === 0) {
             return undefined;
         }
@@ -344,7 +344,7 @@ export class Reducer<T> {
      * const minOfAge = Collections.minOfWith(people, (person) => person.age, (a, b) => a - b);
      * console.log(minOfAge); // Output: { name: 'Bob', age: 25 }
      */
-    minOfWith<R>(selector: (item: T) => R, comparator: (a: R, b: R) => number): T {
+    minOfWith(selector: (item: T) => T, comparator: (a: T, b: T) => number): T {
         if (this.items.length === 0) {
             throw new NoSuchElementError('Array is empty');
         }
@@ -372,11 +372,10 @@ export class Reducer<T> {
      * const maxOfAge = Collections.maxOfWith(people, (person) => person.age, (a, b) => a - b);
      * console.log(maxOfAge); // Output: { name: 'Charlie', age: 35 }
      */
-    maxOfWith<R>(selector: (item: T) => R, comparator: (a: R, b: R) => number): T {
+    maxOfWith(selector: (item: T) => T, comparator: (a: T, b: T) => number): T {
         if (this.items.length === 0) {
             throw new NoSuchElementError('Array is empty');
         }
-
         return this.items.reduce((max, current) => (comparator(selector(current), selector(max!)) > 0 ? current : max), this.items[0])!;
     }
 
@@ -393,8 +392,8 @@ export class Reducer<T> {
      * const product = Collections.fold(numbers, (num) => (acc) => acc * num, 1);
      * console.log(product); // Output: 120
      */
-    fold<R>(folder: (current: T) => (accumulator: R) => R, initialValue: R): R {
-        return this.items.reduce((acc, current) => folder(current)(acc), initialValue);
+    fold(folder: (current: T) => (accumulator: T) => T, initialValue?: T): T {
+        return this.reduce((acc, current) => folder(current)(acc), initialValue);
     }
 
     /**
@@ -409,9 +408,9 @@ export class Reducer<T> {
      * const result = Collections.foldRight(numbers, (num) => (acc) => acc - num, 0);
      * console.log(result); // Output: -5 (0 - 1 - 2 - 3 - 4 - 5)
      */
-    foldRight<R>(folder: (current: T) => (accumulator: R) => R, initialValue: R): R {
+    foldRight(folder: (current: T) => (accumulator: T) => T, initialValue?: T): T {
         const reversedItems = [...this.items].reverse();
-        return Reducer.of(reversedItems, this.comparator).fold<R>(folder, initialValue);
+        return Reducer.of(reversedItems, this.comparator).fold(folder, initialValue);
     }
 
     /**
@@ -426,8 +425,8 @@ export class Reducer<T> {
      * const product = Collections.reduceIndexed(numbers, (acc, num, index) => acc * (num + index), 1);
      * console.log(product); // Output: 120 (1 * (1 + 0) * (2 + 1) * (3 + 2) * (4 + 3) * (5 + 4))
      */
-    reduceIndexed<R>(reducer: (accumulator: R, current: T, index: number) => R, initialValue: R): R {
-        return this.items.reduce((acc, current, index) => reducer(acc, current, index), initialValue);
+    reduceIndexed(reducer: (accumulator: T, current: T, index: number) => T, initialValue?: T): T {
+        return this.reduce((acc, current, index) => reducer(acc, current, index), initialValue);
     }
 
     /**
@@ -440,22 +439,24 @@ export class Reducer<T> {
      *
      * @example
      * const numbers = [1, 2, 3, 4, 5];
-     * const product = Collections.foldIndexed(numbers, (num, index) => (acc) => acc * (num + index), 1);
+     * const product = reducer.foldIndexed((num, index) => (acc) => acc * (num + index), 1);
      * console.log(product); // Output: 120 (1 * (1 + 0) * (2 + 1) * (3 + 2) * (4 + 3) * (5 + 4))
      */
-    foldIndexed<R>(folder: (current: T, index: number) => (accumulator: R) => R, initialValue: R): R {
-        return this.items.reduce((acc, current, index) => folder(current, index)(acc), initialValue);
+    foldIndexed(folder: (current: T, index: number) => (accumulator: T) => T, initialValue?: T): T {
+        return this.reduce((acc, current, index) => folder(current, index)(acc), initialValue);
     }
 
     /**
      * Reduces the items in the array to a single value using the specified reducer function.
-     * @template R - The type of the accumulated result.
      * @param  reducerFunction - A function that takes an accumulator and the current item and produces a new accumulator value.
-     * @param {R} initialValue - The initial value of the accumulator.
-     * @returns {R} The final accumulated result.
+     * @param  initialValue - The initial value of the accumulator.
+     * @returns  The final accumulated result.
      */
-    reduce<R>(reducerFunction: (accumulator: R, current: T, index: number) => R, initialValue: R): R {
-        return this.items.reduce(reducerFunction, initialValue);
+    reduce(reducerFunction: (accumulator: T, current: T, index: number) => T, initialValue?: T): T {
+        if (initialValue) {
+            return this.items.reduce(reducerFunction, initialValue);
+        }
+        return this.items.reduce(reducerFunction);
     }
 
     /**
@@ -467,12 +468,12 @@ export class Reducer<T> {
      *
      * @example
      * const numbers = [1, 2, 3, 4, 5];
-     * const result = Collections.reduceRightIndexed(numbers, (acc, num, index) => acc - (num + index), 0);
+     * const result = Collections.reduceRightIndexed(numbers, (acc, num, index) => acc - (num + index));
      * console.log(result); // Output: -9 (0 - (5 + 4) - (4 + 3) - (3 + 2) - (2 + 1) - (1 + 0))
      */
-    reduceRightIndexed<R>(reducer: (accumulator: R, current: T, index: number) => R, initialValue: R): R {
+    reduceRightIndexed(reducer: (accumulator: T, current: T, index: number) => T, initialValue?: T): T {
         const reversedItems = [...this.items].reverse();
-        return Reducer.of(reversedItems, this.comparator).reduceIndexed<R>(reducer, initialValue);
+        return Reducer.of(reversedItems, this.comparator).reduceIndexed(reducer, initialValue);
     }
 
     /**
@@ -487,9 +488,9 @@ export class Reducer<T> {
      * const result = Collections.foldRightIndexed(numbers, (num, index) => (acc) => acc - (num + index), 0);
      * console.log(result); // Output: -9 (0 - (5 + 4) - (4 + 3) - (3 + 2) - (2 + 1) - (1 + 0))
      */
-    foldRightIndexed<R>(folder: (current: T, index: number) => (accumulator: R) => R, initialValue: R): R {
+    foldRightIndexed(folder: (current: T, index: number) => (accumulator: T) => T, initialValue?: T): T {
         const reversedItems = [...this.items].reverse();
-        return Reducer.of(reversedItems, this.comparator).foldIndexed<R>(folder, initialValue);
+        return Reducer.of(reversedItems, this.comparator).foldIndexed(folder, initialValue);
     }
 
     /**
@@ -501,14 +502,14 @@ export class Reducer<T> {
      *
      * @example
      * const numbers = [1, 2, 3, 4, 5];
-     * const result = Collections.runningFold(numbers, (num) => (acc) => acc + num, 0);
+     * const result = numbers.runningFold((num) => (acc) => acc + num);
      * console.log(result); // Output: [0, 1, 3, 6, 10, 15] (0, 0 + 1, (0 + 1) + 2, ((0 + 1) + 2) + 3, (((0 + 1) + 2) + 3) + 4, ((((0 + 1) + 2) + 3) + 4) + 5)
      */
-    runningFold<R>(folder: (current: T) => (accumulator: R) => R, initialValue: R): R[] {
+    runningFold(folder: (current: T) => (accumulator: T) => T, initialValue?: T): T[] {
         return this.items.reduce((acc, current) => {
             const newAcc = folder(current)(acc[acc.length - 1]);
             return [...acc, newAcc];
-        }, [initialValue]);
+        }, initialValue ? [initialValue] : [this.items[0]]);
     }
 
     /**
@@ -520,14 +521,14 @@ export class Reducer<T> {
      *
      * @example
      * const numbers = [1, 2, 3, 4, 5];
-     * const result = Collections.runningReduce(numbers, (acc, num) => acc + num, 0);
+     * const result = Collections.runningReduce(numbers, (acc, num) => acc + num);
      * console.log(result); // Output: [1, 3, 6, 10, 15] (1, 1 + 2, (1 + 2) + 3, ((1 + 2) + 3) + 4, (((1 + 2) + 3) + 4) + 5)
      */
-    runningReduce<R>(reducer: (accumulator: R, current: T) => R, initialValue: R): R[] {
+    runningReduce(reducer: (accumulator: T, current: T) => T, initialValue?: T): T[] {
         return this.items.reduce((acc, current) => {
             const newAcc = reducer(acc[acc.length - 1], current);
             return [...acc, newAcc];
-        }, [initialValue]);
+        }, initialValue ? [initialValue] : [this.items[0]]);
     }
 
     /**
@@ -542,11 +543,11 @@ export class Reducer<T> {
      * const result = Collections.runningFoldIndexed(numbers, (num, index) => (acc) => acc + (num + index), 0);
      * console.log(result); // Output: [0, 1, 4, 9, 16, 25] (0, 0 + (1 + 0), (0 + (1 + 0)) + (2 + 1), ((0 + (1 + 0)) + (2 + 1)) + (3 + 2), (((0 + (1 + 0)) + (2 + 1)) + (3 + 2)) + (4 + 3), ((((0 + (1 + 0)) + (2 + 1)) + (3 + 2)) + (4 + 3)) + (5 + 4))
      */
-    runningFoldIndexed<R>(folder: (current: T, index: number) => (accumulator: R) => R, initialValue: R): R[] {
+    runningFoldIndexed(folder: (current: T, index: number) => (accumulator: T) => T, initialValue?: T): T[] {
         return this.items.reduce((acc, current, index) => {
             const newAcc = folder(current, index)(acc[acc.length - 1]);
             return [...acc, newAcc];
-        }, [initialValue]);
+        }, initialValue ? [initialValue] : [this.items[0]]);
     }
 
     /**
@@ -561,11 +562,11 @@ export class Reducer<T> {
      * const result = Collections.runningReduceIndexed(numbers, (acc, num, index) => acc + (num + index), 0);
      * console.log(result); // Output: [1, 4, 9, 16, 25] (1, 1 + (2 + 1), (1 + (2 + 1)) + (3 + 2), ((1 + (2 + 1)) + (3 + 2)) + (4 + 3), (((1 + (2 + 1)) + (3 + 2)) + (4 + 3)) + (5 + 4))
      */
-    runningReduceIndexed<R>(reducer: (accumulator: R, current: T, index: number) => R, initialValue: R): R[] {
+    runningReduceIndexed(reducer: (accumulator: T, current: T, index: number) => T, initialValue?: T): T[] {
         return this.items.reduce((acc, current, index) => {
             const newAcc = reducer(acc[acc.length - 1], current, index);
             return [...acc, newAcc];
-        }, [initialValue]);
+        }, initialValue ? [initialValue] : [this.items[0]]);
     }
 }
 

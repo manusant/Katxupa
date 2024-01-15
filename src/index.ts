@@ -1,6 +1,5 @@
 export * from './scope';
 export * from './optional';
-export * from './sequence';
 export * from './range';
 export * from './duration';
 export * from './result';
