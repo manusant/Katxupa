@@ -189,58 +189,18 @@ microseconds, milliseconds, seconds, minutes, hours, and days).
 ```ts
 // Example 1
 durationOf(1000)
-    .toSeconds()
+    .inWholeSeconds()
     .letIt(it => {
         console.log(`1000 milliseconds are the same as ${it} seconds`);
     });
 
 // Example 2
-const oneYearInMinutes = (1).years().toHours().toMinutes();
-console.log(`1 year is approximately ${oneYearInMinutes} minutes.`);
+const oneYearInMinutes = (1).years().inWholeMinutes();
+console.log(`1 year is ${oneYearInMinutes} minutes.`);
 
 // Example 3
 const duration = (1).years().add((6).months()).toString();
 console.log(duration); // Output: 548d 0h 0m 0s 0ns
-```
-
-### Sequence
-The **Katxupa** _**sequenceOf()**_ global function creates a lazy sequence using a generator function or from an [Iterable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterable_protocol).
-```ts
-// Example 1: Creating a sequence of numbers and performing operations
-const numberSequence = new Sequence(function* () {
-    for (let i = 1; i <= 5; i++) {
-        yield i;
-    }
-});
-
-console.log(numberSequence.toList()); // Output: [1, 2, 3, 4, 5]
-
-// Example 2: Summing a sequence of numbers
-const sumResult = numberSequence.sum();
-console.log(sumResult); // Output: 15
-
-// Example 3: Mapping elements in a sequence
-const squaredNumbers = numberSequence.map(x => x * x);
-console.log(squaredNumbers.toList()); // Output: [1, 4, 9, 16, 25]
-
-// Example 4: Filtering elements in a sequence
-const evenNumbers = numberSequence.filter(x => x % 2 === 0);
-console.log(evenNumbers.toList()); // Output: [2, 4]
-
-// Example 5: Taking and dropping elements from a sequence
-const takenNumbers = numberSequence.take(3);
-console.log(takenNumbers.toList()); // Output: [1, 2, 3]
-
-const droppedNumbers = numberSequence.drop(2);
-console.log(droppedNumbers.toList()); // Output: [3, 4, 5]
-
-// Example 6: Chaining operations
-const chainedSequence = numberSequence
-    .filter(x => x > 2)
-    .map(x => x * 2)
-    .take(2);
-
-console.log(chainedSequence.toList()); // Output: [6, 8]
 ```
 
 ### Range
