@@ -272,13 +272,13 @@ Array.prototype.minus = function <T>(other: T[]): T[] {
 }
 
 Array.prototype.minusAssign = function <T>(collection: T[]): T[] {
-    for (const element of collection) {
-        const index = this.indexOf(element);
-        while (index !== -1) {
-            this.splice(index, 1);
-            // Continue searching for duplicate occurrences
-        }
-    }
+    // Create a new array by filtering out elements from the collection
+    const resultArray = this.filter((element) => !collection.includes(element));
+
+    // Clear the existing array and copy the elements from the resultArray
+    this.length = 0;
+    this.push(...resultArray);
+
     return this;
 }
 
