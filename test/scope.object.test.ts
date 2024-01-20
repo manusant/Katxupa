@@ -17,9 +17,9 @@ describe('Object extensions', () => {
         expect(result).toBe(5);
     });
 
-    it('should run the block with the receiver and return this value using apply', () => {
+    it('should run the block with the receiver and return this value using applyIt', () => {
         const obj = {prop1: 'value1', prop2: 'value2'};
-        const result = obj.apply(function () {
+        const result = obj.applyIt(function () {
             console.log(this.prop1);
             this.prop2 = 'modifiedValue';
         });
@@ -27,9 +27,9 @@ describe('Object extensions', () => {
         expect(obj.prop2).toBe('modifiedValue');
     });
 
-    it('should run the block with the receiver and return this value using also', () => {
+    it('should run the block with the receiver and return this value using alsoIt', () => {
         const obj = {prop1: 'value1', prop2: 'value2'};
-        const result = obj.also((it)=>{
+        const result = obj.alsoIt((it)=>{
             console.log(`Name: ${it.prop1}, Age: ${it.prop2}`);
         });
         expect(result).toEqual(obj);

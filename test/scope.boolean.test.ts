@@ -17,9 +17,9 @@ describe('Boolean extensions', () => {
         expect(result).toBe(false);
     });
 
-    it('should run the block with the receiver and return this value using apply for Boolean', () => {
+    it('should run the block with the receiver and return this value using applyIt for Boolean', () => {
         const bool = true;
-        const result = bool.apply(function () {
+        const result = bool.applyIt(function () {
             console.log(this ? 'Yes' : 'No');
         });
         expect(result).toBe(bool);

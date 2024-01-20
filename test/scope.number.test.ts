@@ -17,9 +17,9 @@ describe('Number extensions', () => {
         expect(result).toBe(8);
     });
 
-    it('should run the block with the receiver and return this value using apply for Number', () => {
+    it('should run the block with the receiver and return this value using applyIt for Number', () => {
         const num = 5;
-        const result = num.apply(function () {
+        const result = num.applyIt(function () {
             console.log(this * 2);
         });
         expect(result).toBe(num);

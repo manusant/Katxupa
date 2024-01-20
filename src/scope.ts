@@ -64,12 +64,12 @@ declare global {
          *
          * @example
          * const person = { name: "John", age: 30 };
-         * const result = person.also((it) => {
+         * const result = person.alsoIt((it) => {
          *     console.log(`Name: ${it.name}, Age: ${it.age}`);
          * });
          * console.log(result === person); // Output: true (Example output; actual output will vary)
          */
-        also<T>(this: T, block: (it: T) => void): T;
+        alsoIt<T>(this: T, block: (it: T) => void): T;
 
         /**
          * Calls the specified function block with this value as its receiver and returns its result.
@@ -94,14 +94,14 @@ declare global {
          *
          * @example
          * const obj = { prop1: 'value1', prop2: 'value2' };
-         * const result = obj.apply(function(this) {
+         * const result = obj.applyIt(function(this) {
          *     // Access and modify the receiver using 'this'
          *     console.log(this.prop1);
          *     this.prop2 = 'modifiedValue';
          * });
          * console.log(result === obj); // Output: true (Example output; actual output will vary)
          */
-        apply<T>(this: T, block: (this: T) => void): T;
+        applyIt<T>(this: T, block: (this: T) => void): T;
 
         /**
          * Returns `this` value if it satisfies the given predicate or `undefined` if it doesn't
@@ -142,12 +142,12 @@ declare global {
          *
          * @example
          * const person = { name: "John", age: 30 };
-         * const result = person.also((it) => {
+         * const result = person.alsoIt((it) => {
          *     console.log(`Name: ${it.name}, Age: ${it.age}`);
          * });
          * console.log(result === person); // Output: true (Example output; actual output will vary)
          */
-        also<T>(this: T, block: (it: T) => void): T;
+        alsoIt<T>(this: T, block: (it: T) => void): T;
 
         /**
          * Calls the specified function block with this value as its receiver and returns its result.
@@ -172,14 +172,14 @@ declare global {
          *
          * @example
          * const obj = { prop1: 'value1', prop2: 'value2' };
-         * const result = obj.apply(function(this) {
+         * const result = obj.applyIt(function(this) {
          *     // Access and modify the receiver using 'this'
          *     console.log(this.prop1);
          *     this.prop2 = 'modifiedValue';
          * });
          * console.log(result === obj); // Output: true (Example output; actual output will vary)
          */
-        apply<T>(this: T, block: (this: T) => void): T;
+        applyIt<T>(this: T, block: (this: T) => void): T;
 
         /**
          * Returns `this` value if it satisfies the given predicate or `undefined` if it doesn't
@@ -220,12 +220,12 @@ declare global {
          *
          * @example
          * const person = { name: "John", age: 30 };
-         * const result = person.also((it) => {
+         * const result = person.alsoIt((it) => {
          *     console.log(`Name: ${it.name}, Age: ${it.age}`);
          * });
          * console.log(result === person); // Output: true (Example output; actual output will vary)
          */
-        also<T>(this: T, block: (it: T) => void): T;
+        alsoIt<T>(this: T, block: (it: T) => void): T;
 
         /**
          * Calls the specified function block with this value as its receiver and returns its result.
@@ -250,14 +250,14 @@ declare global {
          *
          * @example
          * const obj = { prop1: 'value1', prop2: 'value2' };
-         * const result = obj.apply(function(this: typeof obj) {
+         * const result = obj.applyIt(function(this: typeof obj) {
          *     // Access and modify the receiver using 'this'
          *     console.log(this.prop1);
          *     this.prop2 = 'modifiedValue';
          * });
          * console.log(result === obj); // Output: true (Example output; actual output will vary)
          */
-        apply<T>(this: T, block: (this: T) => void): T;
+        applyIt<T>(this: T, block: (this: T) => void): T;
 
         /**
          * Returns `this` value if it satisfies the given predicate or `undefined` if it doesn't
@@ -298,12 +298,12 @@ declare global {
          *
          * @example
          * const person = { name: "John", age: 30 };
-         * const result = person.also((it) => {
+         * const result = person.alsoIt((it) => {
          *     console.log(`Name: ${it.name}, Age: ${it.age}`);
          * });
          * console.log(result === person); // Output: true (Example output; actual output will vary)
          */
-        also<T>(this: T, block: (it: T) => void): T;
+        alsoIt<T>(this: T, block: (it: T) => void): T;
 
         /**
          * Calls the specified function block with this value as its receiver and returns its result.
@@ -328,14 +328,14 @@ declare global {
          *
          * @example
          * const obj = { prop1: 'value1', prop2: 'value2' };
-         * const result = obj.apply(function(this: typeof obj) {
+         * const result = obj.applyIt(function(this: typeof obj) {
          *     // Access and modify the receiver using 'this'
          *     console.log(this.prop1);
          *     this.prop2 = 'modifiedValue';
          * });
          * console.log(result === obj); // Output: true (Example output; actual output will vary)
          */
-        apply<T>(this: T, block: (this: T) => void): T;
+        applyIt<T>(this: T, block: (this: T) => void): T;
 
         /**
          * Returns `this` value if it satisfies the given predicate or `undefined` if it doesn't
@@ -373,12 +373,12 @@ Object.prototype.runIt = function <T, R>(this: T, block: (this: T) => R): R {
     return block.call(this);
 }
 
-Object.prototype.also = function <T>(this: T, block: (it: T) => void): T {
+Object.prototype.alsoIt = function <T>(this: T, block: (it: T) => void): T {
     block(this);
     return this;
 };
 
-Object.prototype.apply = function <T>(this: T, block: (this: T) => void): T {
+Object.prototype.applyIt = function <T>(this: T, block: (this: T) => void): T {
     block.call(this);
     return this;
 }
@@ -400,12 +400,12 @@ String.prototype.runIt = function <T, R>(this: T, block: (this: T) => R): R {
     return block.call(this);
 }
 
-String.prototype.also = function <T>(this: T, block: (it: T) => void): T {
+String.prototype.alsoIt = function <T>(this: T, block: (it: T) => void): T {
     block(this);
     return this;
 };
 
-String.prototype.apply = function <T>(this: T, block: (this: T) => void): T {
+String.prototype.applyIt = function <T>(this: T, block: (this: T) => void): T {
     block.call(this);
     return this;
 }
@@ -427,12 +427,12 @@ Number.prototype.runIt = function <T, R>(this: T, block: (this: T) => R): R {
     return block.call(this);
 }
 
-Number.prototype.also = function <T>(this: T, block: (it: T) => void): T {
+Number.prototype.alsoIt = function <T>(this: T, block: (it: T) => void): T {
     block(this);
     return this;
 };
 
-Number.prototype.apply = function <T>(this: T, block: (this: T) => void): T {
+Number.prototype.applyIt = function <T>(this: T, block: (this: T) => void): T {
     block.call(this);
     return this;
 }
@@ -454,12 +454,12 @@ Boolean.prototype.runIt = function <T, R>(this: T, block: (this: T) => R): R {
     return block.call(this);
 }
 
-Boolean.prototype.also = function <T>(this: T, block: (it: T) => void): T {
+Boolean.prototype.alsoIt = function <T>(this: T, block: (it: T) => void): T {
     block(this);
     return this;
 };
 
-Boolean.prototype.apply = function <T>(this: T, block: (this: T) => void): T {
+Boolean.prototype.applyIt = function <T>(this: T, block: (this: T) => void): T {
     block.call(this);
     return this;
 }

@@ -26,7 +26,7 @@ describe('Set Functions', () => {
     });
 
     describe('Set extensions', () => {
-        let set1: Set, set2;
+        let set1, set2;
 
         beforeEach(() => {
             set1 = setOf(1, 2, 3);

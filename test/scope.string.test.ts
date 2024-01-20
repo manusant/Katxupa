@@ -17,9 +17,9 @@ describe('String extensions', () => {
         expect(result).toBe(5);
     });
 
-    it('should run the block with the receiver and return this value using apply for String', () => {
+    it('should run the block with the receiver and return this value using applyIt for String', () => {
         const str = "Hello";
-        const result = str.apply(function () {
+        const result = str.applyIt(function () {
             console.log(this.toLowerCase());
         });
         expect(result).toBe(str);
