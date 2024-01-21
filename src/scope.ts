@@ -41,6 +41,7 @@ declare global {
     function withIt<T, R>(receiver: T, block: (this: T) => R): R;
 
     interface Object {
+
         /**
          * Calls the specified function block with this value as its argument and returns its result.
          *
@@ -365,109 +366,230 @@ _global.withIt = function <T, R>(receiver: T, block: (this: T) => R): R {
 }
 
 // Object extensions
-Object.prototype.letIt = function <T, R>(this: T, block: (it: T) => R): R {
-    return block(this);
-}
+Object.defineProperty(Object.prototype, 'letIt', {
+    value: function <T, R>(this: T, block: (it: T) => R): R {
+        return block(this);
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Object.prototype.runIt = function <T, R>(this: T, block: (this: T) => R): R {
-    return block.call(this);
-}
+Object.defineProperty(Object.prototype, 'runIt', {
+    value: function <T, R>(this: T, block: (this: T) => R): R {
+        return block.call(this);
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Object.prototype.alsoIt = function <T>(this: T, block: (it: T) => void): T {
-    block(this);
-    return this;
-};
+Object.defineProperty(Object.prototype, 'alsoIt', {
+    value: function <T>(this: T, block: (it: T) => void): T {
+        block(this);
+        return this;
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Object.prototype.applyIt = function <T>(this: T, block: (this: T) => void): T {
-    block.call(this);
-    return this;
-}
+Object.defineProperty(Object.prototype, 'applyIt', {
+    value: function <T>(this: T, block: (this: T) => void): T {
+        block.call(this);
+        return this;
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Object.prototype.takeIf = function <T>(this: T, predicate: (it: T) => boolean): T | undefined {
-    return predicate(this as T) ? this : undefined;
-}
+Object.defineProperty(Object.prototype, 'takeIf', {
+    value: function <T>(this: T, predicate: (it: T) => boolean): T | undefined {
+        return predicate(this as T) ? this : undefined;
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Object.prototype.takeUnless = function <T>(this: T, predicate: (it: T) => boolean): T | undefined {
-    return predicate(this) ? undefined : this;
-}
+Object.defineProperty(Object.prototype, 'takeUnless', {
+    value: function <T>(this: T, predicate: (it: T) => boolean): T | undefined {
+        return predicate(this) ? undefined : this;
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
 // String extensions
-String.prototype.letIt = function <T, R>(this: T, block: (it: T) => R): R {
-    return block(this);
-}
+Object.defineProperty(String.prototype, 'letIt', {
+    value: function <T, R>(this: T, block: (it: T) => R): R {
+        return block(this);
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-String.prototype.runIt = function <T, R>(this: T, block: (this: T) => R): R {
-    return block.call(this);
-}
+Object.defineProperty(String.prototype, 'runIt', {
+    value: function <T, R>(this: T, block: (this: T) => R): R {
+        return block.call(this);
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-String.prototype.alsoIt = function <T>(this: T, block: (it: T) => void): T {
-    block(this);
-    return this;
-};
+Object.defineProperty(String.prototype, 'alsoIt', {
+    value: function <T>(this: T, block: (it: T) => void): T {
+        block(this);
+        return this;
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-String.prototype.applyIt = function <T>(this: T, block: (this: T) => void): T {
-    block.call(this);
-    return this;
-}
+Object.defineProperty(String.prototype, 'applyIt', {
+    value: function <T>(this: T, block: (this: T) => void): T {
+        block.call(this);
+        return this;
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-String.prototype.takeIf = function <T>(this: T, predicate: (it: T) => boolean): T | undefined {
-    return predicate(this as T) ? this : undefined;
-}
+Object.defineProperty(String.prototype, 'takeIf', {
+    value: function <T>(this: T, predicate: (it: T) => boolean): T | undefined {
+        return predicate(this as T) ? this : undefined;
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-String.prototype.takeUnless = function <T>(this: T, predicate: (it: T) => boolean): T | undefined {
-    return predicate(this) ? undefined : this;
-}
+Object.defineProperty(String.prototype, 'takeUnless', {
+    value: function <T>(this: T, predicate: (it: T) => boolean): T | undefined {
+        return predicate(this) ? undefined : this;
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
+
 
 // Number extensions
-Number.prototype.letIt = function <T, R>(this: T, block: (it: T) => R): R {
-    return block(this);
-}
+Object.defineProperty(Number.prototype, 'letIt', {
+    value: function <T, R>(this: T, block: (it: T) => R): R {
+        return block(this);
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Number.prototype.runIt = function <T, R>(this: T, block: (this: T) => R): R {
-    return block.call(this);
-}
+Object.defineProperty(Number.prototype, 'runIt', {
+    value: function <T, R>(this: T, block: (this: T) => R): R {
+        return block.call(this);
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Number.prototype.alsoIt = function <T>(this: T, block: (it: T) => void): T {
-    block(this);
-    return this;
-};
+Object.defineProperty(Number.prototype, 'alsoIt', {
+    value: function <T>(this: T, block: (it: T) => void): T {
+        block(this);
+        return this;
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Number.prototype.applyIt = function <T>(this: T, block: (this: T) => void): T {
-    block.call(this);
-    return this;
-}
+Object.defineProperty(Number.prototype, 'applyIt', {
+    value: function <T>(this: T, block: (this: T) => void): T {
+        block.call(this);
+        return this;
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Number.prototype.takeIf = function <T>(this: T, predicate: (it: T) => boolean): T | undefined {
-    return predicate(this as T) ? this : undefined;
-}
+Object.defineProperty(Number.prototype, 'takeIf', {
+    value: function <T>(this: T, predicate: (it: T) => boolean): T | undefined {
+        return predicate(this as T) ? this : undefined;
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Number.prototype.takeUnless = function <T>(this: T, predicate: (it: T) => boolean): T | undefined {
-    return predicate(this) ? undefined : this;
-}
+Object.defineProperty(Number.prototype, 'takeUnless', {
+    value: function <T>(this: T, predicate: (it: T) => boolean): T | undefined {
+        return predicate(this) ? undefined : this;
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
 // Boolean extensions
-Boolean.prototype.letIt = function <T, R>(this: T, block: (it: T) => R): R {
-    return block(this);
-}
+Object.defineProperty(Boolean.prototype, 'letIt', {
+    value: function <T, R>(this: T, block: (it: T) => R): R {
+        return block(this);
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Boolean.prototype.runIt = function <T, R>(this: T, block: (this: T) => R): R {
-    return block.call(this);
-}
+Object.defineProperty(Boolean.prototype, 'runIt', {
+    value: function <T, R>(this: T, block: (this: T) => R): R {
+        return block.call(this);
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Boolean.prototype.alsoIt = function <T>(this: T, block: (it: T) => void): T {
-    block(this);
-    return this;
-};
+Object.defineProperty(Boolean.prototype, 'alsoIt', {
+    value: function <T>(this: T, block: (it: T) => void): T {
+        block(this);
+        return this;
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Boolean.prototype.applyIt = function <T>(this: T, block: (this: T) => void): T {
-    block.call(this);
-    return this;
-}
+Object.defineProperty(Boolean.prototype, 'applyIt', {
+    value: function <T>(this: T, block: (this: T) => void): T {
+        block.call(this);
+        return this;
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Boolean.prototype.takeIf = function <T>(this: T, predicate: (it: T) => boolean): T | undefined {
-    return predicate(this as T) ? this : undefined;
-}
+Object.defineProperty(Boolean.prototype, 'takeIf', {
+    value: function <T>(this: T, predicate: (it: T) => boolean): T | undefined {
+        return predicate(this as T) ? this : undefined;
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Boolean.prototype.takeUnless = function <T>(this: T, predicate: (it: T) => boolean): T | undefined {
-    return predicate(this) ? undefined : this;
-}
+Object.defineProperty(Boolean.prototype, 'takeUnless', {
+    value: function <T>(this: T, predicate: (it: T) => boolean): T | undefined {
+        return predicate(this) ? undefined : this;
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});

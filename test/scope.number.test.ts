@@ -6,6 +6,7 @@ describe('Number extensions', () => {
             console.log(value * 2);
             return value + 3;
         });
+        result.hours()
         expect(result).toBe(8);
     });
 
