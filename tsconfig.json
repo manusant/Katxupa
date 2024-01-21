@@ -12,7 +12,8 @@
     "lib": ["esnext", "dom"]
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    ".katxupa-eslintrc.js"
   ],
   "exclude": [
     "node_modules",
