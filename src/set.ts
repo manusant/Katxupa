@@ -135,30 +135,65 @@ _global.emptySet = function <T>(): ReadonlySet<T> {
 }
 
 // Set Extension
-Set.prototype.intersection = function <T>(other: Set<T>): Set<T> {
-    return new Set([...this].filter((element) => other.has(element)));
-}
+Object.defineProperty(Set.prototype, 'intersection', {
+    value: function <T>(this: Set<T>, other: Set<T>): Set<T> {
+        return new Set([...this].filter((element) => other.has(element)));
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Set.prototype.union = function <T>(other: Set<T>): Set<T> {
-    return new Set([...this, ...other]);
-}
+Object.defineProperty(Set.prototype, 'union', {
+    value: function <T>(this: Set<T>, other: Set<T>): Set<T> {
+        return new Set([...this, ...other]);
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Set.prototype.difference = function <T>(other: Set<T>): Set<T> {
-    return new Set([...this].filter((element) => !other.has(element)));
-}
+Object.defineProperty(Set.prototype, 'difference', {
+    value: function <T>(this: Set<T>, other: Set<T>): Set<T> {
+        return new Set([...this].filter((element) => !other.has(element)));
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Set.prototype.isSubsetOf = function <T>(other: Set<T>): boolean {
-    return [...this].every((element) => other.has(element));
-}
+Object.defineProperty(Set.prototype, 'isSubsetOf', {
+    value: function <T>(this: Set<T>, other: Set<T>): boolean {
+        return [...this].every((element) => other.has(element));
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Set.prototype.isSupersetOf = function <T>(other: Set<T>): boolean {
-    return [...other].every((element) => this.has(element));
-}
+Object.defineProperty(Set.prototype, 'isSupersetOf', {
+    value: function <T>(this: Set<T>, other: Set<T>): boolean {
+        return [...other].every((element) => this.has(element));
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Set.prototype.map = function <T, U>(transform: (element: T) => U): Set<U> {
-    return new Set([...this].map(transform));
-}
+Object.defineProperty(Set.prototype, 'map', {
+    value: function <T, U>(this: Set<T>, transform: (element: T) => U): Set<U> {
+        return new Set([...this].map(transform));
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Set.prototype.filter = function <T>(predicate: (element: T) => boolean): Set<T> {
-    return new Set([...this].filter(predicate));
-}
+Object.defineProperty(Set.prototype, 'filter', {
+    value: function <T>(this: Set<T>, predicate: (element: T) => boolean): Set<T> {
+        return new Set([...this].filter(predicate));
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});

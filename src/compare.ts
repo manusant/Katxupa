@@ -1,3 +1,5 @@
+import {Optional} from "./optional";
+
 /**
  * Interface representing a comparable object that can be compared to another object of the same type.
  *
@@ -169,25 +171,40 @@ declare global {
 }
 
 // Extend the Number prototype
-Number.prototype.compareTo = function <T>(this: number, other: T): number {
-    if (typeof other !== 'number') {
-        throw new Error('Comparison with non-number is not supported');
-    }
-    return this - other;
-};
+Object.defineProperty(Number.prototype, 'compareTo', {
+    value: function <T>(this: number, other: T): number {
+        if (typeof other !== 'number') {
+            throw new Error('Comparison with non-number is not supported');
+        }
+        return this - other;
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
 // Extend the String prototype
-String.prototype.compareTo = function <T>(this: string, other: T): number {
-    if (typeof other !== 'string') {
-        throw new Error('Comparison with non-string is not supported');
-    }
-    return this.localeCompare(other);
-};
+Object.defineProperty(String.prototype, 'compareTo', {
+    value: function <T>(this: string, other: T): number {
+        if (typeof other !== 'string') {
+            throw new Error('Comparison with non-string is not supported');
+        }
+        return this.localeCompare(other);
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
 // Extend the Boolean prototype
-Boolean.prototype.compareTo = function <T>(this: boolean, other: T): number {
-    if (typeof other !== 'boolean') {
-        throw new Error('Comparison with non-boolean is not supported');
-    }
-    return this === other ? 0 : this ? 1 : -1;
-};
+Object.defineProperty(Boolean.prototype, 'compareTo', {
+    value: function <T>(this: boolean, other: T): number {
+        if (typeof other !== 'boolean') {
+            throw new Error('Comparison with non-boolean is not supported');
+        }
+        return this === other ? 0 : this ? 1 : -1;
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});

@@ -439,36 +439,72 @@ _global.durationOf = function (milliseconds: number): Duration {
     return Duration.milliseconds(milliseconds);
 }
 
-Number.prototype.seconds = function () {
-    return Duration.seconds(this.valueOf());
-};
+Object.defineProperty(Number.prototype, 'seconds', {
+    value: function (this: number) {
+        return Duration.seconds(this.valueOf());
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Number.prototype.minutes = function () {
-    return Duration.minutes(this.valueOf());
-};
+Object.defineProperty(Number.prototype, 'minutes', {
+    value: function (this: number) {
+        return Duration.minutes(this.valueOf());
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Number.prototype.hours = function () {
-    return Duration.hours(this.valueOf());
-};
+Object.defineProperty(Number.prototype, 'hours', {
+    value: function (this: number) {
+        return Duration.hours(this.valueOf());
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Number.prototype.milliseconds = function () {
-    return Duration.milliseconds(this.valueOf());
-};
 
-Number.prototype.days = function () {
-    return Duration.days(this.valueOf());
-};
+Object.defineProperty(Number.prototype, 'milliseconds', {
+    value: function (this: number) {
+        return Duration.milliseconds(this.valueOf());
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Number.prototype.months = function () {
-    // Assuming each month has 30 days
-    const daysInMonth = 30;
-    const totalDays = this.valueOf() * daysInMonth;
-    return Duration.days(totalDays);
-};
+Object.defineProperty(Number.prototype, 'days', {
+    value: function (this: number) {
+        return Duration.days(this.valueOf());
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Number.prototype.years = function () {
-    // Assuming each year has 365 days
-    const daysInYear = 365;
-    const totalDays = this.valueOf() * daysInYear;
-    return Duration.days(totalDays);
-};
+Object.defineProperty(Number.prototype, 'months', {
+    value: function (this: number) {
+        // Assuming each month has 30 days
+        const daysInMonth = 30;
+        const totalDays = this.valueOf() * daysInMonth;
+        return Duration.days(totalDays);
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
+
+Object.defineProperty(Number.prototype, 'years', {
+    value: function (this: number) {
+        // Assuming each year has 365 days
+        const daysInYear = 365;
+        const totalDays = this.valueOf() * daysInYear;
+        return Duration.days(totalDays);
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});

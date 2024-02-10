@@ -627,6 +627,11 @@ _global.reducerOf = function <T>(items: T[], comparator: Comparator<T>): Reducer
     return Reducer.of(items, comparator);
 }
 
-Array.prototype.reducer = function <T>(comparator: Comparator<T>) {
-    return reducerOf(this, comparator);
-};
+Object.defineProperty(Array.prototype, 'reducer', {
+    value: function <T>(this: Array<T>, comparator: Comparator<T>) {
+        return reducerOf(this, comparator);
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});

@@ -63,18 +63,6 @@ declare global {
         mapIndexed<U>(transform: (element: T, index: number) => U): ReadonlyArray<U>;
 
         /**
-         * Sorts the collection in descending order.
-         *
-         * @return this - reference of the sorted array
-         *
-         * @example
-         * const numbers = [3, 1, 4, 1, 5, 9, 2];
-         * collection.sortDescending();
-         * // numbers is now [9, 5, 4, 3, 2, 1, 1]
-         */
-        sortDescending(): T[];
-
-        /**
          * Sorts the collection using the provided comparator function.
          *
          * @param {function(T, T): number} comparator - The function to compare elements.
@@ -240,98 +228,171 @@ _global.emptyList = function <T>(): ReadonlyArray<T> {
 }
 
 // Array extensions
-Array.prototype.associateWith = function <T, K, V>(
-    keySelector: (element: T) => K,
-    valueSelector: (element: T) => V,
-): Record<string, V> {
-    return this.reduce((result, element) => {
-        const key = keySelector(element);
-        result[key as string] = valueSelector(element);
-        return result;
-    }, {} as Record<string, V>);
-}
+Object.defineProperty(Array.prototype, 'associateWith', {
+    value: function <T, K, V>(
+        this: Array<T>,
+        keySelector: (element: T) => K,
+        valueSelector: (element: T) => V,
+    ): Record<string, V> {
+        return this.reduce((result, element) => {
+            const key = keySelector(element);
+            result[key as string] = valueSelector(element);
+            return result;
+        }, {} as Record<string, V>);
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Array.prototype.mapIndexed = function <T, U>(transform: (element: T, index: number) => U): ReadonlyArray<U> {
-    return this.map((element, index) => transform(element, index));
-}
+Object.defineProperty(Array.prototype, 'mapIndexed', {
+    value: function <T, U>(
+        this: Array<T>,
+        transform: (element: T, index: number) => U
+    ): ReadonlyArray<U> {
+        return this.map((element, index) => transform(element, index));
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Array.prototype.sortDescending = function <T>(): T[] {
-    return this.sort((a, b) => (b as any) - (a as any));
-}
+Object.defineProperty(Array.prototype, 'sortBy', {
+    value: function <T>(
+        this: Array<T>,
+        comparator: (a: T, b: T) => number
+    ): T[] {
+        return this.sort(comparator);
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Array.prototype.sortBy = function <T>(comparator: (a: T, b: T) => number): T[] {
-    return this.sort(comparator);
-}
+Object.defineProperty(Array.prototype, 'plus', {
+    value: function <T>(this: Array<T>, other: T[]): T[] {
+        return this.concat(other);
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Array.prototype.plus = function <T>(other: T[]): T[] {
-    return this.concat(other);
-}
+Object.defineProperty(Array.prototype, 'minus', {
+    value: function <T>(this: Array<T>, other: T[]): T[] {
+        return this.filter((element) => !other.includes(element));
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Array.prototype.minus = function <T>(other: T[]): T[] {
-    return this.filter((element) => !other.includes(element));
-}
+Object.defineProperty(Array.prototype, 'minusAssign', {
+    value: function <T>(this: Array<T>, collection: T[]): T[] {
+        // Create a new array by filtering out elements from the collection
+        const resultArray = this.filter((element) => !collection.includes(element));
 
-Array.prototype.minusAssign = function <T>(collection: T[]): T[] {
-    // Create a new array by filtering out elements from the collection
-    const resultArray = this.filter((element) => !collection.includes(element));
+        // Clear the existing array and copy the elements from the resultArray
+        this.length = 0;
+        this.push(...resultArray);
 
-    // Clear the existing array and copy the elements from the resultArray
-    this.length = 0;
-    this.push(...resultArray);
+        return this;
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-    return this;
-}
+Object.defineProperty(Array.prototype, 'plusAssign', {
+    value: function <T>(this: Array<T>, other: T[]): T[] {
+        this.push(...other);
+        return this;
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Array.prototype.plusAssign = function <T>(other: T[]): T[] {
-    this.push(...other);
-    return this;
-}
+Object.defineProperty(Array.prototype, 'count', {
+    value: function <T>(this: Array<T>): number {
+        return this.length;
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Array.prototype.count = function <T>(): number {
-    return this.length;
-}
+Object.defineProperty(Array.prototype, 'removeAll', {
+    value: function <T>(this: Array<T>, predicate: ((item: T) => boolean) | T[]): T[] {
+        if (Array.isArray(predicate)) {
+            // Remove elements based on a collection
+            return this.filter(item => !predicate.includes(item));
+        } else {
+            // Remove elements based on a predicate
+            return this.filter(item => !predicate(item));
+        }
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Array.prototype.removeAll = function <T>(predicate: ((item: T) => boolean) | T[]): T[] {
-    if (Array.isArray(predicate)) {
-        // Remove elements based on a collection
-        return this.filter(item => !predicate.includes(item));
-    } else {
-        // Remove elements based on a predicate
-        return this.filter(item => !predicate(item));
-    }
-}
+Object.defineProperty(Array.prototype, 'retainAll', {
+    value: function <T>(this: Array<T>, predicate: ((item: T) => boolean) | T[]): T[] {
+        if (Array.isArray(predicate)) {
+            // Retain elements based on a collection
+            return this.filter(item => predicate.includes(item));
+        } else {
+            // Retain elements based on a predicate
+            return this.filter(item => predicate(item));
+        }
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Array.prototype.retainAll = function <T>(predicate: ((item: T) => boolean) | T[]): T[] {
-    if (Array.isArray(predicate)) {
-        // Retain elements based on a collection
-        return this.filter(item => predicate.includes(item));
-    } else {
-        // Retain elements based on a predicate
-        return this.filter(item => predicate(item));
-    }
-}
+Object.defineProperty(Array.prototype, 'last', {
+    value: function <T>(this: Array<T>): T {
+        if (this.length === 0) {
+            throw new NoSuchElementError("Array is empty");
+        }
+        return this[this.length - 1]!;
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Array.prototype.last = function <T>(): T {
-    if (this.length === 0) {
-        throw new NoSuchElementError("Array is empty");
-    }
-    return this[this.length - 1]!;
-}
+Object.defineProperty(Array.prototype, 'getOrElse', {
+    value: function <T>(this: Array<T>, index: number, defaultValueProvider: () => T): T {
+        return index >= 0 && index < this.length ? this[index]! : defaultValueProvider();
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Array.prototype.getOrElse = function <T>(index: number, defaultValueProvider: () => T): T {
-    return index >= 0 && index < this.length ? this[index]! : defaultValueProvider();
-}
+Object.defineProperty(Array.prototype, 'getOrEmpty', {
+    value: function <T>(this: Array<T>, index: number): Optional<T | undefined> {
+        return index >= 0 && index < this.length ? Optional.of(this[index]) : Optional.empty();
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
-Array.prototype.getOrEmpty = function <T>(index: number): Optional<T> {
-    return index >= 0 && index < this.length ? Optional.of(this[index]) : Optional.empty();
-}
-
-Array.prototype.shuffle = function <T>(): T[] {
-    for (let i = this.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [this[i], this[j]] = [this[j]!, this[i]!];
-    }
-    return this;
-}
+Object.defineProperty(Array.prototype, 'shuffle', {
+    value: function <T>(this: Array<T>): T[] {
+        for (let i = this.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [this[i], this[j]] = [this[j]!, this[i]!];
+        }
+        return this;
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
 
 
