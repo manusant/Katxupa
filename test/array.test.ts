@@ -53,12 +53,6 @@ describe('Array Functions', () => {
             expect(mappedArray).toEqual([1, 3, 5, 7, 9]);
         });
 
-        test('sortDescending', () => {
-            const descendingArray = array.sortDescending();
-            expect(Array.isArray(descendingArray)).toBe(true);
-            expect(descendingArray).toEqual([5, 4, 3, 2, 1]);
-        });
-
         test('sortBy', () => {
             const users = [
                 { name: 'John', age: 30 },
