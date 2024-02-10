@@ -158,7 +158,7 @@ declare global {
          * @param {((item: T) => boolean) | T[]} predicate - The predicate function or collection of elements to retain.
          * @returns {T[]} - A new array containing only the elements that satisfy the provided predicate or are present in the provided collection.
          * @example
-         * const collection = new Collection(1, 2, 3, 4, 5);
+         * const collection = mutableListOf(1, 2, 3, 4, 5);
          * const elementsToRetain = [3, 5];
          * const result = collection.retainAll(elementsToRetain);
          * // result is [3, 5]
@@ -166,11 +166,22 @@ declare global {
         retainAll(predicate: ((item: T) => boolean) | T[]): T[];
 
         /**
+         * Returns the first element in the collection.
+         * @returns {T} - The first element in the collection.
+         * @throws {NoSuchElementError} - If the collection is empty.
+         * @example
+         * const collection = mutableListOf(1, 2, 3);
+         * const firstElement = collection.first();
+         * // firstElement is 1
+         */
+        first(): T;
+
+        /**
          * Returns the last element in the collection.
          * @returns {T} - The last element in the collection.
          * @throws {NoSuchElementError} - If the collection is empty.
          * @example
-         * const collection = new Collection(1, 2, 3);
+         * const collection = mutableListOf(1, 2, 3);
          * const lastElement = collection.last();
          * // lastElement is 3
          */
@@ -182,7 +193,7 @@ declare global {
          * @param {() => T} defaultValueProvider - A function providing the default value.
          * @returns {T} - The element at the specified index or the default value if the index is out of bounds.
          * @example
-         * const collection = new Collection(1, 2, 3, 4, 5);
+         * const collection = mutableListOf(1, 2, 3, 4, 5);
          * const element = collection.getOrElse(2, () => 10);
          * // element is 3
          */
@@ -193,7 +204,7 @@ declare global {
          * @param {number} index - The index of the element.
          * @returns {Optional<T>} - An optional containing the element if it exists, otherwise an empty optional.
          * @example
-         * const collection = new Collection(1, 2, 3, 4, 5);
+         * const collection = mutableListOf(1, 2, 3, 4, 5);
          * const optionalElement = collection.getOrEmpty(2);
          * // optionalElement contains the value Optional.of(3)
          */
@@ -204,7 +215,7 @@ declare global {
          *
          * @return this - reference to affected array
          * @example
-         * const collection = new Collection(1, 2, 3, 4, 5);
+         * const collection = mutableListOf(1, 2, 3, 4, 5);
          * collection.shuffle();
          * // collection is now shuffled randomly, e.g., [3, 1, 5, 2, 4]
          */
@@ -352,12 +363,24 @@ Object.defineProperty(Array.prototype, 'retainAll', {
     configurable: false
 });
 
+Object.defineProperty(Array.prototype, 'first', {
+    value: function <T>(this: Array<T>): T {
+        if (this.length === 0) {
+            throw new NoSuchElementError("Array is empty");
+        }
+        return this[0];
+    },
+    enumerable: false,
+    writable: false,
+    configurable: false
+});
+
 Object.defineProperty(Array.prototype, 'last', {
     value: function <T>(this: Array<T>): T {
         if (this.length === 0) {
             throw new NoSuchElementError("Array is empty");
         }
-        return this[this.length - 1]!;
+        return this[this.length - 1];
     },
     enumerable: false,
     writable: false,

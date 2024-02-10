@@ -68,7 +68,7 @@ yarn add katxupa
 
 ## Usage
 ### Scope Functions
-Simply call any value with **_letIt_**, **_runIt_**, **_also_** or **_apply_**, and it'll be passed as the argument or the context of a scope function.
+Simply call any value with **_letIt_**, **_runIt_**, **_alsoIt_** or **_applyIt_**, and it'll be passed as the argument or the context of a scope function.
 
 ```ts
 const person = {name: "Manuel", email: "ney.br.santos@gmail.com", age: 35};
@@ -77,7 +77,7 @@ person.letIt(it => {
     console.log(`${it.name},`);
     it.age < 30 ? console.log("A Young Man") : console.log("An Old Man");
     return it.age;
-}).also(it => {
+}).alsoIt(it => {
     console.log(`Actual Age is ${it}`);
 });
 // Output:
@@ -103,7 +103,7 @@ You can execute a block of code only if a value is neither null nor undefined:
 ```ts
 const data: string | null = await getData();
 
-data?.also(it => console.log(`Already initialized: ${it}`)) ?? console.log("Still not initialized");
+data?.alsoIt(it => console.log(`Already initialized: ${it}`)) ?? console.log("Still not initialized");
 ```
 The above code is equivalent to:
 ```ts
@@ -120,7 +120,7 @@ const account = await accountService.getAccount(id);
 
 account.takeIf(it => {
     return addressBook.has(it.email);
-})?.also(it => {
+})?.alsoIt(it => {
     emailService.send(it.email, "You are entitled for crypto airdrop")
 }) ?? console.log(`Account with ${id} not found in the system`);
 ```
