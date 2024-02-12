@@ -82,73 +82,6 @@
     </div>
     <div data-md-component="announce">
       
-        <aside class="md-banner">
-          <div class="md-banner__inner md-grid md-typeset">
-            
-              <button class="md-banner__button md-icon" aria-label="Don't show this again">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
-              </button>
-            
-            
-<style>
-  .md-banner__inner {
-    margin: 0.3rem auto
-  }
-  .general-announcement {
-    border-radius: 4px;
-    padding: 0 10px;
-    border: 2px solid #00adef;
-  }
-  .general-announcement p {
-    color:#FFF;
-    font-weight: bold;
-
-    margin: 0.5rem 0;
-  }
-  .general-announcement p:first-of-type::before {
-    content: '❕';
-  }
-  .general-announcement a {
-    background-image: linear-gradient(
-      to right,
-      #FFF,
-      #FFF 50%,
-      #00adef 50%
-    );
-    background-size: 200% 100%;
-    background-position: -100%;
-    display: inline-block;
-    padding: 1px 0;
-    position: relative;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: all 0.3s ease-in-out;
-  }
-  .general-announcement a:before{
-    content: '';
-    background: #00adef;
-    display: block;
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 0;
-    height: 3px;
-    transition: all 0.3s ease-in-out;
-  }
-  .general-announcement a:hover {
-    background-position: 0;
-  }
-  .general-announcement a:hover::before{
-    width: 100%;
-  }
-</style>
-
-          </div>
-          
-            <script>var content,el=document.querySelector("[data-md-component=announce]");el&&(content=el.querySelector(".md-typeset"),__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0))</script>
-          
-        </aside>
-      
     </div>
     
     
@@ -736,13 +669,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sequence" class="md-nav__link">
-    Sequence
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#range" class="md-nav__link">
     Range
   </a>
@@ -915,13 +841,6 @@
           <li class="md-nav__item">
   <a href="#duration" class="md-nav__link">
     Duration
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sequence" class="md-nav__link">
-    Sequence
   </a>
   
 </li>
@@ -1264,8 +1183,8 @@ microseconds, milliseconds, seconds, minutes, hours, and days).</p>
 <a id="__codelineno-10-13" name="__codelineno-10-13"></a><span class="kd">const</span><span class="w"> </span><span class="nx">duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">1</span><span class="p">).</span><span class="nx">years</span><span class="p">().</span><span class="nx">add</span><span class="p">((</span><span class="mf">6</span><span class="p">).</span><span class="nx">months</span><span class="p">()).</span><span class="nx">toString</span><span class="p">();</span>
 <a id="__codelineno-10-14" name="__codelineno-10-14"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">duration</span><span class="p">);</span><span class="w"> </span><span class="c1">// Output: 548d 0h 0m 0s 0ns</span>
 </code></pre></div></td></tr></table></div>
-<h3 id="sequence">Sequence<a class="headerlink" href="#sequence" title="Permanent link">#</a></h3>
-<p>The <strong>Katxupa</strong> <em><strong>sequenceOf()</strong></em> global function creates a lazy sequence using a generator function or from an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterable_protocol">Iterable</a>.
+<h3 id="range">Range<a class="headerlink" href="#range" title="Permanent link">#</a></h3>
+<p>The <code>Range</code> class provides utility methods for working with numeric ranges.</p>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">TypeScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
@@ -1284,97 +1203,25 @@ microseconds, milliseconds, seconds, minutes, hours, and days).</p>
 <span class="normal"><a href="#__codelineno-11-16">16</a></span>
 <span class="normal"><a href="#__codelineno-11-17">17</a></span>
 <span class="normal"><a href="#__codelineno-11-18">18</a></span>
-<span class="normal"><a href="#__codelineno-11-19">19</a></span>
-<span class="normal"><a href="#__codelineno-11-20">20</a></span>
-<span class="normal"><a href="#__codelineno-11-21">21</a></span>
-<span class="normal"><a href="#__codelineno-11-22">22</a></span>
-<span class="normal"><a href="#__codelineno-11-23">23</a></span>
-<span class="normal"><a href="#__codelineno-11-24">24</a></span>
-<span class="normal"><a href="#__codelineno-11-25">25</a></span>
-<span class="normal"><a href="#__codelineno-11-26">26</a></span>
-<span class="normal"><a href="#__codelineno-11-27">27</a></span>
-<span class="normal"><a href="#__codelineno-11-28">28</a></span>
-<span class="normal"><a href="#__codelineno-11-29">29</a></span>
-<span class="normal"><a href="#__codelineno-11-30">30</a></span>
-<span class="normal"><a href="#__codelineno-11-31">31</a></span>
-<span class="normal"><a href="#__codelineno-11-32">32</a></span>
-<span class="normal"><a href="#__codelineno-11-33">33</a></span>
-<span class="normal"><a href="#__codelineno-11-34">34</a></span>
-<span class="normal"><a href="#__codelineno-11-35">35</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="c1">// Example 1: Creating a sequence of numbers and performing operations</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">numberSequence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Sequence</span><span class="p">(</span><span class="kd">function</span><span class="o">*</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="nx">i</span><span class="p">;</span>
-<a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="p">});</span>
-<a id="__codelineno-11-7" name="__codelineno-11-7"></a>
-<a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numberSequence</span><span class="p">.</span><span class="nx">toList</span><span class="p">());</span><span class="w"> </span><span class="c1">// Output: [1, 2, 3, 4, 5]</span>
-<a id="__codelineno-11-9" name="__codelineno-11-9"></a>
-<a id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="c1">// Example 2: Summing a sequence of numbers</span>
-<a id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="kd">const</span><span class="w"> </span><span class="nx">sumResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">numberSequence</span><span class="p">.</span><span class="nx">sum</span><span class="p">();</span>
-<a id="__codelineno-11-12" name="__codelineno-11-12"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sumResult</span><span class="p">);</span><span class="w"> </span><span class="c1">// Output: 15</span>
-<a id="__codelineno-11-13" name="__codelineno-11-13"></a>
-<a id="__codelineno-11-14" name="__codelineno-11-14"></a><span class="c1">// Example 3: Mapping elements in a sequence</span>
-<a id="__codelineno-11-15" name="__codelineno-11-15"></a><span class="kd">const</span><span class="w"> </span><span class="nx">squaredNumbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">numberSequence</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">x</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">x</span><span class="p">);</span>
-<a id="__codelineno-11-16" name="__codelineno-11-16"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">squaredNumbers</span><span class="p">.</span><span class="nx">toList</span><span class="p">());</span><span class="w"> </span><span class="c1">// Output: [1, 4, 9, 16, 25]</span>
-<a id="__codelineno-11-17" name="__codelineno-11-17"></a>
-<a id="__codelineno-11-18" name="__codelineno-11-18"></a><span class="c1">// Example 4: Filtering elements in a sequence</span>
-<a id="__codelineno-11-19" name="__codelineno-11-19"></a><span class="kd">const</span><span class="w"> </span><span class="nx">evenNumbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">numberSequence</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">x</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
-<a id="__codelineno-11-20" name="__codelineno-11-20"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">evenNumbers</span><span class="p">.</span><span class="nx">toList</span><span class="p">());</span><span class="w"> </span><span class="c1">// Output: [2, 4]</span>
-<a id="__codelineno-11-21" name="__codelineno-11-21"></a>
-<a id="__codelineno-11-22" name="__codelineno-11-22"></a><span class="c1">// Example 5: Taking and dropping elements from a sequence</span>
-<a id="__codelineno-11-23" name="__codelineno-11-23"></a><span class="kd">const</span><span class="w"> </span><span class="nx">takenNumbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">numberSequence</span><span class="p">.</span><span class="nx">take</span><span class="p">(</span><span class="mf">3</span><span class="p">);</span>
-<a id="__codelineno-11-24" name="__codelineno-11-24"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">takenNumbers</span><span class="p">.</span><span class="nx">toList</span><span class="p">());</span><span class="w"> </span><span class="c1">// Output: [1, 2, 3]</span>
-<a id="__codelineno-11-25" name="__codelineno-11-25"></a>
-<a id="__codelineno-11-26" name="__codelineno-11-26"></a><span class="kd">const</span><span class="w"> </span><span class="nx">droppedNumbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">numberSequence</span><span class="p">.</span><span class="nx">drop</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span>
-<a id="__codelineno-11-27" name="__codelineno-11-27"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">droppedNumbers</span><span class="p">.</span><span class="nx">toList</span><span class="p">());</span><span class="w"> </span><span class="c1">// Output: [3, 4, 5]</span>
-<a id="__codelineno-11-28" name="__codelineno-11-28"></a>
-<a id="__codelineno-11-29" name="__codelineno-11-29"></a><span class="c1">// Example 6: Chaining operations</span>
-<a id="__codelineno-11-30" name="__codelineno-11-30"></a><span class="kd">const</span><span class="w"> </span><span class="nx">chainedSequence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">numberSequence</span>
-<a id="__codelineno-11-31" name="__codelineno-11-31"></a><span class="w">    </span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">x</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span>
-<a id="__codelineno-11-32" name="__codelineno-11-32"></a><span class="w">    </span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">x</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span>
-<a id="__codelineno-11-33" name="__codelineno-11-33"></a><span class="w">    </span><span class="p">.</span><span class="nx">take</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span>
-<a id="__codelineno-11-34" name="__codelineno-11-34"></a>
-<a id="__codelineno-11-35" name="__codelineno-11-35"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">chainedSequence</span><span class="p">.</span><span class="nx">toList</span><span class="p">());</span><span class="w"> </span><span class="c1">// Output: [6, 8]</span>
-</code></pre></div></td></tr></table></div></p>
-<h3 id="range">Range<a class="headerlink" href="#range" title="Permanent link">#</a></h3>
-<p>The <code>Range</code> class provides utility methods for working with numeric ranges.</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">TypeScript</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-12-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-12-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-12-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-12-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-12-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-12-10">10</a></span>
-<span class="normal"><a href="#__codelineno-12-11">11</a></span>
-<span class="normal"><a href="#__codelineno-12-12">12</a></span>
-<span class="normal"><a href="#__codelineno-12-13">13</a></span>
-<span class="normal"><a href="#__codelineno-12-14">14</a></span>
-<span class="normal"><a href="#__codelineno-12-15">15</a></span>
-<span class="normal"><a href="#__codelineno-12-16">16</a></span>
-<span class="normal"><a href="#__codelineno-12-17">17</a></span>
-<span class="normal"><a href="#__codelineno-12-18">18</a></span>
-<span class="normal"><a href="#__codelineno-12-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="c1">// Example 1: Creating a Numeric Range</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">numericRange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Range</span><span class="p">.</span><span class="nx">rangeTo</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numericRange</span><span class="p">);</span><span class="w"> </span><span class="c1">// Output: [1, 3, 5]</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4"></a>
-<a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="c1">// Example 2: Creating a Numeric Range (Exclusive)</span>
-<a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="kd">const</span><span class="w"> </span><span class="nx">numericRangeAlias</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">rangeUntil</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
-<a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numericRangeAlias</span><span class="p">);</span><span class="w"> </span><span class="c1">// Output: [1, 3, 5]</span>
-<a id="__codelineno-12-8" name="__codelineno-12-8"></a>
-<a id="__codelineno-12-9" name="__codelineno-12-9"></a><span class="c1">// Example 3: Checking if a Value is in Range</span>
-<a id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="kd">const</span><span class="w"> </span><span class="nx">isInRange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Range</span><span class="p">.</span><span class="nx">inRange</span><span class="p">(</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">);</span>
-<a id="__codelineno-12-11" name="__codelineno-12-11"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isInRange</span><span class="p">);</span><span class="w"> </span><span class="c1">// Output: true</span>
-<a id="__codelineno-12-12" name="__codelineno-12-12"></a>
-<a id="__codelineno-12-13" name="__codelineno-12-13"></a><span class="c1">// Example 4: Range with chaining Operations </span>
-<a id="__codelineno-12-14" name="__codelineno-12-14"></a><span class="nx">rangeTo</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span>
-<a id="__codelineno-12-15" name="__codelineno-12-15"></a><span class="w">    </span><span class="p">.</span><span class="nx">runIt</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-12-16" name="__codelineno-12-16"></a><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`multiplying the following range of numbers: </span><span class="si">${</span><span class="k">this</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<a id="__codelineno-12-17" name="__codelineno-12-17"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">it</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">it</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span>
-<a id="__codelineno-12-18" name="__codelineno-12-18"></a><span class="w">            </span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">it</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">it</span><span class="p">));</span>
-<a id="__codelineno-12-19" name="__codelineno-12-19"></a><span class="w">    </span><span class="p">});</span>
+<span class="normal"><a href="#__codelineno-11-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="c1">// Example 1: Creating a Numeric Range</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">numericRange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Range</span><span class="p">.</span><span class="nx">rangeTo</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numericRange</span><span class="p">);</span><span class="w"> </span><span class="c1">// Output: [1, 3, 5]</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="c1">// Example 2: Creating a Numeric Range (Exclusive)</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="kd">const</span><span class="w"> </span><span class="nx">numericRangeAlias</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">rangeUntil</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numericRangeAlias</span><span class="p">);</span><span class="w"> </span><span class="c1">// Output: [1, 3, 5]</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a>
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="c1">// Example 3: Checking if a Value is in Range</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="kd">const</span><span class="w"> </span><span class="nx">isInRange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Range</span><span class="p">.</span><span class="nx">inRange</span><span class="p">(</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">);</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isInRange</span><span class="p">);</span><span class="w"> </span><span class="c1">// Output: true</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12"></a>
+<a id="__codelineno-11-13" name="__codelineno-11-13"></a><span class="c1">// Example 4: Range with chaining Operations </span>
+<a id="__codelineno-11-14" name="__codelineno-11-14"></a><span class="nx">rangeTo</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15"></a><span class="w">    </span><span class="p">.</span><span class="nx">runIt</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16"></a><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`multiplying the following range of numbers: </span><span class="si">${</span><span class="k">this</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">it</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">it</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18"></a><span class="w">            </span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">it</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">it</span><span class="p">));</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19"></a><span class="w">    </span><span class="p">});</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="global_utility_functions">Global Utility Functions<a class="headerlink" href="#global_utility_functions" title="Permanent link">#</a></h3>
 <p>Global functions are the unsung heroes that transcend the boundaries of specific data types, providing a universal
