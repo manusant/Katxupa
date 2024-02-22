@@ -487,8 +487,8 @@ Object.defineProperty(Number.prototype, 'days', {
 
 Object.defineProperty(Number.prototype, 'months', {
     value: function (this: number) {
-        // Assuming each month has 30 days
-        const daysInMonth = 30;
+        // Assuming each month has 30.4375 days
+        const daysInMonth = 30.4375;
         const totalDays = this.valueOf() * daysInMonth;
         return Duration.days(totalDays);
     },
@@ -500,7 +500,7 @@ Object.defineProperty(Number.prototype, 'months', {
 Object.defineProperty(Number.prototype, 'years', {
     value: function (this: number) {
         // Assuming each year has 365 days
-        const daysInYear = 365;
+        const daysInYear = 365.25;
         const totalDays = this.valueOf() * daysInYear;
         return Duration.days(totalDays);
     },
