@@ -167,6 +167,26 @@ export class Optional<T> {
         return this;
     }
 
+    /**
+     * Executes a provided predicate function on the wrapped value and throws an error if the predicate returns true.
+     *
+     * @template T - The type of the wrapped value.
+     * @param {(value: T) => boolean} predicate - A function that takes the wrapped value and returns a boolean.
+     *     If true, an error will be thrown.
+     * @param {() => Error} errorProvider - A function that provides the error to be thrown if the predicate is true.
+     * @returns {Optional<T>} - The current Optional instance.
+     * @throws {Error} - Throws an error provided by the errorProvider if the predicate is true.
+     * @throws {Error} - Throws an error if called on an empty Optional.
+     * @example
+     * const optional = Optional.of(42);
+     * optional.ifThrow((value) => value < 0, () => new Error("Value must be non-negative"));
+     * // If the wrapped value is negative, it throws an error with the specified message.
+     *
+     * @example
+     * const emptyOptional = Optional.empty();
+     * emptyOptional.ifThrow(() => false, () => new Error("This will not be executed"));
+     * // Throws an error since ifThrow cannot be called on an empty Optional.
+     */
     ifThrow(predicate: (value: T) => boolean, errorProvider: () => Error): Optional<T> {
         this.ifEmptyThrow(() => new Error("'ifThrow' can only be called for non empty optionals"));
         if (predicate(this.value!)) {
@@ -175,6 +195,28 @@ export class Optional<T> {
         return this;
     }
 
+    /**
+     * Applies a predicate function to the wrapped value and returns an Optional containing the result of applying
+     * the mapper function if the predicate returns true, otherwise returns the current Optional.
+     *
+     * @template U - The type of the value returned by the mapper function.
+     * @param {(value: T) => boolean} predicate - A function that takes the wrapped value and returns a boolean.
+     *     If true, the mapper function will be applied.
+     * @param {(value: T) => U} mapper - A function that takes the wrapped value and returns a new value of type U.
+     * @returns {Optional<U | T>} - An Optional containing the result of applying the mapper function if the predicate
+     *     returns true, otherwise returns the current Optional.
+     * @throws {Error} - Throws an error if called on an empty Optional.
+     * @example
+     * const optional = Optional.of(42);
+     * const newOptional = optional.if((value) => value > 10, (value) => value * 2);
+     * // If the wrapped value is greater than 10, returns an Optional containing the result of doubling the value.
+     * // Otherwise, returns the original Optional.
+     *
+     * @example
+     * const emptyOptional = Optional.empty();
+     * emptyOptional.if(() => false, (value) => value * 2);
+     * // Throws an error since 'if' cannot be called on an empty Optional.
+     */
     if<U>(predicate: (value: T) => boolean, mapper: (value: T) => U): Optional<U | T> {
         this.ifEmptyThrow(() => new Error("'if' can only be called for non empty optionals"));
         if (predicate(this.value!)) {
@@ -213,6 +255,15 @@ export class Optional<T> {
      * The orElseGet method  is used to retrieve the value inside the Optional object if it is
      * present, or get a default value from a callback function if the Optional object is empty.
      *
+     * @example
+     * const optional = Optional.of("Hello");
+     * const result = optional.orElseGet(() => "Default Value");
+     * console.log(result); // Output: "Hello"
+     *
+     * const emptyOptional = Optional.empty();
+     * const defaultValue = emptyOptional.orElseGet(() => "Default Value");
+     * console.log(defaultValue); // Output: "Default Value"
+     *
      * @param defaultValueProvider (function) - A callback function that returns a default value of type T.
      * @return The value inside the Optional object if it is present.
      * The default value provided by the defaultValueProvider callback function if the Optional object is empty.
@@ -224,6 +275,14 @@ export class Optional<T> {
     /**
      * The orElseThrow method  is used to retrieve the Optional object if it is present,
      * or throw an error if the Optional object is empty.
+     *
+     * @example
+     * const optionalValue = Optional.of("Hello");
+     * const value = optionalValue.orElseThrow(() => new Error("Value is not present"));
+     * console.log(value); // Output: "Hello"
+     *
+     * const emptyOptional = Optional.empty();
+     * emptyOptional.orElseThrow(() => new Error("Value is not present")); // Throws an error
      *
      * @param errorProvider (function) - A callback function that returns an Error object
      * @return The Optional object if it is not empty.
@@ -239,6 +298,16 @@ export class Optional<T> {
     /**
      * The map method is used to transform the value inside the Optional object using a provided mapper function,
      * or return a default value if the Optional is empty.
+     *
+     * @example
+     * const optional = Optional.of(5); // Create an Optional object with a value of 5
+     * const mappedOptional = optional.map(value => value * 2); // Map the value to its double
+     * console.log(mappedOptional.get()); // Output: 10
+     *
+     * const emptyOptional = Optional.empty(); // Create an empty Optional object
+     * const defaultValue = 0;
+     * const mappedEmptyOptional = emptyOptional.map(value => value * 2, defaultValue); // Map the value to its double or use the default value if empty
+     * console.log(mappedEmptyOptional.get()); // Output: 0
      *
      * @param mapper - A function that takes the current value of type T and returns a new value of type U.
      * @param defaultValue - default value when the optional is empty
@@ -261,6 +330,11 @@ export class Optional<T> {
      * to the value inside the Optional object and return a new Optional object
      * with the mapped value. If the original Optional object is empty, it throws an error.
      *
+     * @example
+     * const optional = Optional.of(5);
+     * const mappedOptional = optional.flatMap(value => Optional.of(value * 2));
+     * console.log(mappedOptional.get()); // Output: 10
+     *
      * @param mapper (function) - A function that takes the value of type T inside the Optional object and returns an
      * Optional object with a mapped value of type U.
      * @return Returns a new Optional object with the mapped value.
@@ -278,6 +352,24 @@ export class Optional<T> {
      * that returns a promise of an Optional object, and if the current optional value is present, it applies the mapper
      * function and returns the result. If the current optional value is empty, it returns an empty Optional object.
      *
+     * @example
+     * const optionalValue = Optional.of(5);
+     * const asyncMapper = (value: number) => {
+     *   return new Promise<Optional<number>>((resolve) => {
+     *     setTimeout(() => {
+     *       resolve(Optional.of(value * 2));
+     *     }, 1000);
+     *   });
+     * };
+     *
+     * optionalValue.flatMapAsync(asyncMapper)
+     *   .then((result) => {
+     *     console.log(result.get()); // Output: 10
+     *   })
+     *   .catch((error) => {
+     *     console.error(error);
+     *   });
+     *
      *  @param mapper - A function that takes the current value of the optional and returns a promise of an Optional object.
      *  @return An Optional object that contains the result of the mapper function, or an empty Optional object if the current optional value is empty
      * */
@@ -292,6 +384,15 @@ export class Optional<T> {
      * The filter method  is used to filter the value inside the Optional object based on a given
      * predicate function. It returns a new Optional object containing the filtered value if the original Optional object
      * is present, or an empty Optional object if the original Optional object is not present.
+     *
+     * @example
+     * const optional = Optional.of([1, 2, 3, 4, 5]); // Create an Optional object with an array value
+     * const filteredOptional = optional.filter(value => value > 3); // Filter the array to keep only values greater than 3
+     * console.log(filteredOptional.get()); // Output: [4, 5]
+     *
+     * const emptyOptional = Optional.empty(); // Create an empty Optional object
+     * const filteredEmptyOptional = emptyOptional.filter(value => value > 3); // Filter the empty Optional object
+     * console.log(filteredEmptyOptional.isEmpty()); // Output: true
      *
      * @param predicate (function) - A predicate function that takes a value of type T and returns a boolean value
      * indicating whether the value should be included in the filtered result or not.
@@ -336,6 +437,13 @@ export class Optional<T> {
      * The isEmpty method  checks if the value inside the
      * Optional object is empty or not.
      *
+     * @example
+     * const optionalValue = Optional.of("Hello"); // Create an Optional object with a non-empty value
+     * console.log(optionalValue.isEmpty()); // Output: false
+     *
+     * const emptyOptional = Optional.empty(); // Create an Optional object with an empty value
+     * console.log(emptyOptional.isEmpty()); // Output: true
+     *
      * @return A boolean value indicating whether the value inside the Optional object is empty or not. true if the value
      * is empty, false otherwise.
      * */
@@ -361,6 +469,10 @@ export class Optional<T> {
     /**
      * The ifEmpty method  executes a specified action if the value inside the Optional object is empty.
      *
+     * @example
+     * const optional = Optional.of(null);
+     * optional.ifEmpty(() => console.log("Value is empty")); // Output: "Value is empty"
+     *
      * @param action A callback function that performs an action when the value inside the Optional object is empty.
      * @return Returns the Optional object itself.
      * */
@@ -373,6 +485,13 @@ export class Optional<T> {
 
     /**
      * The ifEmptyThrow method  throws an error if the value inside the Optional object is empty, otherwise it returns optional.
+     *
+     * @example
+     * const optional = Optional.of("value");
+     * optional.ifEmptyThrow(() => new Error("Value is empty")); // Returns the optional object
+     *
+     * const emptyOptional = Optional.empty();
+     * emptyOptional.ifEmptyThrow(() => new Error("Value is empty")); // Throws an error
      *
      * @param errorProvider A callback function that returns an Error object.
      * @return Returns the Optional object if it is not empty or Throws an error if the Optional object is empty.
@@ -388,6 +507,15 @@ export class Optional<T> {
      * The ifEmptyGet method  returns the value inside the Optional object if it is not empty,
      * otherwise it returns a default value provided by a callback function.
      *
+     * @example
+     * const optional = Optional.of("Hello");
+     * const result = optional.ifEmptyGet(() => "Default Value");
+     * console.log(result); // Output: "Hello"
+     *
+     * const emptyOptional = Optional.empty();
+     * const defaultValue = emptyOptional.ifEmptyGet(() => "Default Value");
+     * console.log(defaultValue); // Output: "Default Value"
+     *
      * @param defaultValueProvider A callback function that returns a default value of type T.
      * @return Returns the value inside the Optional object if it is not empty or the default value provided by the defaultValueProvider callback function if the Optional object is empty.
      * */
@@ -397,6 +525,12 @@ export class Optional<T> {
 
     /**
      * The contains method  checks if the value inside the Optional object contains a given search value.
+     *
+     * @example
+     * const optional = Optional.of([1, 2, 3, 4, 5]);
+     * const searchValue = 3;
+     * const result = optional.contains(searchValue);
+     * console.log(result); // true
      *
      * @param searchValue (generic type) - The value to search for in the Optional object.
      * @return boolean: Returns true if the value inside the Optional object contains the search value, otherwise returns false.
@@ -479,6 +613,11 @@ export class Optional<T> {
      * The match method  checks if the value inside the
      * Optional object matches a given condition.
      *
+     * @example
+     * const optional = Optional.of(5);
+     * const isEven = optional.match(value => value % 2 === 0);
+     * console.log(isEven); // true
+     *
      * @param condition (function or RegExp): The condition to check against the value inside the Optional object.
      * @returnboolean: Returns true if the value inside the Optional object matches the given condition, otherwise returns false.
      * */
@@ -498,6 +637,11 @@ export class Optional<T> {
      * The run method in the Optional class allows you to execute a callback function on the value stored in the Optional
      * object and return a new Optional object with the result.
      *
+     * @example
+     * const optional = Optional.of(5); // Create an Optional object with a value of 5
+     * const newOptional = optional.run(value => value * 2); // Execute the callback function on the value and create a new Optional object with the result
+     * console.log(newOptional.get()); // Output: 10
+     *
      * @param callback - A function that takes the value stored in the Optional object as an argument and returns a result of type R.
      * @return Returns a new Optional object that contains the result of executing the callback function on the value stored in the original Optional object.
      * */
@@ -511,6 +655,23 @@ export class Optional<T> {
 
     /**
      * The runAsync method in the Optional class allows you to asynchronously execute a callback function on the value contained within the Optional object.
+     *
+     * @example
+     * const optional = Optional.of(5); // Create an Optional object with a value of 5
+     *
+     * const asyncCallback = async (value: number) => {
+     *   // Perform some asynchronous operation on the value
+     *   const result = await someAsyncFunction(value);
+     *   return result;
+     * };
+     *
+     * const resultPromise = optional.runAsync(asyncCallback); // Execute the async callback on the value
+     *
+     * resultPromise.then(result => {
+     *   console.log(result); // Output the result of the asynchronous operation
+     * }).catch(error => {
+     *   console.error(error); // Handle any errors that occurred during the asynchronous operation
+     * });
      *
      * @param callback - A callback function that takes the value of type T and returns a Promise of type R.
      * This function represents the asynchronous operation to be performed on the value.
@@ -540,6 +701,15 @@ export class Optional<T> {
     /**
      * The elseAsync method in the Optional class is used to execute a callback function asynchronously if the optional
      * value is empty. It returns a promise that resolves to the result of the callback function.
+     *
+     * @example
+     * const optionalValue: Optional<number> = Optional.of(5);
+     * const result = await optionalValue.elseAsync(() => Promise.resolve(10));
+     * console.log(result); // Output: 5
+     *
+     * const emptyOptional: Optional<number> = Optional.empty();
+     * const alternativeResult = await emptyOptional.elseAsync(() => Promise.resolve(10));
+     * console.log(alternativeResult); // Output: 10
      *
      * @param callback - A function that returns a promise. This function will be executed if the optional value is empty.
      * @return A promise that resolves to the result of the callback function if the optional value is empty.
