@@ -2,14 +2,11 @@
 
 <p align="center">
   <img src="/docs/assets/logo.png" />
-  </p>
   <br/>
-  <span align="center">
+  <span align="center" style="font-size: x-large; font-weight: normal">
   Delicious Dish for Typescript and JavaScript projects
   </span> 
 </p>
-
-**Delicious Dish for Typescript and JavaScript projects.**
 
 ```ts
 runIt(() => {
