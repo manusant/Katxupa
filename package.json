@@ -30,6 +30,7 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
+    "doc": "npx typedoc src/index.ts",
     "release": "pnpm build && pnpm test && pnpm publish --no-git-checks"
   },
   "devDependencies": {

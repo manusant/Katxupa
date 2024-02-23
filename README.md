@@ -1,7 +1,7 @@
 # Katxupa
 
 <p align="center">
-  <img src="/docs/assets/logo.png" />
+  <img src="/assets/logo.png" />
   <br/>
   <span align="center" style="font-size: x-large; font-weight: normal">
   Delicious Dish for Typescript and JavaScript projects
