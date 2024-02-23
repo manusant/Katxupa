@@ -1,6 +1,13 @@
 # Katxupa
 
-![logo](/docs/assets/logo.png)
+<p align="center">
+  <img src="/docs/assets/logo.png" />
+  </p>
+  <br/>
+  <span align="center">
+  Delicious Dish for Typescript and JavaScript projects
+  </span> 
+</p>
 
 **Delicious Dish for Typescript and JavaScript projects.**
 
