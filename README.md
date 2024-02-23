@@ -1,4 +1,7 @@
 # Katxupa
+
+![logo](/docs/assets/logo.png)
+
 **Delicious Dish for Typescript and JavaScript projects.**
 
 ```ts
