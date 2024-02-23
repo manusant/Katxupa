@@ -25,4 +25,4 @@ runIt(() => {
 [![Docs](https://img.shields.io/badge/Documentation-Katxupa-black?logo=gitbook&logoColor=white)](https://katxupa.gitbook.io/katxupa)
 [![ESLint](https://img.shields.io/badge/ESLint_Config-eslint--config--katxupa-blue?logo=eslint&logoColor=white)](https://github.com/manusant/eslint-config-katxupa)
 [![Linkedin](https://img.shields.io/badge/Linkedin-Manuel--Santos-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/manuel-brito-dos-santos-a7a20a6b/)
-[![TSDoc](https://img.shields.io/badge/TypeScript_Doc-blue?logo=typescript&logoColor=white)](https://github.com/manusant/eslint-config-katxupa)
+[![TSDoc](https://img.shields.io/badge/TypeScript_Doc-blue?logo=typescript&logoColor=white)](https://manusant.github.io/Katxupa)
