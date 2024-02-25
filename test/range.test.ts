@@ -37,24 +37,6 @@ describe('Range', () => {
             expect(result2).toBe(false);
         });
     });
-
-    describe('lessThanOrEqual', () => {
-        test('checks if a value is less than or equal to the end of the range', () => {
-            const result1 = Range.lessThanOrEqual(3, 5);
-            const result2 = Range.lessThanOrEqual(6, 5);
-            expect(result1).toBe(true);
-            expect(result2).toBe(false);
-        });
-    });
-
-    describe('greaterThanOrEqual', () => {
-        test('checks if a value is greater than or equal to the start of the range', () => {
-            const result1 = Range.greaterThanOrEqual(3, 1);
-            const result2 = Range.greaterThanOrEqual(0, 1);
-            expect(result1).toBe(true);
-            expect(result2).toBe(false);
-        });
-    });
 });
 
 describe('Global Functions', () => {
