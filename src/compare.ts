@@ -40,7 +40,7 @@ export interface Comparable<T> {
      * const dateComparison = date1.compareTo(date2);
      * console.log(dateComparison); // Output: -1 (Example output; actual output will vary)
      */
-    compareTo(other: Comparable<T>): number;
+    compareTo(other: T): number;
 }
 
 /**

@@ -1,5 +1,6 @@
 import {NoSuchElementError} from "./errors";
 import {Comparable, Comparator} from "./compare";
+import {Optional} from "./optional";
 
 /**
  * A class representing a generic reducer for aggregating elements using a specified comparator.
@@ -11,7 +12,11 @@ import {Comparable, Comparator} from "./compare";
  */
 export class Reducer<T> {
 
-    private constructor(private readonly items: T[], private readonly comparator: Comparator<T>) {
+    /**
+     * Private constructor to initialize the Reducer with an array of items.
+     * @param {T[]} items - The array of items to be reduced.
+     */
+    private constructor(private readonly items: T[]) {
     }
 
     /**
@@ -20,23 +25,14 @@ export class Reducer<T> {
      * @static
      * @template T - The type of elements to reduce.
      * @param {T[]} items - An array of items to be reduced.
-     * @param {Comparator<T>} comparator - The comparator function for defining the reduction order.
      * @returns {Reducer<T>} A new Reducer instance.
      *
      * @example
      * const numbers = [3, 1, 4, 1, 5, 9, 2];
-     * const compareNumbers = (a, b) => a - b;
-     * const numberReducer = Reducer.of(numbers, { compare: compareNumbers });
-     * console.log(numberReducer.reduce()); // Output: [1, 1, 2, 3, 4, 5, 9]
-     *
-     * @example
-     * const words = ["apple", "banana", "orange"];
-     * const compareStrings = (a, b) => a.localeCompare(b);
-     * const stringReducer = Reducer.of(words, { compare: compareStrings });
-     * console.log(stringReducer.reduce()); // Output: ["apple", "banana", "orange"]
+     * const numberReducer = Reducer.of(numbers);
      */
-    static of<T>(items: T[], comparator: Comparator<T>): Reducer<T> {
-        return new Reducer<T>(items, comparator);
+    static of<T>(items: T[]): Reducer<T> {
+        return new Reducer<T>(items);
     }
 
     /**
@@ -47,7 +43,7 @@ export class Reducer<T> {
      *
      * @example
      * const numbers = [1, 2, 3, 4, 5];
-     * const sum = Collections.sumOf(numbers, (num) => num);
+     * const sum = numbers.reducer().sumOf((num) => num);
      * console.log(sum); // Output: 15
      */
     sumOf(selector: (item: T) => number): number {
@@ -55,46 +51,50 @@ export class Reducer<T> {
     }
 
     /**
-     * Finds the minimum element in the array.
+     * Finds the minimum element in an array by using a comparator function to determine the order of the elements.
      *
-     * @returns The minimum element, or undefined if the array is empty.
+     * @returns An Optional object that either contains the minimum element or is empty if the array is empty
      *
      * @example
      * const numbers = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5];
-     * const minResult = Collections.minOrNull(numbers);
+     * const reducer = Reducer.of(numbers);
+     * const minResult = reducer.min((a, b) => a - b);
      * console.log(minResult); // Output: 1
      */
-    minOrNull(): T | undefined {
+    min(comparator: (a: T, b: T) => number): Optional<T | undefined> {
         if (this.items.length === 0) {
-            return undefined;
+            return Optional.empty();
         }
-
-        return this.items.reduce((min, current) => (this.comparator.compare(current, min) < 0 ? current : min), this.items[0]);
+        return Optional.of(
+            this.items.reduce((min, current) => (comparator(current, min) < 0 ? current : min), this.items[0])
+        );
     }
 
     /**
-     * Finds the maximum element in the array.
+     * Finds the maximum element in an array by using a comparator function to determine the order of the elements.
      *
-     * @returns The maximum element, or undefined if the array is empty.
+     * @returns An Optional object that either contains the maximum element or is empty if the array is empty.
      *
      * @example
      * const numbers = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5];
-     * const maxResult = Collections.maxOrNull(numbers);
+     * const reducer = Reducer.of(numbers);
+     * const maxResult = reducer.max((a, b) => a - b);
      * console.log(maxResult); // Output: 9
      */
-    maxOrNull(): T | undefined {
+    max(comparator: (a: T, b: T) => number): Optional<T | undefined> {
         if (this.items.length === 0) {
-            return undefined;
+            return Optional.empty();
         }
-
-        return this.items.reduce((max, current) => (this.comparator.compare(current, max) > 0 ? current : max), this.items[0]);
+        return Optional.of(
+            this.items.reduce((max, current) => (comparator(current, max) > 0 ? current : max), this.items[0])
+        );
     }
 
     /**
-     * Finds the maximum element by comparing the results of the given selector function.
+     * Finds the maximum element in an array by comparing the results of a given selector function.
      *
      * @param selector A function to extract a numeric value from each element.
-     * @returns The element with the maximum numeric value, or undefined if the array is empty.
+     * @returns An Optional containing the element with the maximum numeric value, or an empty Optional if the array is empty.
      *
      * @example
      * const people = [
@@ -102,22 +102,24 @@ export class Reducer<T> {
      *   { name: 'Bob', age: 25 },
      *   { name: 'Charlie', age: 35 }
      * ];
-     * const maxByAge = Collections.maxByOrNull(people, (person) => person.age);
+     * const reducer = Reducer.of(people);
+     * const maxByAge = reducer.maxBy((person) => person.age);
      * console.log(maxByAge); // Output: { name: 'Charlie', age: 35 }
      */
-    maxByOrNull(selector: (item: T) => number): T | undefined {
+    maxBy(selector: (item: T) => number): Optional<T | undefined> {
         if (this.items.length === 0) {
-            return undefined;
+            return Optional.empty();
         }
-
-        return this.items.reduce((max, current) => (selector(current) > selector(max) ? current : max), this.items[0]);
+        return Optional.of(
+            this.items.reduce((max, current) => (selector(current) > selector(max) ? current : max), this.items[0])
+        );
     }
 
     /**
-     * Finds the minimum element by comparing the results of the given selector function.
+     * Finds the minimum element in an array by comparing the results of a given selector function.
      *
      * @param selector A function to extract a numeric value from each element.
-     * @returns The element with the minimum numeric value, or undefined if the array is empty.
+     * @returns An Optional containing the element with the minimum numeric value, or an empty Optional if the array is empty.
      *
      * @example
      * const people = [
@@ -125,62 +127,24 @@ export class Reducer<T> {
      *   { name: 'Bob', age: 25 },
      *   { name: 'Charlie', age: 35 }
      * ];
-     * const minByAge = Collections.minByOrNull(people, (person) => person.age);
+     * const reducer = Reducer.of(people);
+     * const minByAge = reducer.minBy((person) => person.age);
      * console.log(minByAge); // Output: { name: 'Bob', age: 25 }
      */
-    minByOrNull(selector: (item: T) => number): T | undefined {
+    minBy(selector: (item: T) => number): Optional<T | undefined> {
         if (this.items.length === 0) {
-            return undefined;
+            return Optional.empty();
         }
-
-        return this.items.reduce((min, current) => (selector(current) < selector(min) ? current : min), this.items[0]);
+        return Optional.of(
+            this.items.reduce((min, current) => (selector(current) < selector(min) ? current : min), this.items[0])
+        );
     }
 
     /**
-     * Finds the minimum element by using a custom comparator function.
-     *
-     * @param comparator A function that compares two elements. Should return a negative value if the first element is smaller,
-     *                  a positive value if the first element is larger, or zero if they are equal.
-     * @returns The minimum element, or undefined if the array is empty.
-     *
-     * @example
-     * const numbers = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5];
-     * const minResult = Collections.minWithOrNull(numbers, (a, b) => a - b);
-     * console.log(minResult); // Output: 1
-     */
-    minWithOrNull(comparator: (a: T, b: T) => number): T | undefined {
-        if (this.items.length === 0) {
-            return undefined;
-        }
-
-        return this.items.reduce((min, current) => (comparator(current, min) < 0 ? current : min), this.items[0]);
-    }
-
-    /**
-     * Finds the maximum element by using a custom comparator function.
-     *
-     * @param comparator A function that compares two elements. Should return a negative value if the first element is smaller,
-     *                  a positive value if the first element is larger, or zero if they are equal.
-     * @returns The maximum element, or undefined if the array is empty.
-     *
-     * @example
-     * const numbers = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5];
-     * const maxResult = Collections.maxWithOrNull(numbers, (a, b) => a - b);
-     * console.log(maxResult); // Output: 9
-     */
-    maxWithOrNull(comparator: (a: T, b: T) => number): T | undefined {
-        if (this.items.length === 0) {
-            return undefined;
-        }
-
-        return this.items.reduce((max, current) => (comparator(current, max) > 0 ? current : max), this.items[0]);
-    }
-
-    /**
-     * Finds the minimum element by applying a selector function to each element and comparing the results.
+     * Finds the minimum element in an array by applying a selector function to each element and comparing the results.
      *
      * @param selector A function to extract a comparable value from each element.
-     * @returns The element with the minimum comparable value, or undefined if the array is empty.
+     * @returns An Optional containing the element with the minimum comparable value, or an empty Optional if the array is empty.
      *
      * @example
      * const people = [
@@ -188,22 +152,24 @@ export class Reducer<T> {
      *   { name: 'Bob', age: 25 },
      *   { name: 'Charlie', age: 35 }
      * ];
-     * const minOfAge = Collections.minOfOrNull(people, (person) => person.age);
+     * const reducer = Reducer.of(people);
+     * const minOfAge = reducer.minOf((person) => person.age);
      * console.log(minOfAge); // Output: { name: 'Bob', age: 25 }
      */
-    minOfOrNull<R extends Comparable<R>>(selector: (item: T) => R): T | undefined {
+    minOf<R extends Comparable<R>>(selector: (item: T) => R): Optional<T | undefined> {
         if (this.items.length === 0) {
-            return undefined;
+            return Optional.empty();
         }
-
-        return this.items.reduce((min, current) => (selector(current).compareTo(selector(min)) < 0 ? current : min), this.items[0]);
+        return Optional.of(
+            this.items.reduce((min, current) => (selector(current).compareTo(selector(min)) < 0 ? current : min), this.items[0])
+        );
     }
 
     /**
-     * Finds the maximum element by applying a selector function to each element and comparing the results.
+     * Finds the maximum element in an array by applying a selector function to each element and comparing the results.
      *
      * @param selector A function to extract a comparable value from each element.
-     * @returns The element with the maximum comparable value, or undefined if the array is empty.
+     * @returns An Optional containing the element with the maximum comparable value, or an empty Optional if the array is empty.
      *
      * @example
      * const people = [
@@ -211,24 +177,26 @@ export class Reducer<T> {
      *   { name: 'Bob', age: 25 },
      *   { name: 'Charlie', age: 35 }
      * ];
-     * const maxOfAge = Collections.maxOfOrNull(people, (person) => person.age);
+     * const reducer = Reducer.of(people);
+     * const maxOfAge = reducer.maxOf((person) => person.age);
      * console.log(maxOfAge); // Output: { name: 'Charlie', age: 35 }
      */
-    maxOfOrNull<R extends Comparable<R>>(selector: (item: T) => R): T | undefined {
+    maxOf<R extends Comparable<R>>(selector: (item: T) => R): Optional<T | undefined> {
         if (this.items.length === 0) {
-            return undefined;
+            return Optional.empty();
         }
-
-        return this.items.reduce((max, current) => (selector(current).compareTo(selector(max)) > 0 ? current : max), this.items[0]);
+        return Optional.of(
+            this.items.reduce((max, current) => (selector(current).compareTo(selector(max)) > 0 ? current : max), this.items[0])
+        );
     }
 
     /**
-     * Finds the minimum element by applying a custom comparator function to the results of a selector function.
+     * Finds the minimum element in an array by applying a custom comparator function to the results of a selector function.
      *
      * @param selector A function to extract a comparable value from each element.
      * @param comparator A function that compares two elements. Should return a negative value if the first element is smaller,
      *                  a positive value if the first element is larger, or zero if they are equal.
-     * @returns The element with the minimum comparable value, or undefined if the array is empty.
+     * @returns An Optional containing the element with the minimum comparable value, or an empty Optional if the array is empty
      *
      * @example
      * const people = [
@@ -236,24 +204,26 @@ export class Reducer<T> {
      *   { name: 'Bob', age: 25 },
      *   { name: 'Charlie', age: 35 }
      * ];
-     * const minOfAge = Collections.minOfWithOrNull(people, (person) => person.age, (a, b) => a - b);
+     * const reducer = Reducer.of(people);
+     * const minOfAge = reducer.minOfWith((person) => person.age, (a, b) => a - b);
      * console.log(minOfAge); // Output: { name: 'Bob', age: 25 }
      */
-    minOfWithOrNull(selector: (item: T) => T, comparator: (a: T, b: T) => number): T | undefined {
+    minOfWith<R>(selector: (item: T) => R, comparator: (a: R, b: R) => number): Optional<T | undefined> {
         if (this.items.length === 0) {
-            return undefined;
+            return Optional.empty();
         }
-
-        return this.items.reduce((min, current) => (comparator(selector(current), selector(min!)) < 0 ? current : min), this.items[0]);
+        return Optional.of(
+            this.items.reduce((min, current) => (comparator(selector(current), selector(min!)) < 0 ? current : min), this.items[0])
+        );
     }
 
     /**
-     * Finds the maximum element by applying a custom comparator function to the results of a selector function.
+     * Finds the maximum element in an array by applying a custom comparator function to the results of a selector function.
      *
      * @param selector A function to extract a comparable value from each element.
      * @param comparator A function that compares two elements. Should return a negative value if the first element is smaller,
      *                  a positive value if the first element is larger, or zero if they are equal.
-     * @returns The element with the maximum comparable value, or undefined if the array is empty.
+     * @returns An Optional containing the element with the maximum comparable value, or an empty Optional if the array is empty.
      *
      * @example
      * const people = [
@@ -261,122 +231,17 @@ export class Reducer<T> {
      *   { name: 'Bob', age: 25 },
      *   { name: 'Charlie', age: 35 }
      * ];
-     * const maxOfAge = Collections.maxOfWithOrNull(people, (person) => person.age, (a, b) => a - b);
+     * const reducer = Reducer.of(people);
+     * const maxOfAge = reducer.maxOfWith((person) => person.age, (a, b) => a - b);
      * console.log(maxOfAge); // Output: { name: 'Charlie', age: 35 }
      */
-    maxOfWithOrNull(selector: (item: T) => T, comparator: (a: T, b: T) => number): T | undefined {
+    maxOfWith<R>(selector: (item: T) => R, comparator: (a: R, b: R) => number): Optional<T | undefined> {
         if (this.items.length === 0) {
-            return undefined;
+            return Optional.empty();
         }
-
-        return this.items.reduce((max, current) => (comparator(selector(current), selector(max!)) > 0 ? current : max), this.items[0]);
-    }
-
-    /**
-     * Finds the minimum element by applying a selector function to each element and comparing the results.
-     * Throws a NoSuchElementException if the array is empty.
-     *
-     * @param selector A function to extract a comparable value from each element.
-     * @returns The element with the minimum comparable value.
-     *
-     * @throws {NoSuchElementError} If the array is empty.
-     *
-     * @example
-     * const people = [
-     *   { name: 'Alice', age: 30 },
-     *   { name: 'Bob', age: 25 },
-     *   { name: 'Charlie', age: 35 }
-     * ];
-     * const minOfAge = Collections.minOf(people, (person) => person.age);
-     * console.log(minOfAge); // Output: { name: 'Bob', age: 25 }
-     */
-    minOf<R extends Comparable<R>>(selector: (item: T) => R): T {
-        if (this.items.length === 0) {
-            throw new NoSuchElementError('Array is empty');
-        }
-
-        return this.items.reduce((min, current) => (selector(current).compareTo(selector(min!)) < 0 ? current : min), this.items[0])!;
-    }
-
-    /**
-     * Finds the maximum element by applying a selector function to each element and comparing the results.
-     * Throws a NoSuchElementException if the array is empty.
-     *
-     * @param selector A function to extract a comparable value from each element.
-     * @returns The element with the maximum comparable value.
-     *
-     * @throws {NoSuchElementError} If the array is empty.
-     *
-     * @example
-     * const people = [
-     *   { name: 'Alice', age: 30 },
-     *   { name: 'Bob', age: 25 },
-     *   { name: 'Charlie', age: 35 }
-     * ];
-     * const maxOfAge = Collections.maxOf(people, (person) => person.age);
-     * console.log(maxOfAge); // Output: { name: 'Charlie', age: 35 }
-     */
-    maxOf<R extends Comparable<R>>(selector: (item: T) => R): T {
-        if (this.items.length === 0) {
-            throw new NoSuchElementError('Array is empty');
-        }
-
-        return this.items.reduce((max, current) => (selector(current).compareTo(selector(max!)) > 0 ? current : max), this.items[0])!;
-    }
-
-    /**
-     * Finds the minimum element by applying a custom comparator function to the results of a selector function.
-     * Throws a NoSuchElementException if the array is empty.
-     *
-     * @param selector A function to extract a comparable value from each element.
-     * @param comparator A function that compares two elements. Should return a negative value if the first element is smaller,
-     *                  a positive value if the first element is larger, or zero if they are equal.
-     * @returns The element with the minimum comparable value.
-     *
-     * @throws {NoSuchElementError} If the array is empty.
-     *
-     * @example
-     * const people = [
-     *   { name: 'Alice', age: 30 },
-     *   { name: 'Bob', age: 25 },
-     *   { name: 'Charlie', age: 35 }
-     * ];
-     * const minOfAge = Collections.minOfWith(people, (person) => person.age, (a, b) => a - b);
-     * console.log(minOfAge); // Output: { name: 'Bob', age: 25 }
-     */
-    minOfWith(selector: (item: T) => T, comparator: (a: T, b: T) => number): T {
-        if (this.items.length === 0) {
-            throw new NoSuchElementError('Array is empty');
-        }
-
-        return this.items.reduce((min, current) => (comparator(selector(current), selector(min!)) < 0 ? current : min), this.items[0])!;
-    }
-
-    /**
-     * Finds the maximum element by applying a custom comparator function to the results of a selector function.
-     * Throws a NoSuchElementException if the array is empty.
-     *
-     * @param selector A function to extract a comparable value from each element.
-     * @param comparator A function that compares two elements. Should return a negative value if the first element is smaller,
-     *                  a positive value if the first element is larger, or zero if they are equal.
-     * @returns The element with the maximum comparable value.
-     *
-     * @throws {NoSuchElementError} If the array is empty.
-     *
-     * @example
-     * const people = [
-     *   { name: 'Alice', age: 30 },
-     *   { name: 'Bob', age: 25 },
-     *   { name: 'Charlie', age: 35 }
-     * ];
-     * const maxOfAge = Collections.maxOfWith(people, (person) => person.age, (a, b) => a - b);
-     * console.log(maxOfAge); // Output: { name: 'Charlie', age: 35 }
-     */
-    maxOfWith(selector: (item: T) => T, comparator: (a: T, b: T) => number): T {
-        if (this.items.length === 0) {
-            throw new NoSuchElementError('Array is empty');
-        }
-        return this.items.reduce((max, current) => (comparator(selector(current), selector(max!)) > 0 ? current : max), this.items[0])!;
+        return Optional.of(
+            this.items.reduce((max, current) => (comparator(selector(current), selector(max!)) > 0 ? current : max), this.items[0])
+        );
     }
 
     /**
@@ -389,7 +254,8 @@ export class Reducer<T> {
      *
      * @example
      * const numbers = [1, 2, 3, 4, 5];
-     * const product = Collections.fold(numbers, (num) => (acc) => acc * num, 1);
+     * const reducer = Reducer.of(numbers);
+     * const product = reducer.fold((num) => (acc) => acc * num, 1);
      * console.log(product); // Output: 120
      */
     fold(folder: (current: T) => (accumulator: T) => T, initialValue?: T): T {
@@ -405,16 +271,17 @@ export class Reducer<T> {
      *
      * @example
      * const numbers = [1, 2, 3, 4, 5];
-     * const result = Collections.foldRight(numbers, (num) => (acc) => acc - num, 0);
+     * const reducer = Reducer.of(numbers);
+     * const result = reducer.foldRight((num) => (acc) => acc - num, 0);
      * console.log(result); // Output: -5 (0 - 1 - 2 - 3 - 4 - 5)
      */
     foldRight(folder: (current: T) => (accumulator: T) => T, initialValue?: T): T {
         const reversedItems = [...this.items].reverse();
-        return Reducer.of(reversedItems, this.comparator).fold(folder, initialValue);
+        return Reducer.of(reversedItems).fold(folder, initialValue);
     }
 
     /**
-     * Reduces the elements of the array to a single value by applying a reducer function with index information.
+     * Reduces the elements of an array to a single value by applying a reducer function that takes an accumulator, the current element, and the current index. It allows for index-based operations during the reduction process.
      *
      * @param reducer A function that takes an accumulator, the current element, and the current index, and returns a new accumulator.
      * @param initialValue The initial value of the accumulator.
@@ -422,16 +289,17 @@ export class Reducer<T> {
      *
      * @example
      * const numbers = [1, 2, 3, 4, 5];
-     * const product = Collections.reduceIndexed(numbers, (acc, num, index) => acc * (num + index), 1);
+     * const reducer = Reducer.of(numbers);
+     * const product = reducer.reduceIndexed((acc, num, index) => acc * (num + index), 1);
      * console.log(product); // Output: 120 (1 * (1 + 0) * (2 + 1) * (3 + 2) * (4 + 3) * (5 + 4))
+     *
      */
     reduceIndexed(reducer: (accumulator: T, current: T, index: number) => T, initialValue?: T): T {
         return this.reduce((acc, current, index) => reducer(acc, current, index), initialValue);
     }
 
     /**
-     * Folds the elements of the array to a single value by applying a folder function with index information.
-     * Similar to `reduceIndexed`, but the folder function is curried.
+     *  Folds the elements of an array into a single value by applying a curried folder function with index information.
      *
      * @param folder A curried function that takes the current element, the current index, and returns a function to apply to the next element.
      * @param initialValue The initial value for the folder function.
@@ -439,6 +307,7 @@ export class Reducer<T> {
      *
      * @example
      * const numbers = [1, 2, 3, 4, 5];
+     * const reducer = Reducer.of(numbers);
      * const product = reducer.foldIndexed((num, index) => (acc) => acc * (num + index), 1);
      * console.log(product); // Output: 120 (1 * (1 + 0) * (2 + 1) * (3 + 2) * (4 + 3) * (5 + 4))
      */
@@ -448,9 +317,20 @@ export class Reducer<T> {
 
     /**
      * Reduces the items in the array to a single value using the specified reducer function.
+     *
      * @param  reducerFunction - A function that takes an accumulator and the current item and produces a new accumulator value.
      * @param  initialValue - The initial value of the accumulator.
      * @returns  The final accumulated result.
+     *
+     * @example
+     * const numbers = [3, 1, 4, 1, 5, 9, 2];
+     * const numberReducer = Reducer.of(numbers);
+     *
+     * const sum = numberReducer.reduce((acc, num) => acc + num);
+     * // sum = 25
+     *
+     * const product = numberReducer.reduce((acc, num) => acc * num, 1);
+     * // product = 1080
      */
     reduce(reducerFunction: (accumulator: T, current: T, index: number) => T, initialValue?: T): T {
         if (initialValue) {
@@ -468,12 +348,18 @@ export class Reducer<T> {
      *
      * @example
      * const numbers = [1, 2, 3, 4, 5];
-     * const result = Collections.reduceRightIndexed(numbers, (acc, num, index) => acc - (num + index));
-     * console.log(result); // Output: -9 (0 - (5 + 4) - (4 + 3) - (3 + 2) - (2 + 1) - (1 + 0))
+     * const reducer = (acc, num, index) => acc - (num + index);
+     * const result = Reducer.of(numbers).reduceRightIndexed(reducer);
+     * console.log(result); // Output: -9
+     *
+     * In this example, we have an array of numbers [1, 2, 3, 4, 5]. The reducer function subtracts each number from the
+     * accumulator, where the accumulator is initially set to the last element of the array. The index of each element
+     * is also subtracted from the accumulator. The result is -9, which is obtained by performing the following
+     * calculations: 5 - (4 + 3) - (3 + 2) - (2 + 1) - (1 + 0).
      */
     reduceRightIndexed(reducer: (accumulator: T, current: T, index: number) => T, initialValue?: T): T {
         const reversedItems = [...this.items].reverse();
-        return Reducer.of(reversedItems, this.comparator).reduceIndexed(reducer, initialValue);
+        return Reducer.of(reversedItems).reduceIndexed(reducer, initialValue);
     }
 
     /**
@@ -485,12 +371,12 @@ export class Reducer<T> {
      *
      * @example
      * const numbers = [1, 2, 3, 4, 5];
-     * const result = Collections.foldRightIndexed(numbers, (num, index) => (acc) => acc - (num + index), 0);
+     * const result = Reducer.of(numbers).foldRightIndexed((num, index) => (acc) => acc - (num + index), 0);
      * console.log(result); // Output: -9 (0 - (5 + 4) - (4 + 3) - (3 + 2) - (2 + 1) - (1 + 0))
      */
     foldRightIndexed(folder: (current: T, index: number) => (accumulator: T) => T, initialValue?: T): T {
         const reversedItems = [...this.items].reverse();
-        return Reducer.of(reversedItems, this.comparator).foldIndexed(folder, initialValue);
+        return Reducer.of(reversedItems).foldIndexed(folder, initialValue);
     }
 
     /**
@@ -502,7 +388,7 @@ export class Reducer<T> {
      *
      * @example
      * const numbers = [1, 2, 3, 4, 5];
-     * const result = numbers.runningFold((num) => (acc) => acc + num);
+     * const result = Reducer.of(numbers).runningFold((num) => (acc) => acc + num);
      * console.log(result); // Output: [0, 1, 3, 6, 10, 15] (0, 0 + 1, (0 + 1) + 2, ((0 + 1) + 2) + 3, (((0 + 1) + 2) + 3) + 4, ((((0 + 1) + 2) + 3) + 4) + 5)
      */
     runningFold(folder: (current: T) => (accumulator: T) => T, initialValue?: T): T[] {
@@ -521,7 +407,8 @@ export class Reducer<T> {
      *
      * @example
      * const numbers = [1, 2, 3, 4, 5];
-     * const result = Collections.runningReduce(numbers, (acc, num) => acc + num);
+     * const reducer = Reducer.of(numbers);
+     * const result = reducer.runningReduce((acc, num) => acc + num);
      * console.log(result); // Output: [1, 3, 6, 10, 15] (1, 1 + 2, (1 + 2) + 3, ((1 + 2) + 3) + 4, (((1 + 2) + 3) + 4) + 5)
      */
     runningReduce(reducer: (accumulator: T, current: T) => T, initialValue?: T): T[] {
@@ -540,7 +427,8 @@ export class Reducer<T> {
      *
      * @example
      * const numbers = [1, 2, 3, 4, 5];
-     * const result = Collections.runningFoldIndexed(numbers, (num, index) => (acc) => acc + (num + index), 0);
+     * const reducer = Reducer.of(numbers);
+     * const result = reducer.runningFoldIndexed((num, index) => (acc) => acc + (num + index), 0);
      * console.log(result); // Output: [0, 1, 4, 9, 16, 25] (0, 0 + (1 + 0), (0 + (1 + 0)) + (2 + 1), ((0 + (1 + 0)) + (2 + 1)) + (3 + 2), (((0 + (1 + 0)) + (2 + 1)) + (3 + 2)) + (4 + 3), ((((0 + (1 + 0)) + (2 + 1)) + (3 + 2)) + (4 + 3)) + (5 + 4))
      */
     runningFoldIndexed(folder: (current: T, index: number) => (accumulator: T) => T, initialValue?: T): T[] {
@@ -551,7 +439,9 @@ export class Reducer<T> {
     }
 
     /**
-     * Performs a running reduce on the elements of the array from left to right with index information.
+     * Performs a running reduce operation on the elements of an array from left to right, while also providing the index information.
+     * It takes a reducer function, which takes an accumulator, the current element, and the current index, and returns
+     * a new accumulator. The method returns an array of intermediate results from the running reduce operation.
      *
      * @param reducer A function that takes an accumulator, the current element, and the current index and returns a new accumulator.
      * @param initialValue The initial value of the accumulator.
@@ -559,7 +449,8 @@ export class Reducer<T> {
      *
      * @example
      * const numbers = [1, 2, 3, 4, 5];
-     * const result = Collections.runningReduceIndexed(numbers, (acc, num, index) => acc + (num + index), 0);
+     * const reducer = (acc, num, index) => acc + (num + index);
+     * const result = Reducer.of(numbers).runningReduceIndexed(reducer, 0);
      * console.log(result); // Output: [1, 4, 9, 16, 25] (1, 1 + (2 + 1), (1 + (2 + 1)) + (3 + 2), ((1 + (2 + 1)) + (3 + 2)) + (4 + 3), (((1 + (2 + 1)) + (3 + 2)) + (4 + 3)) + (5 + 4))
      */
     runningReduceIndexed(reducer: (accumulator: T, current: T, index: number) => T, initialValue?: T): T[] {
@@ -573,63 +464,45 @@ export class Reducer<T> {
 declare global {
 
     /**
-     * Creates a new Reducer instance from an array of items and a comparator function.
+     * Creates a new instance of the Reducer class from an array of items.
      *
      * @function
      * @template T - The type of elements to reduce.
      * @param {T[]} items - An array of items to be reduced.
-     * @param {Comparator<T>} comparator - The comparator function for defining the reduction order.
      * @returns {Reducer<T>} A new Reducer instance.
      *
      * @example
      * const numbers = [3, 1, 4, 1, 5, 9, 2];
-     * const compareNumbers = (a, b) => a - b;
-     * const numberReducer = reducerOf(numbers, { compare: compareNumbers });
-     * console.log(numberReducer.reduce()); // Output: [1, 1, 2, 3, 4, 5, 9]
-     *
-     * @example
-     * const words = ["apple", "banana", "orange"];
-     * const compareStrings = (a, b) => a.localeCompare(b);
-     * const stringReducer = reducerOf(words, { compare: compareStrings });
-     * console.log(stringReducer.reduce()); // Output: ["apple", "banana", "orange"]
+     * const numberReducer = reducerOf(numbers);
+     * console.log(numberReducer.sumOf(item => item)); // Output: 25
      */
-    function reducerOf<T>(items: T[], comparator: Comparator<T>): Reducer<T>;
+    function reducerOf<T>(items: T[]): Reducer<T>;
 
     interface Array<T> {
 
         /**
          * Creates a new Reducer instance using the provided comparator.
          *
-         * @method
-         * @param {Comparator<T>} comparator - The comparator function for defining the reduction order.
          * @returns {Reducer<T>} A new Reducer instance.
          *
          * @example
-         * const numbers = [3, 1, 4, 1, 5, 9, 2];
-         * const compareNumbers = (a, b) => a - b;
-         * const numberReducer = numbers.reducer({ compare: compareNumbers });
-         * console.log(numberReducer.reduce()); // Output: [1, 1, 2, 3, 4, 5, 9]
-         *
-         * @example
-         * const words = ["apple", "banana", "orange"];
-         * const compareStrings = (a, b) => a.localeCompare(b);
-         * const stringReducer = words.reducer({ compare: compareStrings });
-         * console.log(stringReducer.reduce()); // Output: ["apple", "banana", "orange"]
+         * const numberReducer = [3, 1, 4, 1, 5, 9, 2].reducer();
+         * console.log(numberReducer.sumOf(item => item)); // Output: 25
          */
-        reducer(comparator: Comparator<T>): Reducer<T>;
+        reducer(): Reducer<T>;
     }
 }
 
 // Global extensions
 const _global = typeof window !== 'undefined' ? window : globalThis;
 
-_global.reducerOf = function <T>(items: T[], comparator: Comparator<T>): Reducer<T> {
-    return Reducer.of(items, comparator);
+_global.reducerOf = function <T>(items: T[]): Reducer<T> {
+    return Reducer.of(items);
 }
 
 Object.defineProperty(Array.prototype, 'reducer', {
-    value: function <T>(this: Array<T>, comparator: Comparator<T>) {
-        return reducerOf(this, comparator);
+    value: function <T>(this: Array<T>) {
+        return reducerOf(this);
     },
     enumerable: false,
     writable: false,

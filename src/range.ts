@@ -1,5 +1,13 @@
 /**
- * The `Range` class provides utility methods for working with numeric ranges.
+ * The Range class provides utility methods for working with numeric ranges. It allows you to generate a range of numbers,
+ * check if a value is within a specified range, and create aliases for the range methods.
+ *
+ * @example
+ * const numericRange = Range.range(1, 5, 2);
+ * console.log(numericRange); // Output: [1, 3, 5]
+ *
+ * const isInRange = Range.inRange(3, 1, 5);
+ * console.log(isInRange); // Output: true
  *
  * @since version 1.0.4
  * @author Manuel Santos <ney.br.santos@gmail.com>
@@ -62,32 +70,6 @@ export class Range {
     static inRange(value: number, start: number, end: number): boolean {
         return value >= start && value <= end;
     }
-
-    /**
-     * Checks if a value is less than or equal to the end of the numeric range.
-     * @param {number} value - The value to check.
-     * @param {number} end - The end of the range.
-     * @returns {boolean} True if the value is less than or equal to the end of the range, false otherwise.
-     * @example
-     * const isLessThanOrEqual = Ranges.lessThanOrEqual(3, 5);
-     * console.log(isLessThanOrEqual); // Output: true
-     */
-    static lessThanOrEqual(value: number, end: number): boolean {
-        return value <= end;
-    }
-
-    /**
-     * Checks if a value is greater than or equal to the start of the numeric range.
-     * @param {number} value - The value to check.
-     * @param {number} start - The start of the range.
-     * @returns {boolean} True if the value is greater than or equal to the start of the range, false otherwise.
-     * @example
-     * const isGreaterThanOrEqual = Ranges.greaterThanOrEqual(3, 1);
-     * console.log(isGreaterThanOrEqual); // Output: true
-     */
-    static greaterThanOrEqual(value: number, start: number): boolean {
-        return value >= start;
-    }
 }
 
 declare global {
@@ -99,7 +81,7 @@ declare global {
      * @param {number} [step=1] - The step between elements. Defaults to 1.
      * @returns {ReadonlyArray<number>} An array representing the range of numbers.
      * @example
-     * const numericRange = Ranges.range(1, 5, 2);
+     * const numericRange = rangeTo(1, 5, 2);
      * console.log(numericRange); // Output: [1, 3, 5]
      */
     function rangeTo(start: number, end: number, step?: number): ReadonlyArray<number>;
@@ -111,7 +93,7 @@ declare global {
      * @param {number} [step=1] - The step between elements. Defaults to 1.
      * @returns {ReadonlyArray<number>} An array representing the range of numbers.
      * @example
-     * const numericRange = Ranges.rangeUntil(1, 5, 2);
+     * const numericRange = rangeUntil(1, 5, 2);
      * console.log(numericRange); // Output: [1, 3]
      */
     function rangeUntil(start: number, end: number, step?: number): ReadonlyArray<number>;
@@ -123,32 +105,10 @@ declare global {
      * @param {number} end - The end of the range.
      * @returns {boolean} True if the value is within the range, false otherwise.
      * @example
-     * const isInRange = Ranges.inRange(3, 1, 5);
+     * const isInRange = inRange(3, 1, 5);
      * console.log(isInRange); // Output: true
      */
     function inRange(value: number, start: number, end: number): boolean;
-
-    /**
-     * Checks if a value is less than or equal to the end of the numeric range.
-     * @param {number} value - The value to check.
-     * @param {number} end - The end of the range.
-     * @returns {boolean} True if the value is less than or equal to the end of the range, false otherwise.
-     * @example
-     * const isLessThanOrEqual = Ranges.lessThanOrEqual(3, 5);
-     * console.log(isLessThanOrEqual); // Output: true
-     */
-    function lessThanOrEqual(value: number, end: number): boolean;
-
-    /**
-     * Checks if a value is greater than or equal to the start of the numeric range.
-     * @param {number} value - The value to check.
-     * @param {number} start - The start of the range.
-     * @returns {boolean} True if the value is greater than or equal to the start of the range, false otherwise.
-     * @example
-     * const isGreaterThanOrEqual = Ranges.greaterThanOrEqual(3, 1);
-     * console.log(isGreaterThanOrEqual); // Output: true
-     */
-    function greaterThanOrEqual(value: number, start: number): boolean;
 }
 
 // Global extensions

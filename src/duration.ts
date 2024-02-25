@@ -108,7 +108,7 @@ export class Duration {
      * Converts the duration to seconds.
      * @returns {number} The duration in seconds.
      * @example
-     * const duration = Duration.fromMinutes(2);
+     * const duration = Duration.minutes(2);
      * const seconds = duration.inWholeSeconds();
      * console.log(seconds);
      * // Output: 120
@@ -121,7 +121,7 @@ export class Duration {
      * Converts the duration to minutes.
      * @returns {number} The duration in minutes.
      * @example
-     * const duration = Duration.fromHours(2);
+     * const duration = Duration.hours(2);
      * const minutes = duration.inWholeMinutes();
      * console.log(minutes);
      * // Output: 120
@@ -134,7 +134,7 @@ export class Duration {
      * Converts the duration to hours.
      * @returns {number} The duration in hours.
      * @example
-     * const duration = Duration.fromDays(1);
+     * const duration = Duration.days(1);
      * const hours = duration.inWholeHours();
      * console.log(hours);
      * // Output: 24
@@ -147,7 +147,7 @@ export class Duration {
      * Converts the duration to days.
      * @returns {number} The duration in days.
      * @example
-     * const duration = Duration.fromHours(48);
+     * const duration = Duration.hours(48);
      * const days = duration.inWholeDays();
      * console.log(days);
      * // Output: 2
@@ -160,7 +160,7 @@ export class Duration {
      * Converts the duration to an object with properties for each time unit.
      * @returns {Object} An object with properties for nanoseconds, microseconds, milliseconds, seconds, minutes, hours, and days.
      * @example
-     * const duration = Duration.fromSeconds(123);
+     * const duration = Duration.seconds(123);
      * const durationObject = duration.toObject();
      * console.log(durationObject);
      * // Output: { nanoseconds: 123000000000, microseconds: 123000000, milliseconds: 123000, seconds: 123, minutes: 2, hours: 0, days: 0 }
@@ -189,7 +189,7 @@ export class Duration {
      *
      * @returns {Object} An object with properties for days, hours, minutes, seconds, and nanoseconds.
      * @example
-     * const duration = Duration.fromDays(2).add(Duration.fromHours(12));
+     * const duration = Duration.days(2).add(Duration.hours(12));
      * const components = duration.toComponents();
      * console.log(components);
      * // Output: { days: 2, hours: 12, minutes: 0, seconds: 0, nanoseconds: 0 }
@@ -217,8 +217,8 @@ export class Duration {
      * @param {Duration} other - The other duration to add.
      * @returns {Duration} A new Duration object representing the sum.
      * @example
-     * const duration1 = Duration.fromHours(12);
-     * const duration2 = Duration.fromMinutes(30);
+     * const duration1 = Duration.hours(12);
+     * const duration2 = Duration.minutes(30);
      * const sum = duration1.add(duration2);
      * console.log(sum.toMinutes());
      * // Output: 750
@@ -232,8 +232,8 @@ export class Duration {
      * @param {Duration} other - The other duration to subtract.
      * @returns {Duration} A new Duration object representing the difference.
      * @example
-     * const duration1 = Duration.fromHours(12);
-     * const duration2 = Duration.fromMinutes(30);
+     * const duration1 = Duration.hours(12);
+     * const duration2 = Duration.minutes(30);
      * const difference = duration1.subtract(duration2);
      * console.log(difference.toMinutes());
      * // Output: 630
@@ -247,7 +247,7 @@ export class Duration {
      * @param {number} factor - The scalar factor.
      * @returns {Duration} A new Duration object representing the product.
      * @example
-     * const duration = Duration.fromMinutes(10);
+     * const duration = Duration.minutes(10);
      * const multiplied = duration.multiply(2);
      * console.log(multiplied.toMinutes());
      * // Output: 20
@@ -262,7 +262,7 @@ export class Duration {
      * @returns {Duration} A new Duration object representing the quotient.
      * @throws {Error} Thrown if the divisor is zero.
      * @example
-     * const duration = Duration.fromHours(1);
+     * const duration = Duration.hours(1);
      * const divided = duration.divide(2);
      * console.log(divided.toMinutes());
      * // Output: 30
@@ -279,8 +279,8 @@ export class Duration {
      * @param {Duration} other - The other duration to compare.
      * @returns {boolean} True if the durations are equal, false otherwise.
      * @example
-     * const duration1 = Duration.fromHours(5);
-     * const duration2 = Duration.fromHours(5);
+     * const duration1 = Duration.hours(5);
+     * const duration2 = Duration.hours(5);
      * console.log(duration1.equals(duration2)); // Output: true
      */
     equals(other: Duration): boolean {
@@ -289,6 +289,13 @@ export class Duration {
 
     /**
      * Checks if this duration is less than another duration.
+     *
+     * @example
+     * const duration1 = Duration.seconds(10);
+     * const duration2 = Duration.seconds(20);
+     *
+     * console.log(duration1.lessThan(duration2)); // Output: true
+     *
      * @param {Duration} other - The other duration to compare.
      * @returns {boolean} True if this duration is less than the other, false otherwise.
      */
@@ -310,8 +317,8 @@ export class Duration {
      * @param {Duration} other - The other duration to compare.
      * @returns {number} -1 if this duration is less than the other, 0 if they are equal, 1 if this duration is greater.
      * @example
-     * const duration1 = Duration.fromDays(1);
-     * const duration2 = Duration.fromHours(24);
+     * const duration1 = Duration.days(1);
+     * const duration2 = Duration.hours(24);
      * console.log(duration1.compareTo(duration2)); // Output: 0
      */
     compareTo(other: Duration): number {
@@ -324,7 +331,7 @@ export class Duration {
      * @param action - The action to be executed with the duration components.
      * @returns The result of the action.
      * @example
-     * const duration = Duration.fromSeconds(3600);
+     * const duration = Duration.seconds(3600);
      * const result = duration.runIt((days, hours, minutes, seconds, nanoseconds) => {
      *     return `${days}d ${hours}h ${minutes}m ${seconds}s ${nanoseconds}ns`;
      * });
@@ -346,7 +353,7 @@ export class Duration {
      * Formats the duration as a string.
      * @returns {string} - The formatted string representation of the duration.
      * @example
-     * const duration = Duration.fromDays(1).add(Duration.fromHours(6));
+     * const duration = Duration.days(1).add(Duration.hours(6));
      * const formattedString = duration.toString();
      * console.log(formattedString);
      * // Output: 1d 6h 0m 0s 0ns
