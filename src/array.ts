@@ -41,7 +41,7 @@ declare global {
          * @returns {Record<string, V>} - A record associating keys with their corresponding values.
          * @example
          * const elements = [{ id: 1, value: 'a' }, { id: 2, value: 'b' }];
-         * const keyValuePairs = collection.associateWith(
+         * const keyValuePairs = elements.associateWith(
          *   (element) => element.id,
          *   (element) => element.value
          * );
@@ -52,18 +52,7 @@ declare global {
         ): Record<string, V>;
 
         /**
-         * Maps each element to a new value using the provided transformation function.
-         * @template U - The type of the resulting elements.
-         * @param {function(T, number): U} transform - The function to transform each element.
-         * @returns {ReadonlyArray<U>} - A readonly array containing the transformed elements.
-         * @example
-         * const numbers = [1, 2, 3];
-         * const squaredNumbers = collection.mapIndexed((num, index) => num * num + index);
-         */
-        mapIndexed<U>(transform: (element: T, index: number) => U): ReadonlyArray<U>;
-
-        /**
-         * Sorts the collection using the provided comparator function.
+         * Sorts the array using the provided comparator function.
          *
          * @param {function(T, T): number} comparator - The function to compare elements.
          * @return this - reference of the sorted array
@@ -84,7 +73,7 @@ declare global {
          * @param {T[]} other - The array to concatenate with the current collection.
          * @returns {T[]} - A new array containing elements from both the current collection and the provided array.
          * @example
-         * const collection = new Collection(1, 2, 3);
+         * const collection = mutableListOf(1, 2, 3);
          * const otherArray = [4, 5, 6];
          * const result = collection.plus(otherArray);
          * // result is [1, 2, 3, 4, 5, 6]
@@ -96,7 +85,7 @@ declare global {
          * @param {T[]} other - The array containing elements to be removed from the current collection.
          * @returns {T[]} - A new array with elements not present in the provided array.
          * @example
-         * const collection = new Collection(1, 2, 3, 4, 5);
+         * const collection = mutableListOf(1, 2, 3, 4, 5);
          * const elementsToRemove = [3, 5];
          * const result = collection.minus(elementsToRemove);
          * // result is [1, 2, 4]
@@ -110,7 +99,7 @@ declare global {
          * @return this - reference to affected array
          *
          * @example
-         * const collection = new Collection(1, 2, 3, 4, 5);
+         * const collection = mutableListOf(1, 2, 3, 4, 5);
          * const elementsToRemove = [3, 5];
          * collection.minusAssign(elementsToRemove);
          * // collection is now [1, 2, 4]
@@ -124,7 +113,7 @@ declare global {
          * @return this - reference to affected array
          *
          * @example
-         * const collection = new Collection(1, 2, 3);
+         * const collection = mutableListOf(1, 2, 3);
          * const additionalElements = [4, 5, 6];
          * collection.plusAssign(additionalElements);
          * // collection is now [1, 2, 3, 4, 5, 6]
@@ -135,7 +124,7 @@ declare global {
          * Returns the number of elements in the collection.
          * @returns {number} - The number of elements in the collection.
          * @example
-         * const collection = new Collection(1, 2, 3, 4, 5);
+         * const collection = mutableListOf(1, 2, 3, 4, 5);
          * const count = collection.count();
          * // count is 5
          */
@@ -146,7 +135,7 @@ declare global {
          * @param {((item: T) => boolean) | T[]} predicate - The predicate function or collection of elements to remove.
          * @returns {T[]} - A new array with elements removed based on the provided predicate or collection.
          * @example
-         * const collection = new Collection(1, 2, 3, 4, 5);
+         * const collection = mutableListOf(1, 2, 3, 4, 5);
          * const elementsToRemove = [3, 5];
          * const result = collection.removeAll(elementsToRemove);
          * // result is [1, 2, 4]
@@ -250,18 +239,6 @@ Object.defineProperty(Array.prototype, 'associateWith', {
             result[key as string] = valueSelector(element);
             return result;
         }, {} as Record<string, V>);
-    },
-    enumerable: false,
-    writable: false,
-    configurable: false
-});
-
-Object.defineProperty(Array.prototype, 'mapIndexed', {
-    value: function <T, U>(
-        this: Array<T>,
-        transform: (element: T, index: number) => U
-    ): ReadonlyArray<U> {
-        return this.map((element, index) => transform(element, index));
     },
     enumerable: false,
     writable: false,

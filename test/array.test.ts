@@ -47,12 +47,6 @@ describe('Array Functions', () => {
             });
         });
 
-        test('mapIndexed', () => {
-            const mappedArray = array.mapIndexed((element, index) => element + index);
-            expect(Array.isArray(mappedArray)).toBe(true);
-            expect(mappedArray).toEqual([1, 3, 5, 7, 9]);
-        });
-
         test('sortBy', () => {
             const users = [
                 { name: 'John', age: 30 },

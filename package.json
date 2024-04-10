@@ -1,6 +1,6 @@
 {
   "name": "katxupa",
-  "version": "1.9.2",
+  "version": "1.9.4",
   "description": "Delicious Dish for Typescript and JavaScript projects",
   "author": "Manuel Santos <ney.br.santos@gmail.com>",
   "license": "MIT",
@@ -13,7 +13,7 @@
   "bugs": {
     "url": "https://github.com/manusant/Katxupa/issues"
   },
-  "homepage": "https://manusant.github.io/Katxupa/",
+  "homepage": "https://katxupa.gitbook.io",
   "keywords": [
     "utility",
     "typescript",

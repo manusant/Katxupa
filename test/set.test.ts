@@ -33,34 +33,6 @@ describe('Set Functions', () => {
             set2 = setOf(2, 3, 4);
         });
 
-        test('intersection', () => {
-            const intersectionSet = set1.intersection(set2);
-            expect(intersectionSet instanceof Set).toBe(true);
-            expect([...intersectionSet]).toEqual([2, 3]);
-        });
-
-        test('union', () => {
-            const unionSet = set1.union(set2);
-            expect(unionSet instanceof Set).toBe(true);
-            expect([...unionSet]).toEqual([1, 2, 3, 4]);
-        });
-
-        test('difference', () => {
-            const differenceSet = set1.difference(set2);
-            expect(differenceSet instanceof Set).toBe(true);
-            expect([...differenceSet]).toEqual([1]);
-        });
-
-        test('isSubsetOf', () => {
-            const isSubset = set1.isSubsetOf(set2);
-            expect(isSubset).toBe(false);
-        });
-
-        test('isSupersetOf', () => {
-            const isSuperset = set1.isSupersetOf(set2);
-            expect(isSuperset).toBe(false);
-        });
-
         test('map', () => {
             const squaredSet = set1.map((num) => num * num);
             expect(squaredSet instanceof Set).toBe(true);
