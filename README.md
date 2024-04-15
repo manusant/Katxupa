@@ -30,14 +30,20 @@ runIt(() => {
 ## Project Configuration
 1. Add [Katxupa](https://github.com/manusant/Katxupa) library to project dependencies
 ```shell
+# When using npm
 npm install katxupa
+# When using pnpm
 pnpm add katxupa
+# When using yarn
 yarn add katxupa
 ```
 2. Add [eslint-config-katxupa](https://github.com/manusant/eslint-config-katxupa) ESLint configs
 ```shell
+# When using npm
 npm install --save-dev eslint-config-katxupa
+# When using pnpm
 pnpm add --save-dev eslint-config-katxupa
+# When using yarn
 yarn add --dev eslint-config-katxupa
 ```
 3. Activate ESLint config
