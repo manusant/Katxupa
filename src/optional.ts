@@ -244,7 +244,8 @@ export class Optional<T> {
      *
      * @return The value inside the Optional object.
      * */
-    raw(): T | undefined | null {
+    raw(): T | undefined {
+        if (this.value === null) return undefined;
         return this.value;
     }
 
