@@ -161,7 +161,7 @@ describe('Optional Class Tests', () => {
         });
 
         it('should throw an error for map on an empty Optional', () => {
-            const optional = Optional.empty();
+            const optional = Optional.empty<number>();
             expect( optional.flatMap((x) => Optional.of( 2*(x||1))).isEmpty()).toBe(true);
         });
     });
@@ -176,7 +176,7 @@ describe('Optional Class Tests', () => {
         });
 
         it('should not execute the consumer for an empty Optional', () => {
-            const optional = Optional.empty();
+            const optional = Optional.empty<number>();
             let result = 0;
             optional.ifPresent((x) => (result = x!));
             expect(result).toBe(0);
@@ -270,7 +270,7 @@ describe('Optional Class Tests', () => {
         });
 
         it('should throw an error for map on an empty Optional', () => {
-            const optional = Optional.empty();
+            const optional = Optional.empty<number>();
             expect( optional.map((x) => (x || 1) * 2).isEmpty()).toBe(true);
         });
     });
@@ -285,7 +285,7 @@ describe('Optional Class Tests', () => {
         });
 
         it('should not execute the consumer for an empty Optional', () => {
-            const optional = Optional.empty();
+            const optional = Optional.empty<number>();
             let result = 0;
             optional.ifPresent((x) => (result = x!));
             expect(result).toBe(0);
