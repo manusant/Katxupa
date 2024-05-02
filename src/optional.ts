@@ -373,7 +373,7 @@ export class Optional<T> {
      *  @param mapper - A function that takes the current value of the optional and returns a promise of an Optional object.
      *  @return An Optional object that contains the result of the mapper function, or an empty Optional object if the current optional value is empty
      * */
-    flatMapAsync<U>(mapper: (value: T) => Promise<Optional<U>>): Promise<Optional<U | undefined | null>> {
+    async flatMapAsync<U>(mapper: (value: T) => Promise<Optional<U>>): Promise<Optional<U | undefined | null>> {
         if (this.isPresent()) {
             return mapper(this.value!).then(result => result.isPresent() ? result : Optional.empty());
         }
@@ -643,14 +643,15 @@ export class Optional<T> {
      * console.log(newOptional.get()); // Output: 10
      *
      * @param callback - A function that takes the value stored in the Optional object as an argument and returns a result of type R.
-     * @return Returns a new Optional object that contains the result of executing the callback function on the value stored in the original Optional object.
+     * @param defaultProvider (optional) - Provider for default value in case of empty optional
+     * @return Returns a new Optional object that contains the result of executing the callback function on the value stored in the original Optional object. Returns empty or default optional otherwise
      * */
-    run<R>(callback: (value: T) => R): Optional<R> {
+    run<R>(callback: (value: T) => R, defaultProvider?: () => R): Optional<R | undefined> {
         if (this.isPresent()) {
             const result = callback(this.value as T);
             return Optional.of(result);
         }
-        throw new Error("Running operations in empty/undefined objects is not possible");
+        return defaultProvider ? Optional.of(defaultProvider()) : Optional.empty();
     }
 
     /**
@@ -675,27 +676,28 @@ export class Optional<T> {
      *
      * @param callback - A callback function that takes the value of type T and returns a Promise of type R.
      * This function represents the asynchronous operation to be performed on the value.
+     * @param defaultProvider (optional) - Provider for default value in case of empty optional
      * @return A Promise that resolves to the result of the asynchronous operation performed by the callback function.
      * */
-    runAsync<R>(callback: (value: T) => Promise<R>): Promise<R> {
+    async runAsync<R>(callback: (value: T) => Promise<R>, defaultProvider?: () => R): Promise<Optional<R | undefined>> {
         if (this.isPresent()) {
-            return callback(this.value as T);
+            return Optional.of(await callback(this.value as T));
         }
-        throw new Error("Running operations in empty optional is not possible");
+        return defaultProvider ? Optional.of(defaultProvider()) : Optional.empty();
     }
 
     /**
      * The else method in the Optional class is used to provide an alternative value or action when the optional value is empty.
      *
      * @param callback - A function that returns a value of type R. This function is executed when the optional value is empty.
-     * @return An Optional object that contains the alternative value returned by the callback function, if the optional value is empty.
+     * @return An Optional object that contains the alternative value returned by the callback function, if the optional value is empty, or the optional value itself.
      * */
-    else<R>(callback: () => R): Optional<R> {
+    else<R>(callback: () => R): Optional<R | T> {
         if (!this.isPresent()) {
             const result = callback();
             return Optional.of(result);
         }
-        throw new Error("Else operation is only supported on empty optional");
+        return this;
     }
 
     /**
@@ -714,11 +716,12 @@ export class Optional<T> {
      * @param callback - A function that returns a promise. This function will be executed if the optional value is empty.
      * @return A promise that resolves to the result of the callback function if the optional value is empty.
      * */
-    elseAsync<R>(callback: () => Promise<R>): Promise<R> {
+    async elseAsync<R>(callback: () => Promise<R>): Promise<Optional<R | T>> {
         if (!this.isPresent()) {
-            return callback();
+            const result = await callback();
+            return Optional.of(result);
         }
-        throw new Error("Else operation is only supported on empty optional");
+        return this;
     }
 
     /**
