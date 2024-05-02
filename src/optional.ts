@@ -205,7 +205,7 @@ export class Optional<T> {
      * @param {(value: T) => U} mapper - A function that takes the wrapped value and returns a new value of type U.
      * @returns {Optional<U | T>} - An Optional containing the result of applying the mapper function if the predicate
      *     returns true, otherwise returns the current Optional.
-     * @throws {Error} - Throws an error if called on an empty Optional.
+     *
      * @example
      * const optional = Optional.of(42);
      * const newOptional = optional.if((value) => value > 10, (value) => value * 2);
@@ -215,15 +215,28 @@ export class Optional<T> {
      * @example
      * const emptyOptional = Optional.empty();
      * emptyOptional.if(() => false, (value) => value * 2);
-     * // Throws an error since 'if' cannot be called on an empty Optional.
+
      */
     if<U>(predicate: (value: T) => boolean, mapper: (value: T) => U): Optional<U | T> {
-        this.ifEmptyThrow(() => new Error("'if' can only be called for non empty optionals"));
-        if (predicate(this.value!)) {
-            return Optional.of(mapper(this.value!));
+        if (!this.isEmpty()) {
+            if (predicate(this.value!)) {
+                return Optional.of(mapper(this.value!));
+            }
+            return this;
         }
-        return this;
+        return Optional.empty();
     }
+
+    async ifAsync<U>(predicate: (value: T) => Promise<boolean>, mapper: (value: T) => U): Promise<Optional<U | T>> {
+        if (!this.isEmpty()) {
+            if (await predicate(this.value!)) {
+                return Optional.of(mapper(this.value!));
+            }
+            return this;
+        }
+        return Optional.empty();
+    }
+
 
     /**
      * The get method  is used to retrieve the value inside the Optional object. If the Optional
