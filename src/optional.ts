@@ -240,6 +240,15 @@ export class Optional<T> {
     }
 
     /**
+     * The get method  is used to retrieve the value inside the Optional object.
+     *
+     * @return The value inside the Optional object.
+     * */
+    raw(): T | undefined | null {
+        return this.value;
+    }
+
+    /**
      * The orElse method  is used to retrieve the value inside the Optional object if it is present,
      * or return a default value if the Optional object is empty.
      *
