@@ -32,8 +32,8 @@ export class Optional<T> {
      *
      * @return an empty Optional object.
      * */
-    static empty(): Optional<undefined> {
-        return Optional.of(undefined);
+    static empty<R>(): Optional<R> {
+        return Optional.of<R>(undefined);
     }
 
     /**
@@ -123,7 +123,7 @@ export class Optional<T> {
      * @param optionals - A spread parameter that accepts a variable number of Optional objects
      * @return Returns the first non-empty optional from the list of optionals, or an empty optional if all optionals are empty.
      * */
-    static coalesce<T>(...optionals: Optional<T | undefined | null>[]): Optional<T | undefined | null> {
+    static coalesce<T>(...optionals: Optional<T>[]): Optional<T> {
         for (const optional of optionals) {
             if (optional.isPresent()) {
                 return optional;
@@ -324,7 +324,7 @@ export class Optional<T> {
      * @return Returns a new Optional object with the mapped value.
      * returns a new Optional object with the mapped value, the default Optional value or empty.
      * */
-    map<U>(mapper: (value: T) => U, defaultValue?: U): Optional<U | undefined> {
+    map<U>(mapper: (value: T) => U, defaultValue?: U): Optional<U> {
         if (this.isPresent()) {
             return Optional.of(mapper(this.value!));
         }
@@ -348,7 +348,7 @@ export class Optional<T> {
      * Optional object with a mapped value of type U.
      * @return Returns a new Optional object with the mapped value, or empty.
      * */
-    flatMap<U>(mapper: (value: T) => Optional<U>): Optional<U | undefined> {
+    flatMap<U>(mapper: (value: T) => Optional<U>): Optional<U> {
         if (this.isPresent()) {
             return mapper(this.value!);
         }
@@ -381,7 +381,7 @@ export class Optional<T> {
      *  @param mapper - A function that takes the current value of the optional and returns a promise of an Optional object.
      *  @return An Optional object that contains the result of the mapper function, or an empty Optional object if the current optional value is empty
      * */
-    async flatMapAsync<U>(mapper: (value: T) => Promise<Optional<U>>): Promise<Optional<U | undefined | null>> {
+    async flatMapAsync<U>(mapper: (value: T) => Promise<Optional<U>>): Promise<Optional<U>> {
         if (this.isPresent()) {
             return mapper(this.value!).then(result => result.isPresent() ? result : Optional.empty());
         }
@@ -407,7 +407,7 @@ export class Optional<T> {
      * @return Returns a new Optional object containing the filtered value if the original Optional object is present.
      * Returns an empty Optional object if the original Optional object is not present.
      * */
-    filter(predicate: (value: T) => boolean): Optional<T | undefined> {
+    filter(predicate: (value: T) => boolean): Optional<T> {
         if (this.isEmpty()) {
             return this; // Return itself if it's empty
         }
@@ -437,7 +437,7 @@ export class Optional<T> {
      * @return Returns a new Optional object containing the converted value if the original Optional object is present.
      * Returns an empty Optional object if the original Optional object is not present.
      * */
-    convert<U>(converter: (value: T) => U): Optional<U | undefined> {
+    convert<U>(converter: (value: T) => U): Optional<U> {
         return this.isPresent() ? Optional.of(converter(this.value!)) : Optional.empty();
     }
 
@@ -654,7 +654,7 @@ export class Optional<T> {
      * @param defaultProvider (optional) - Provider for default value in case of empty optional
      * @return Returns a new Optional object that contains the result of executing the callback function on the value stored in the original Optional object. Returns empty or default optional otherwise
      * */
-    run<R>(callback: (value: T) => R, defaultProvider?: () => R): Optional<R | undefined> {
+    run<R>(callback: (value: T) => R, defaultProvider?: () => R): Optional<R> {
         if (this.isPresent()) {
             const result = callback(this.value as T);
             return Optional.of(result);
@@ -687,7 +687,7 @@ export class Optional<T> {
      * @param defaultProvider (optional) - Provider for default value in case of empty optional
      * @return A Promise that resolves to the result of the asynchronous operation performed by the callback function.
      * */
-    async runAsync<R>(callback: (value: T) => Promise<R>, defaultProvider?: () => R): Promise<Optional<R | undefined>> {
+    async runAsync<R>(callback: (value: T) => Promise<R>, defaultProvider?: () => R): Promise<Optional<R>> {
         if (this.isPresent()) {
             return Optional.of(await callback(this.value as T));
         }
