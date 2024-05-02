@@ -322,17 +322,16 @@ export class Optional<T> {
      * @param mapper - A function that takes the current value of type T and returns a new value of type U.
      * @param defaultValue - default value when the optional is empty
      * @return Returns a new Optional object with the mapped value.
-     * returns a new Optional object with the mapped value or the default Optional value.
-     * Throws an error if the original Optional object is empty.
+     * returns a new Optional object with the mapped value, the default Optional value or empty.
      * */
-    map<U>(mapper: (value: T) => U, defaultValue?: U): Optional<U> {
+    map<U>(mapper: (value: T) => U, defaultValue?: U): Optional<U | undefined> {
         if (this.isPresent()) {
             return Optional.of(mapper(this.value!));
         }
         if (defaultValue) {
             return Optional.of(defaultValue);
         }
-        throw new Error("Map operation cannot be called on an empty Optional");
+        return Optional.empty();
     }
 
     /**
@@ -347,14 +346,13 @@ export class Optional<T> {
      *
      * @param mapper (function) - A function that takes the value of type T inside the Optional object and returns an
      * Optional object with a mapped value of type U.
-     * @return Returns a new Optional object with the mapped value.
-     * Throws an error if the original Optional object is empty.
+     * @return Returns a new Optional object with the mapped value, or empty.
      * */
-    flatMap<U>(mapper: (value: T) => Optional<U>): Optional<U> {
+    flatMap<U>(mapper: (value: T) => Optional<U>): Optional<U | undefined> {
         if (this.isPresent()) {
             return mapper(this.value!);
         }
-        throw new Error("FlatMap operation cannot be called on an empty Optional");
+        return Optional.empty();
     }
 
     /**
@@ -387,7 +385,7 @@ export class Optional<T> {
         if (this.isPresent()) {
             return mapper(this.value!).then(result => result.isPresent() ? result : Optional.empty());
         }
-        return Promise.reject(new Error("FlatMap operation cannot be called on an empty Optional"));
+        return Optional.empty();
     }
 
     /**
