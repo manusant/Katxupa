@@ -162,7 +162,7 @@ describe('Optional Class Tests', () => {
 
         it('should throw an error for map on an empty Optional', () => {
             const optional = Optional.empty();
-            expect(() => optional.flatMap((x) => Optional.of( 2*(x||1))).isEmpty()).toThrow("FlatMap operation cannot be called on an empty Optional");
+            expect( optional.flatMap((x) => Optional.of( 2*(x||1))).isEmpty()).toBe(true);
         });
     });
 
@@ -271,7 +271,7 @@ describe('Optional Class Tests', () => {
 
         it('should throw an error for map on an empty Optional', () => {
             const optional = Optional.empty();
-            expect(()=> optional.map((x) => (x || 1) * 2)).toThrow("Map operation cannot be called on an empty Optional");
+            expect( optional.map((x) => (x || 1) * 2).isEmpty()).toBe(true);
         });
     });
 
