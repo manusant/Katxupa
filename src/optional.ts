@@ -154,17 +154,14 @@ export class Optional<T> {
     }
 
     /**
-     * The ifPresentThrow method in the Optional class checks if a value is present and throws an error if it is. It then
-     * returns Optional.
+     * The ifPresentThrow checks if a value is present and throws an error if it is.
      *
      * @param errorProvider - A function that returns an Error object.
-     * @return The Optional if not present.
      * */
-    ifPresentThrow(errorProvider: () => Error): Optional<T> {
+    ifPresentThrow(errorProvider: () => Error): void{
         if (this.isPresent()) {
             throw errorProvider();
         }
-        return this;
     }
 
     /**
@@ -253,7 +250,7 @@ export class Optional<T> {
     }
 
     /**
-     * The get method  is used to retrieve the value inside the Optional object.
+     * Raw is used to retrieve the value inside the Optional object.
      *
      * @return The value inside the Optional object.
      * */
@@ -308,14 +305,12 @@ export class Optional<T> {
      * emptyOptional.orElseThrow(() => new Error("Value is not present")); // Throws an error
      *
      * @param errorProvider (function) - A callback function that returns an Error object
-     * @return The Optional object if it is not empty.
-     * Throws an error if the Optional object is empty.
+     * @throws Throws an error if the Optional object is empty.
      * */
-    orElseThrow(errorProvider: () => Error): Optional<T> {
+    orElseThrow(errorProvider: () => Error): void {
         if (this.isEmpty()) {
             throw errorProvider();
         }
-        return this;
     }
 
     /**
@@ -495,13 +490,11 @@ export class Optional<T> {
      * optional.ifEmpty(() => console.log("Value is empty")); // Output: "Value is empty"
      *
      * @param action A callback function that performs an action when the value inside the Optional object is empty.
-     * @return Returns the Optional object itself.
      * */
-    ifEmpty(action: () => void): Optional<T> {
+    ifEmpty(action: () => void): void {
         if (this.isEmpty()) {
             action();
         }
-        return this;
     }
 
     /**

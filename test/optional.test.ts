@@ -115,11 +115,10 @@ describe('Optional Class Tests', () => {
     });
 
     describe('Optional.orElseThrow()', () => {
-        it('should return the value for a non-empty Optional', () => {
+        it('should not throw for a non-empty Optional', () => {
             const value = 42;
             const optional = Optional.of(value);
-            const result = optional.orElseThrow(() => new Error('Unexpected'));
-            expect(result.get()).toBe(value);
+            expect(() =>optional.orElseThrow(() => new Error('Unexpected'))).not.toThrow();
         });
 
         it('should throw the specified error for an empty Optional', () => {
