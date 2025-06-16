@@ -307,10 +307,11 @@ export class Optional<T> {
      * @param errorProvider (function) - A callback function that returns an Error object
      * @throws Throws an error if the Optional object is empty.
      * */
-    orElseThrow(errorProvider: () => Error): void {
+    orElseThrow(errorProvider: () => Error): T {
         if (this.isEmpty()) {
             throw errorProvider();
         }
+        return this.value!;
     }
 
     /**
@@ -502,7 +503,7 @@ export class Optional<T> {
      *
      * @example
      * const optional = Optional.of("value");
-     * optional.ifEmptyThrow(() => new Error("Value is empty")); // Returns the optional object
+     * const value = optional.ifEmptyThrow(() => new Error("Value is empty")); // Returns the value
      *
      * const emptyOptional = Optional.empty();
      * emptyOptional.ifEmptyThrow(() => new Error("Value is empty")); // Throws an error
@@ -510,11 +511,11 @@ export class Optional<T> {
      * @param errorProvider A callback function that returns an Error object.
      * @return Returns the Optional object if it is not empty or Throws an error if the Optional object is empty.
      * */
-    ifEmptyThrow(errorProvider: () => Error): Optional<T> {
+    ifEmptyThrow(errorProvider: () => Error): T {
         if (this.isEmpty()) {
             throw errorProvider();
         }
-        return this;
+        return this.value!;
     }
 
     /**
@@ -787,13 +788,6 @@ declare global {
      *
      *  const result4 = await optionalOf(user)
      *     .orElseThrow(() => new HttpError(409, "User doesn't exist"))
-     *     .map(user => {
-     *        return {
-     *          ...user,
-     *          userData,
-     *        };
-     *      })
-     *     .runAsync(user => this.userRepository.save(user));
      *  console.log(result4); // Prints: saved user content
      */
     function optionalOf<T>(value: T | undefined | null): Optional<T>;
